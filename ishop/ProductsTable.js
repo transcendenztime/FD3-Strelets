@@ -12,44 +12,34 @@ var ProductsTable = React.createClass({
   },
 
   render: function() {
-    /*
-    id
-    name
-    cost
-    photoUrl
-    count
-    */
     var allProducts = [];
     /*сначала добавим в таблицу тэг <th> */
     var header =
       React.DOM.tr({key:0,className:'ProdHeader'},
-        React.DOM.th(null ,'id'),
-        React.DOM.th(null ,'name'),
-        React.DOM.th(null ,'cost'),
-        React.DOM.th(null ,'photo'),
-        React.DOM.th(null ,'count'),
+        React.DOM.th({className:'HId'} ,'id'),
+        React.DOM.th({className:'HName'} ,'Название'),
+        React.DOM.th({className:'HCost'} ,'Цена'),
+        React.DOM.th({className:'HPhoto'} ,'Фото'),
+        React.DOM.th({className:'HCount'} ,'Количество'),
       );
     allProducts.push(header);
     /*добавим в таблицу все элементы массива */
     this.props.products.forEach(function(product, i, products) {
       var oneProduct = 
         React.DOM.tr({key:product.id,className:'Prod'},
-          React.DOM.td(null ,product.id),
-          React.DOM.td(null ,product.name),
-          React.DOM.td(null ,product.cost),
-          React.DOM.td(null ,product.photoUrl),
-          React.DOM.td(null ,product.count),
+          React.DOM.td({className:'Id'} ,product.id),
+          React.DOM.td({className:'Name'} ,product.name),
+          React.DOM.td({className:'Cost'} ,product.cost),
+          React.DOM.td({className:'ImgTd'} ,
+            React.DOM.img({className: 'Img', src:product.photoUrl}),),
+          React.DOM.td({className:'Count'} ,product.count),
         );
       allProducts.push(oneProduct);
     }
     );
     
-    return React.DOM.div( {className:'MainDiv'}, 
-      //React.DOM.div( {className:'MainDiv'},
-      React.DOM.h2( {className:'ShopName'}, this.props.shopName),/* ),*/
-        /*React.DOM.div( {className:'Test1'},
-        React.DOM.span( null, "Test span 1" ),
-        React.DOM.span( {className:'TestSpan2'}, "Test span 2" ), ),*/
+    return React.DOM.div( {className:'ProductasTable'}, 
+      React.DOM.h2( {className:'ShopName'}, this.props.shopName),
       React.DOM.div( {className:'InfoDiv'}, "Таблица со списком товаров:" ),
       React.DOM.table( {className:'ProductsTableOne'}, allProducts ),
     );
