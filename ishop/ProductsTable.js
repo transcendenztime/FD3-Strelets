@@ -24,7 +24,7 @@ var ProductsTable = React.createClass({
       );
     allProducts.push(header);
     /*добавим в таблицу все элементы массива */
-    this.props.products.forEach(function(product, i, products) {
+    this.props.products.forEach(function(product) {
       var oneProduct = 
         React.DOM.tr({key:product.id,className:'Prod'},
           React.DOM.td({className:'Id'} ,product.id),
