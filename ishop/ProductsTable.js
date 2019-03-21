@@ -31,7 +31,8 @@ var ProductsTable = React.createClass({
           React.DOM.td({className:'Name'} ,product.name),
           React.DOM.td({className:'Cost'} ,product.cost),
           React.DOM.td({className:'ImgTd'} ,
-            React.DOM.img({className: 'Img', src:product.photoUrl}),),
+            React.DOM.img({className: 'Img', src:product.photoUrl}),
+          ),
           React.DOM.td({className:'Count'} ,product.count),
         );
       allProducts.push(oneProduct);
@@ -41,7 +42,9 @@ var ProductsTable = React.createClass({
     return React.DOM.div( {className:'ProductsTable'}, 
       React.DOM.h1( {className:'ShopName'}, this.props.shopName),
       React.DOM.h2( {className:'InfoDiv'}, "Таблица со списком товаров:" ),
-      React.DOM.table( {className:'ProductsTableOne'}, allProducts ),
+      React.DOM.table( {className:'ProductsTableOne'}, 
+        React.DOM.tbody( null, allProducts ), 
+      ),
     );
   },
   
