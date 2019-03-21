@@ -1,0 +1,48 @@
+.ProductsTable .ProductsTableOne
+{
+    border: double gray 3px;
+    padding: 3px 7px;
+    background-color: #F0F0F0;
+}
+
+.ProductsTable .ProductsTableOne .ProdHeader
+{
+    background-color: #e0dbdb;
+}
+
+.ProductsTable .ProductsTableOne .Prod:hover
+{
+    background-color: #FFFFFF;
+}
+
+.ProductsTable .ProductsTableOne .Prod .Id
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.ProductsTable .ProductsTableOne .Prod .Name
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.ProductsTable .ProductsTableOne .Prod .Cost
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.ProductsTable .ProductsTableOne .Prod .ImgId
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.ProductsTable .ProductsTableOne .Prod .Count
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.ProductsTable .ProductsTableOne .Prod .ImgId .Img
+{
+    padding: 10px;
+}

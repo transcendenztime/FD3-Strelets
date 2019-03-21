@@ -38,9 +38,9 @@ var ProductsTable = React.createClass({
     }
     );
     
-    return React.DOM.div( {className:'ProductasTable'}, 
-      React.DOM.h2( {className:'ShopName'}, this.props.shopName),
-      React.DOM.div( {className:'InfoDiv'}, "Таблица со списком товаров:" ),
+    return React.DOM.div( {className:'ProductsTable'}, 
+      React.DOM.h1( {className:'ShopName'}, this.props.shopName),
+      React.DOM.h2( {className:'InfoDiv'}, "Таблица со списком товаров:" ),
       React.DOM.table( {className:'ProductsTableOne'}, allProducts ),
     );
   },
