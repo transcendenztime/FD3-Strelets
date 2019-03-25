@@ -14,8 +14,13 @@ var ProductsTable = React.createClass({
 
   getInitialState: function() {
     return { 
-      selectedTableRow: 2,// null, //номер выделенной строки
+      selectedTableRow: null, //номер выделенной строки
     };
+  },
+
+  productMarked: function(id) {
+    //console.log('Выбрана строка номер '+id);
+    this.setState( {selectedTableRow:id} );
   },
 
   render: function() {
@@ -27,8 +32,9 @@ var ProductsTable = React.createClass({
 
     var allProducts=this.props.products.map( p =>
       React.createElement(Product, {key:p.id, 
-        id:p.id, name:p.name, cost:p.cost, photoUrl:p.photoUrl, 
-        count:p.count, selectedTableRow:this.state.selectedTableRow,
+        id:p.id, name:p.name, cost:p.cost, photoUrl:p.photoUrl, count:p.count,
+        cbMarked:this.productMarked,
+        selectedTableRow:this.state.selectedTableRow,
       })
     );
 

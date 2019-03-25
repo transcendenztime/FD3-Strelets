@@ -3,11 +3,6 @@
     background-color: #FFFFFF;
 }
 
-.SelectedProd
-{
-    background-color: #f7cd7f;
-}
-
 .Prod .Id
 {
     padding: 3px 7px;
@@ -36,6 +31,44 @@
 }
 
 .Prod .ImgTd .Img
+{
+    padding: 5px;
+    cursor: pointer;
+}
+
+.SelectedProd
+{
+    background-color: #f7cd7f;
+}
+
+.SelectedProd .Id
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.SelectedProd .Name
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.SelectedProd .Cost
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.SelectedProd .ImgTd
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.SelectedProd .Count
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.SelectedProd .ImgTd .Img
 {
     padding: 5px;
     cursor: pointer;
