@@ -3,6 +3,11 @@
     background-color: #FFFFFF;
 }
 
+.SelectedProd
+{
+    background-color: #f7cd7f;
+}
+
 .Prod .Id
 {
     padding: 3px 7px;
