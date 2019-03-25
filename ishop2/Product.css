@@ -1,0 +1,37 @@
+.Prod:hover
+{
+    background-color: #FFFFFF;
+}
+
+.Prod .Id
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.Prod .Name
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.Prod .Cost
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.Prod .ImgTd
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.Prod .Count
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.Prod .ImgTd .Img
+{
+    padding: 5px;
+    cursor: pointer;
+}
