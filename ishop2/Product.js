@@ -20,6 +20,7 @@ var Product = React.createClass({
 
     deleteRow: function(EO) {
         this.props.cbDeleteRow(this.props.id);
+        EO.stopPropagation();//прекращаем всплытие
     },
 
     render: function() {
