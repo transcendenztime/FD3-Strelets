@@ -19,8 +19,11 @@ var Product = React.createClass({
     },
 
     deleteRow: function(EO) {
-        this.props.cbDeleteRow(this.props.id);
-        EO.stopPropagation();//прекращаем всплытие
+        if(confirm("Удалить товар?"))
+		{
+			this.props.cbDeleteRow(this.props.id);
+		}
+		EO.stopPropagation();//прекращаем всплытие
     },
 
     render: function() {
