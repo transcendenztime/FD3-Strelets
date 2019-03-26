@@ -8,6 +8,7 @@ var TableHeader = React.createClass({
       hCost: React.PropTypes.string.isRequired,
       hPhotoUrl: React.PropTypes.string.isRequired,
       hCount: React.PropTypes.string.isRequired,
+      hControl: React.PropTypes.string.isRequired,
     },
  
     render: function() {
@@ -17,6 +18,7 @@ var TableHeader = React.createClass({
             React.DOM.th({className:'HCost'} ,this.props.hCost),
             React.DOM.th({className:'HPhoto'} ,this.props.hPhotoUrl),
             React.DOM.th({className:'HCount'} ,this.props.hCount),
+            React.DOM.th({className:'HControl'} ,this.props.hControl),
         );
     },
 });
