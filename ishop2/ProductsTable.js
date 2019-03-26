@@ -34,7 +34,7 @@ var ProductsTable = React.createClass({
   },
 
   render: function() {
-    console.log(this.state.deletedRows);
+    //console.log(this.state.deletedRows);
     var tableHeader = React.createElement(TableHeader, {key:0,
       hId:tableHeaders.hId, hName:tableHeaders.hName,
       hCost:tableHeaders.hCost, hPhotoUrl:tableHeaders.hPhotoUrl,
