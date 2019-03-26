@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8" />
+  <title>Проект filter</title>
+</head> 
+<body> 
+  <div id="MainContainer"></div>
+      
+  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+      
+  <script src="Filter.js"></script>
+  <link rel="stylesheet" type="text/css" href="Filter.css" />
+
+  <script>
+
+    var stringArr = [
+      "сложновыговариваемый",
+      "трудноразличимый",
+      "сверхпроводимый",
+      "частноприедпринимательский",
+      "переосвидетельствоваться",
+      "субстанционализироваться",
+      "высокопревосходительство",
+      "одиннадцатиклассница",
+      "делопроизводительница",
+      "соответственно",
+      "интернационализироваться",
+      "машиностроительный",
+    ];
+
+    ReactDOM.render(
+      React.createElement(Filter,{dictionary:stringArr,}), 
+      document.getElementById('MainContainer') 
+    );
+
+  </script>
+
+</body> 
+</html>

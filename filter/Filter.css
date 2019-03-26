@@ -1,0 +1,5 @@
+.StringsContainer{
+    height: 100px;
+    width: 260px;
+    overflow-y: auto;
+}
