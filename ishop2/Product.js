@@ -9,9 +9,8 @@ var Product = React.createClass({
       photoUrl: React.PropTypes.string.isRequired,
       count: React.PropTypes.number.isRequired,
       cbMarked: React.PropTypes.func.isRequired,
-      cbDeleteRow: React.PropTypes.func,//isRequired???
+      cbDeleteRow: React.PropTypes.func.isRequired,
       selectedTableRow: React.PropTypes.number, // может быть null, пока ни один ответ не выбран
-      isDelete: React.PropTypes.bool,
     },
  
     productClicked: function(EO) {
@@ -27,16 +26,10 @@ var Product = React.createClass({
     },
 
     render: function() {
-        
-        var myClassName = "Prod";
-        if(this.props.selectedTableRow==this.props.id) myClassName="SelectedProd";
-        if(this.props.isDelete) myClassName="DeletedProd";
-
         return React.DOM.tr(
-            /*this.props.selectedTableRow==this.props.id
-                ?{className:'SelectedProd', display: displayRow}
-                :{className:'Prod', display: displayRow, onClick:this.productClicked},*///'добавить атрибут display'
-            {className:myClassName,onClick:this.productClicked},
+            this.props.selectedTableRow==this.props.id
+                ?{className:'SelectedProd'}
+                :{className:'Prod', onClick:this.productClicked},
             React.DOM.td({className:'Id'} ,this.props.id),
             React.DOM.td({className:'Name'} ,this.props.name),
             React.DOM.td({className:'Cost'} ,this.props.cost),
@@ -45,8 +38,7 @@ var Product = React.createClass({
             ),
             React.DOM.td({className:'Count'}, this.props.count),
             React.DOM.td({className:'Control'}, 
-                React.DOM.input({type:'button', value:"Удалить", onClick:this.deleteRow}),),
-            
+                React.DOM.input({type:'button', value:"Удалить", onClick:this.deleteRow}),),  
         );
     },
     

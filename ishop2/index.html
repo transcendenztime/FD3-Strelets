@@ -29,14 +29,8 @@
       {id:5,name:'Кепка',cost:150,photoUrl:'image/products/kepka.jpg',count:6},
     ];
 
-    var deletedRows = [];//массив с начальным состоянием строк (отображать или нет)
-    productsArr.forEach(function() {
-      deletedRows.push(false);
-    }
-    );
-
     ReactDOM.render(
-      React.createElement(ProductsTable,{shopName:nameForMyShop,tableHeaders:tableHeaders,products:productsArr,deletedRows:deletedRows}), 
+      React.createElement(ProductsTable,{shopName:nameForMyShop,tableHeaders:tableHeaders,products:productsArr,}), 
       document.getElementById('MainContainer') 
     );
 

@@ -6,31 +6,31 @@ var ProductsTable = React.createClass({
     shopName: React.PropTypes.string,
     tableHeaders: React.PropTypes.object,
     products: React.PropTypes.array,
-    deletedRows: React.PropTypes.arrayOf(React.PropTypes.bool),
   },
 
   getDefaultProps: function() {
-    return { shopName: "Мой интернет-магазин" }
+    return { shopName: "Мой интернет-магазин",};
   },
 
   getInitialState: function() {
     return { 
       selectedTableRow: null, //номер выделенной строки
-      deletedRows: this.props.deletedRows,
+      productsState: this.props.products,
     };
   },
 
   productMarked: function(id) {
-    //console.log('Выбрана строка номер '+id);
     this.setState( {selectedTableRow:id} );
-    this.setState( {deletedRows:this.props.deletedRows} );
   },
 
   deleteRow: function(id) {
-    var tmpDeleteRows = this.state.deletedRows;
-    tmpDeleteRows[id] = true;
-    this.setState({deletedRows:tmpDeleteRows});
-    //можно переделать под стрелочную функцию
+    var tmpPoductsState = this.state.productsState;
+    //найдем индекс удаляемого элемента,
+    //так как он не соответствует "id", который пришел из callback'а
+    var deleteIndex = tmpPoductsState.findIndex(x => x.id === id);
+    tmpPoductsState.splice(deleteIndex, 1);//удалим элемент (товар) из массива
+    //изменим state, что вызовет перерисовку компонента
+    this.setState( {productsState:tmpPoductsState} );
   },
 
   render: function() {
@@ -41,13 +41,14 @@ var ProductsTable = React.createClass({
       hCount:tableHeaders.hCount, hControl:tableHeaders.hControl,
     } );
 
-    var allProducts=this.props.products.map( p =>
+    //в качестве props для компонента "Product"
+    //передаем "this.state.productsState", где хранится массив с товарами
+    var allProducts=this.state.productsState.map( p =>
       React.createElement(Product, {key:p.id, 
         id:p.id, name:p.name, cost:p.cost, photoUrl:p.photoUrl, count:p.count,
         cbMarked:this.productMarked,
         cbDeleteRow:this.deleteRow,
         selectedTableRow:this.state.selectedTableRow,
-        isDelete:this.state.deletedRows[p.id],
       })
     );
 
