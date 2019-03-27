@@ -3,46 +3,47 @@ var Filter = React.createClass({
     displayName: 'Filter',
     
     propTypes: {
-      /*id: React.PropTypes.number.isRequired,
-      name: React.PropTypes.string.isRequired,
-      cost: React.PropTypes.number.isRequired,
-      photoUrl: React.PropTypes.string.isRequired,
-      count: React.PropTypes.number.isRequired,
-      cbMarked: React.PropTypes.func.isRequired,
-      cbDeleteRow: React.PropTypes.func.isRequired,
-      selectedTableRow: React.PropTypes.number,*/ // может быть null, пока ни один ответ не выбран
       dictionary: React.PropTypes.arrayOf(React.PropTypes.string),
+      //defaultSearchText : React.PropTypes.string,
     },
  
     getDefaultProps: function() {
-        return { /*shopName: "Мой интернет-магазин",*/};
+        return {};
     },
     
     getInitialState: function() {
         return { 
-          /*selectedTableRow: null, //номер выделенной строки
-          productsState: this.props.products,*/
-          dictionaryState: this.props.dictionary,
           searchText: "",
+          isSorted: false,
+          //searchText: this.props.defaultSearchText,
         };
     },
 
     searchTextChanged: function(EO) {
         this.setState({searchText:EO.target.value});
-        //console.log('Текст в строке поиска изменен - '+EO.target.value);
-        
-        /*var strings = this.props.dictionary;
-        var searchStrings = strings.filter(oneString => oneString.indexOf(EO.target.value) !== -1);*/
-        //var strings = this.props.dictionary;
-        var searchStrings = this.props.dictionary.filter(oneString => oneString.indexOf(EO.target.value) !== -1);
-        this.setState({dictionaryState:searchStrings});
+    },
+
+    sortAll: function(EO){
+        this.setState({isSorted:EO.target.checked});
+    },
+
+    clearAll: function() {
+        this.setState({searchText: ""});
+        this.setState({isSorted:false});
     },
 
     render: function() {
 
         var allStrings = [];
         var strKey=0;
-        this.state.dictionaryState.forEach(function(str) {
+
+        var stringsForRender = this.props.dictionary.filter(oneString => oneString.indexOf(this.state.searchText) !== -1);
+        //сортируем массив строк, если isSorted == true
+        this.state.isSorted
+            ?stringsForRender.sort()
+            :null
+
+        stringsForRender.forEach(function(str) {
             var oneString = 
               React.DOM.div({key:strKey,className:'FilterRow'}, str, );
               allStrings.push(oneString);
@@ -52,12 +53,14 @@ var Filter = React.createClass({
 
         return React.DOM.div(null,
             React.DOM.div({className: 'ControlDiv'},
+                React.DOM.input({type:'checkbox',value:'sort',name:'sort',
+                    checked: this.state.isSorted, onClick:this.sortAll}),
                 React.DOM.input({type:'text',name:'searchfield',className:'SearchField',
-                    defaultValue:this.state.searchText,onChange:this.searchTextChanged})
+                    value:this.state.searchText,onChange:this.searchTextChanged}),
+                React.DOM.input({type:'button',name:'clearbutton',className:'ClearButton',
+                    value:'сброс',onClick:this.clearAll}),
             ),
             React.DOM.div( {className:'StringsContainer'}, allStrings, ),
         );
-
     },
-    
 });
