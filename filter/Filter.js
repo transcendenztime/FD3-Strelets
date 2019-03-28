@@ -21,45 +21,33 @@ var Filter = React.createClass({
     },
 
     searchTextChanged: function(EO) {
-		this.processList(EO.target.value, this.state.isSorted);
-		
-		//можно выполнить следующий код вместо вызова "processList"
-		/*var stringsForRender = this.props.dictionary.filter(oneString => oneString.indexOf(EO.target.value) !== -1);
-		
-		this.setState({dictionaryState : stringsForRender});
-		this.setState({searchText: EO.target.value});*/
+        //console.log(EO.target.value);
+        this.setState({searchText: EO.target.value},function() {
+            this.processList();
+        });
     },
 
     sortAll: function(EO){
-		this.processList(this.state.searchText, EO.target.checked);
-		
-		//можно выполнить следующий код вместо вызова "processList"
-		/*var stringsForRender = this.props.dictionary.filter(oneString => oneString.indexOf(this.state.searchText) !== -1);
-		
-		EO.target.checked
-			?stringsForRender.sort()
-			:null
-			
-		this.setState({isSorted:EO.target.checked});
-		this.setState({dictionaryState : stringsForRender});*/
+        //console.log(EO.target.checked);
+        this.setState({isSorted:EO.target.checked},function() {
+            this.processList();
+        });
     },
 
     clearAll: function() {
-        this.setState({searchText: ""});
-        this.setState({isSorted:false});
-		this.setState({dictionaryState: this.props.dictionary});
+        this.setState({searchText: "",isSorted:false,dictionaryState: this.props.dictionary});
+        //this.setState({isSorted:false});
+		//this.setState({dictionaryState: this.props.dictionary});
     },
+    
+    processList: function() {
+		var stringsForRender = this.props.dictionary.filter(oneString => oneString.indexOf(this.state.searchText) !== -1);
 
-	processList: function(searchText, isSorted) {
-		var stringsForRender = this.props.dictionary.filter(oneString => oneString.indexOf(searchText) !== -1);
-
-		isSorted
+		this.state.isSorted
 			?stringsForRender.sort()
             :null
 		
 		this.setState({dictionaryState : stringsForRender});
-		this.setState({searchText:searchText});
-		this.setState({isSorted:isSorted});
 	},
 	
     render: function() {
