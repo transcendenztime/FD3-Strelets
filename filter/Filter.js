@@ -22,16 +22,18 @@ var Filter = React.createClass({
 
     searchTextChanged: function(EO) {
         //console.log(EO.target.value);
-        this.setState({searchText: EO.target.value},function() {
+        /*this.setState({searchText: EO.target.value},function() {
             this.processList();
-        });
+        });*/
+        this.setState({searchText: EO.target.value},this.processList);
     },
 
     sortAll: function(EO){
         //console.log(EO.target.checked);
-        this.setState({isSorted:EO.target.checked},function() {
+        /*this.setState({isSorted:EO.target.checked},function() {
             this.processList();
-        });
+        });*/
+        this.setState({isSorted:EO.target.checked},this.processList);
     },
 
     clearAll: function() {
