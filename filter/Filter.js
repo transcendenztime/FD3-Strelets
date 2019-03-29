@@ -37,17 +37,31 @@ var Filter = React.createClass({
     },
 
     clearAll: function() {
-        this.setState({searchText: "",isSorted:false,dictionaryState: this.props.dictionary});
-        //this.setState({isSorted:false});
-		//this.setState({dictionaryState: this.props.dictionary});
+        //this.setState({searchText: "",isSorted:false,dictionaryState: this.props.dictionary});
+		//здесь лучше не задавать напрямую state "dictionaryState", а вызвать "processList"
+		//логически более верно всю проработку зависимости "dictionaryState" от контролов разместить в одном месте
+		this.setState({searchText: "",isSorted:false},this.processList);
+        
     },
     
     processList: function() {
-		var stringsForRender = this.props.dictionary.filter(oneString => oneString.indexOf(this.state.searchText) !== -1);
-
-		this.state.isSorted
+		if(this.state.searchText == "")//если searchText пустой, копируем массив, не выполняем ".filter()"
+		{
+			var stringsForRender = this.props.dictionary.slice();
+		}else{
+			var stringsForRender = this.props.dictionary.filter(oneString => oneString.indexOf(this.state.searchText) !== -1);
+		}
+		
+		//не делаем так - сложно читаемый код
+		/*this.state.isSorted
 			?stringsForRender.sort()
-            :null
+            :null*/
+		
+		//лучше сделаем вот так: просто, понятно
+		if(this.state.isSorted)
+		{
+			stringsForRender.sort();
+		}
 		
 		this.setState({dictionaryState : stringsForRender});
 	},
