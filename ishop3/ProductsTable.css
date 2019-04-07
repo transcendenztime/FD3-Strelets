@@ -1,0 +1,7 @@
+.ProductsTable .ProductsTableOne
+{
+    border: double gray 3px;
+    padding: 3px 7px;
+    background-color: #F0F0F0;
+    border-spacing: inherit;
+}

@@ -1,0 +1,75 @@
+.Prod:hover
+{
+    background-color: #FFFFFF;
+}
+
+.Prod .Id
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.Prod .Name
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.Prod .Cost
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.Prod .ImgTd
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.Prod .Count
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.Prod .ImgTd .Img
+{
+    padding: 5px;
+    cursor: pointer;
+}
+
+.SelectedProd
+{
+    background-color: #f7cd7f;
+}
+
+.SelectedProd .Id
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.SelectedProd .Name
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.SelectedProd .Cost
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.SelectedProd .ImgTd
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.SelectedProd .Count
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.SelectedProd .ImgTd .Img
+{
+    padding: 5px;
+    cursor: pointer;
+}
