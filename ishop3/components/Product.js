@@ -30,6 +30,35 @@ class Product extends React.Component {
     }
 
     render() {
+        return (
+            <tr className={
+                this.props.selectedTableRow==this.props.id
+                ?"SelectedProd"
+                :"Prod"
+            }
+            onClick={this.productClicked}
+            /*onClick={
+                this.props.selectedTableRow==this.props.id
+                ?this.productClicked
+                :null
+            }*/
+            >
+                <td className="Id">{this.props.id}</td>
+                <td className="Name">{this.props.name}</td>
+                <td className="Cost">{this.props.cost}</td>
+                <td className="ImgTd">
+                    <img className="Img" src={this.props.photoUrl}/>
+                </td>
+                <td className="Count">{this.props.count}</td>
+                <td className="Control">
+                    <input type="button" value="Удалить" onClick={this.deleteRow} />
+                </td>
+            </tr>
+        )
+    }
+
+    /*without JSX*/
+    /*render() {
         return DOM.tr(
             this.props.selectedTableRow==this.props.id
                 ?{className:'SelectedProd'}
@@ -38,13 +67,13 @@ class Product extends React.Component {
             DOM.td({className:'Name'} ,this.props.name),
             DOM.td({className:'Cost'} ,this.props.cost),
             DOM.td({className:'ImgTd'},
-            DOM.img({className: 'Img', src:this.props.photoUrl}),
+                DOM.img({className: 'Img', src:this.props.photoUrl}),
             ),
             DOM.td({className:'Count'}, this.props.count),
             DOM.td({className:'Control'}, 
                 DOM.input({type:'button', value:"Удалить", onClick:this.deleteRow}),),  
         );
-    }
+    }*/
 }
 
 /*react 15*/

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DOM from 'react-dom-factories';
+//import DOM from 'react-dom-factories';
 
 import './TableHeader.css';
 
@@ -16,15 +16,31 @@ class TableHeader extends React.Component {
     };
 
     render() {
-        return DOM.tr({className:'ProdHeader'},
-            DOM.th({className:'HId'} ,this.props.hId),
-            DOM.th({className:'HName'} ,this.props.hName),
-            DOM.th({className:'HCost'} ,this.props.hCost),
-            DOM.th({className:'HPhoto'} ,this.props.hPhotoUrl),
-            DOM.th({className:'HCount'} ,this.props.hCount),
-            DOM.th({className:'HControl'} ,this.props.hControl),
-        );
+        return (
+            <tr className="ProdHeader">
+                <td className="HId">{this.props.hId}</td>
+                <td className="HName">{this.props.hName}</td>
+                <td className="HCost">{this.props.hCost}</td>
+                <td className="HPhoto">{this.props.hPhotoUrl}</td>
+                <td className="HCount">{this.props.hCount}</td>
+                <td className="HControl">{this.props.hControl}</td>
+            </tr>
+        )
     }
+
+    /*without JSX*/
+    /*render() {
+        return (
+            DOM.tr({className:'ProdHeader'},
+                DOM.th({className:'HId'} ,this.props.hId),
+                DOM.th({className:'HName'} ,this.props.hName),
+                DOM.th({className:'HCost'} ,this.props.hCost),
+                DOM.th({className:'HPhoto'} ,this.props.hPhotoUrl),
+                DOM.th({className:'HCount'} ,this.props.hCount),
+                DOM.th({className:'HControl'} ,this.props.hControl),
+            )
+        )
+    }*/
 }
 
 /*react 15*/

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -261,9 +261,9 @@ process.umask = function() { return 0; };
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(11);
+  module.exports = __webpack_require__(10);
 } else {
-  module.exports = __webpack_require__(12);
+  module.exports = __webpack_require__(11);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -506,16 +506,16 @@ module.exports = ReactPropTypesSecret;
  */
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(9);
+  var ReactIs = __webpack_require__(8);
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(24)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(23)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(25)();
+  module.exports = __webpack_require__(24)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -525,220 +525,18 @@ if (process.env.NODE_ENV !== 'production') {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-(function(f) {
-  if (true) {
-    module.exports = f(__webpack_require__(1));
-    /* global define */
-  } else if (typeof define === 'function' && define.amd) {
-    define(['react'], f);
-  } else {
-    var g;
-    if (typeof window !== 'undefined') {
-      g = window;
-    } else if (typeof global !== 'undefined') {
-      g = global;
-    } else if (typeof self !== 'undefined') {
-      g = self;
-    } else {
-      g = this;
-    }
-
-    if (typeof g.React === 'undefined') {
-      throw Error('React module should be required before ReactDOMFactories');
-    }
-
-    g.ReactDOMFactories = f(g.React);
-  }
-})(function(React) {
-  /**
-   * Create a factory that creates HTML tag elements.
-   */
-  function createDOMFactory(type) {
-    var factory = React.createElement.bind(null, type);
-    // Expose the type on the factory and the prototype so that it can be
-    // easily accessed on elements. E.g. `<Foo />.type === Foo`.
-    // This should not be named `constructor` since this may not be the function
-    // that created the element, and it may not even be a constructor.
-    factory.type = type;
-    return factory;
-  };
-
-  /**
-   * Creates a mapping from supported HTML tags to `ReactDOMComponent` classes.
-   */
-  var ReactDOMFactories = {
-    a: createDOMFactory('a'),
-    abbr: createDOMFactory('abbr'),
-    address: createDOMFactory('address'),
-    area: createDOMFactory('area'),
-    article: createDOMFactory('article'),
-    aside: createDOMFactory('aside'),
-    audio: createDOMFactory('audio'),
-    b: createDOMFactory('b'),
-    base: createDOMFactory('base'),
-    bdi: createDOMFactory('bdi'),
-    bdo: createDOMFactory('bdo'),
-    big: createDOMFactory('big'),
-    blockquote: createDOMFactory('blockquote'),
-    body: createDOMFactory('body'),
-    br: createDOMFactory('br'),
-    button: createDOMFactory('button'),
-    canvas: createDOMFactory('canvas'),
-    caption: createDOMFactory('caption'),
-    cite: createDOMFactory('cite'),
-    code: createDOMFactory('code'),
-    col: createDOMFactory('col'),
-    colgroup: createDOMFactory('colgroup'),
-    data: createDOMFactory('data'),
-    datalist: createDOMFactory('datalist'),
-    dd: createDOMFactory('dd'),
-    del: createDOMFactory('del'),
-    details: createDOMFactory('details'),
-    dfn: createDOMFactory('dfn'),
-    dialog: createDOMFactory('dialog'),
-    div: createDOMFactory('div'),
-    dl: createDOMFactory('dl'),
-    dt: createDOMFactory('dt'),
-    em: createDOMFactory('em'),
-    embed: createDOMFactory('embed'),
-    fieldset: createDOMFactory('fieldset'),
-    figcaption: createDOMFactory('figcaption'),
-    figure: createDOMFactory('figure'),
-    footer: createDOMFactory('footer'),
-    form: createDOMFactory('form'),
-    h1: createDOMFactory('h1'),
-    h2: createDOMFactory('h2'),
-    h3: createDOMFactory('h3'),
-    h4: createDOMFactory('h4'),
-    h5: createDOMFactory('h5'),
-    h6: createDOMFactory('h6'),
-    head: createDOMFactory('head'),
-    header: createDOMFactory('header'),
-    hgroup: createDOMFactory('hgroup'),
-    hr: createDOMFactory('hr'),
-    html: createDOMFactory('html'),
-    i: createDOMFactory('i'),
-    iframe: createDOMFactory('iframe'),
-    img: createDOMFactory('img'),
-    input: createDOMFactory('input'),
-    ins: createDOMFactory('ins'),
-    kbd: createDOMFactory('kbd'),
-    keygen: createDOMFactory('keygen'),
-    label: createDOMFactory('label'),
-    legend: createDOMFactory('legend'),
-    li: createDOMFactory('li'),
-    link: createDOMFactory('link'),
-    main: createDOMFactory('main'),
-    map: createDOMFactory('map'),
-    mark: createDOMFactory('mark'),
-    menu: createDOMFactory('menu'),
-    menuitem: createDOMFactory('menuitem'),
-    meta: createDOMFactory('meta'),
-    meter: createDOMFactory('meter'),
-    nav: createDOMFactory('nav'),
-    noscript: createDOMFactory('noscript'),
-    object: createDOMFactory('object'),
-    ol: createDOMFactory('ol'),
-    optgroup: createDOMFactory('optgroup'),
-    option: createDOMFactory('option'),
-    output: createDOMFactory('output'),
-    p: createDOMFactory('p'),
-    param: createDOMFactory('param'),
-    picture: createDOMFactory('picture'),
-    pre: createDOMFactory('pre'),
-    progress: createDOMFactory('progress'),
-    q: createDOMFactory('q'),
-    rp: createDOMFactory('rp'),
-    rt: createDOMFactory('rt'),
-    ruby: createDOMFactory('ruby'),
-    s: createDOMFactory('s'),
-    samp: createDOMFactory('samp'),
-    script: createDOMFactory('script'),
-    section: createDOMFactory('section'),
-    select: createDOMFactory('select'),
-    small: createDOMFactory('small'),
-    source: createDOMFactory('source'),
-    span: createDOMFactory('span'),
-    strong: createDOMFactory('strong'),
-    style: createDOMFactory('style'),
-    sub: createDOMFactory('sub'),
-    summary: createDOMFactory('summary'),
-    sup: createDOMFactory('sup'),
-    table: createDOMFactory('table'),
-    tbody: createDOMFactory('tbody'),
-    td: createDOMFactory('td'),
-    textarea: createDOMFactory('textarea'),
-    tfoot: createDOMFactory('tfoot'),
-    th: createDOMFactory('th'),
-    thead: createDOMFactory('thead'),
-    time: createDOMFactory('time'),
-    title: createDOMFactory('title'),
-    tr: createDOMFactory('tr'),
-    track: createDOMFactory('track'),
-    u: createDOMFactory('u'),
-    ul: createDOMFactory('ul'),
-    var: createDOMFactory('var'),
-    video: createDOMFactory('video'),
-    wbr: createDOMFactory('wbr'),
-
-    // SVG
-    circle: createDOMFactory('circle'),
-    clipPath: createDOMFactory('clipPath'),
-    defs: createDOMFactory('defs'),
-    ellipse: createDOMFactory('ellipse'),
-    g: createDOMFactory('g'),
-    image: createDOMFactory('image'),
-    line: createDOMFactory('line'),
-    linearGradient: createDOMFactory('linearGradient'),
-    mask: createDOMFactory('mask'),
-    path: createDOMFactory('path'),
-    pattern: createDOMFactory('pattern'),
-    polygon: createDOMFactory('polygon'),
-    polyline: createDOMFactory('polyline'),
-    radialGradient: createDOMFactory('radialGradient'),
-    rect: createDOMFactory('rect'),
-    stop: createDOMFactory('stop'),
-    svg: createDOMFactory('svg'),
-    text: createDOMFactory('text'),
-    tspan: createDOMFactory('tspan'),
-  };
-
-  // due to wrapper and conditionals at the top, this will either become
-  // `module.exports ReactDOMFactories` if that is available,
-  // otherwise it will be defined via `define(['react'], ReactDOMFactories)`
-  // if that is available,
-  // otherwise it will be defined as global variable.
-  return ReactDOMFactories;
-});
-
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(15);
+  module.exports = __webpack_require__(14);
 } else {
-  module.exports = __webpack_require__(16);
+  module.exports = __webpack_require__(15);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports) {
 
 var g;
@@ -765,22 +563,22 @@ module.exports = g;
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(22);
+  module.exports = __webpack_require__(21);
 } else {
-  module.exports = __webpack_require__(23);
+  module.exports = __webpack_require__(22);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -790,11 +588,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(13);
+var _reactDom = __webpack_require__(12);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _ProductsTable = __webpack_require__(21);
+var _ProductsTable = __webpack_require__(20);
 
 var _ProductsTable2 = _interopRequireDefault(_ProductsTable);
 
@@ -810,7 +608,7 @@ var tableHeaders = { hId: 'id', hName: 'Название', hCost: 'Цена', hP
 _reactDom2.default.render(_react2.default.createElement(_ProductsTable2.default, { shopName: nameForMyShop, tableHeaders: tableHeaders, products: _products2.default }), document.getElementById('MainContainer'));
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -842,7 +640,7 @@ unstable_ConcurrentMode:x,unstable_Profiler:u,__SECRET_INTERNALS_DO_NOT_USE_OR_Y
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2751,7 +2549,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2789,15 +2587,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(14);
+  module.exports = __webpack_require__(13);
 } else {
-  module.exports = __webpack_require__(17);
+  module.exports = __webpack_require__(16);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2813,7 +2611,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),n=__webpack_require__(2),r=__webpack_require__(7);function ba(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[c,d,e,f,g,h],k=0;a=Error(b.replace(/%s/g,function(){return l[k++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
+var aa=__webpack_require__(1),n=__webpack_require__(2),r=__webpack_require__(6);function ba(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[c,d,e,f,g,h],k=0;a=Error(b.replace(/%s/g,function(){return l[k++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
 function x(a){for(var b=arguments.length-1,c="https://reactjs.org/docs/error-decoder.html?invariant="+a,d=0;d<b;d++)c+="&args[]="+encodeURIComponent(arguments[d+1]);ba(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}aa?void 0:x("227");function ca(a,b,c,d,e,f,g,h,l){var k=Array.prototype.slice.call(arguments,3);try{b.apply(c,k)}catch(m){this.onError(m)}}
 var da=!1,ea=null,fa=!1,ha=null,ia={onError:function(a){da=!0;ea=a}};function ja(a,b,c,d,e,f,g,h,l){da=!1;ea=null;ca.apply(ia,arguments)}function ka(a,b,c,d,e,f,g,h,l){ja.apply(this,arguments);if(da){if(da){var k=ea;da=!1;ea=null}else x("198"),k=void 0;fa||(fa=!0,ha=k)}}var la=null,ma={};
 function na(){if(la)for(var a in ma){var b=ma[a],c=la.indexOf(a);-1<c?void 0:x("96",a);if(!oa[c]){b.extractEvents?void 0:x("97",a);oa[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;pa.hasOwnProperty(h)?x("99",h):void 0;pa[h]=f;var l=f.phasedRegistrationNames;if(l){for(e in l)l.hasOwnProperty(e)&&qa(l[e],g,h);e=!0}else f.registrationName?(qa(f.registrationName,g,h),e=!0):e=!1;e?void 0:x("98",d,a)}}}}
@@ -3073,7 +2871,7 @@ X;X=!0;try{ki(a)}finally{(X=b)||W||Yh(1073741823,!1)}},__SECRET_INTERNALS_DO_NOT
 
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3099,10 +2897,10 @@ exports.unstable_scheduleCallback=function(a,b){var c=-1!==k?k:exports.unstable_
 b=c.previous;b.next=c.previous=a;a.next=c;a.previous=b}return a};exports.unstable_cancelCallback=function(a){var b=a.next;if(null!==b){if(b===a)d=null;else{a===d&&(d=b);var c=a.previous;c.next=b;b.previous=c}a.next=a.previous=null}};exports.unstable_wrapCallback=function(a){var b=g;return function(){var c=g,f=k;g=b;k=exports.unstable_now();try{return a.apply(this,arguments)}finally{g=c,k=f,v()}}};exports.unstable_getCurrentPriorityLevel=function(){return g};
 exports.unstable_shouldYield=function(){return!e&&(null!==d&&d.expirationTime<l||w())};exports.unstable_continueExecution=function(){null!==d&&p()};exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNode=function(){return d};
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3806,10 +3604,10 @@ exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(8)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(7)))
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3833,8 +3631,8 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(1);
 var _assign = __webpack_require__(2);
 var checkPropTypes = __webpack_require__(3);
-var scheduler = __webpack_require__(7);
-var tracing = __webpack_require__(18);
+var scheduler = __webpack_require__(6);
+var tracing = __webpack_require__(17);
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -25095,22 +24893,22 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(19);
+  module.exports = __webpack_require__(18);
 } else {
-  module.exports = __webpack_require__(20);
+  module.exports = __webpack_require__(19);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25127,7 +24925,7 @@ Object.defineProperty(exports,"__esModule",{value:!0});var b=0;exports.__interac
 
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25558,7 +25356,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25578,17 +25376,13 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactDomFactories = __webpack_require__(6);
+__webpack_require__(25);
 
-var _reactDomFactories2 = _interopRequireDefault(_reactDomFactories);
-
-__webpack_require__(26);
-
-var _TableHeader = __webpack_require__(27);
+var _TableHeader = __webpack_require__(26);
 
 var _TableHeader2 = _interopRequireDefault(_TableHeader);
 
-var _Product = __webpack_require__(29);
+var _Product = __webpack_require__(28);
 
 var _Product2 = _interopRequireDefault(_Product);
 
@@ -25599,6 +25393,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+//import DOM from 'react-dom-factories';
 
 var ProductsTable = function (_React$Component) {
   _inherits(ProductsTable, _React$Component);
@@ -25647,8 +25442,6 @@ var ProductsTable = function (_React$Component) {
         hCount: this.props.tableHeaders.hCount, hControl: this.props.tableHeaders.hControl
       });
 
-      //в качестве props для компонента "Product"
-      //передаем "this.state.productsState", где хранится массив с товарами
       var allProducts = this.state.productsState.map(function (p) {
         return _react2.default.createElement(_Product2.default, { key: p.id,
           id: p.id, name: p.name, cost: p.cost, photoUrl: p.photoUrl, count: p.count,
@@ -25658,8 +25451,63 @@ var ProductsTable = function (_React$Component) {
         });
       });
 
-      return _reactDomFactories2.default.div({ className: 'ProductsTable' }, _reactDomFactories2.default.h1({ className: 'ShopName' }, this.props.shopName), _reactDomFactories2.default.h2({ className: 'InfoDiv' }, "Таблица со списком товаров:"), _reactDomFactories2.default.table({ className: 'ProductsTableOne' }, _reactDomFactories2.default.thead(null, tableHeader), _reactDomFactories2.default.tbody(null, allProducts)));
+      return _react2.default.createElement(
+        'div',
+        { className: 'ProductsTable' },
+        _react2.default.createElement(
+          'h1',
+          { className: 'ShopName' },
+          this.props.shopName
+        ),
+        _react2.default.createElement(
+          'h2',
+          { className: 'InfoDiv' },
+          '\u0422\u0430\u0431\u043B\u0438\u0446\u0430 \u0441\u043E \u0441\u043F\u0438\u0441\u043A\u043E\u043C \u0442\u043E\u0432\u0430\u0440\u043E\u0432:'
+        ),
+        _react2.default.createElement(
+          'table',
+          { className: 'ProductsTableOne' },
+          _react2.default.createElement(
+            'thead',
+            null,
+            tableHeader
+          ),
+          _react2.default.createElement(
+            'tbody',
+            null,
+            allProducts
+          )
+        )
+      );
     }
+
+    /*without JSX*/
+    /*render() {
+        var tableHeader = React.createElement(TableHeader, {key:0,
+        hId:this.props.tableHeaders.hId, hName:this.props.tableHeaders.hName,
+        hCost:this.props.tableHeaders.hCost, hPhotoUrl:this.props.tableHeaders.hPhotoUrl,
+        hCount:this.props.tableHeaders.hCount, hControl:this.props.tableHeaders.hControl,
+      } );
+        //в качестве props для компонента "Product"
+      //передаем "this.state.productsState", где хранится массив с товарами
+      var allProducts = this.state.productsState.map( p =>
+        React.createElement(Product, {key:p.id, 
+          id:p.id, name:p.name, cost:p.cost, photoUrl:p.photoUrl, count:p.count,
+          cbMarked:this.productMarked,
+          cbDeleteRow:this.deleteRow,
+          selectedTableRow:this.state.selectedTableRow,
+        })
+      );
+        return DOM.div( {className:'ProductsTable'}, 
+        DOM.h1( {className:'ShopName'}, this.props.shopName),
+        DOM.h2( {className:'InfoDiv'}, "Таблица со списком товаров:" ),
+        DOM.table( {className:'ProductsTableOne'}, 
+          DOM.thead( null, tableHeader ),
+          DOM.tbody( null, allProducts ), 
+        ),
+      );
+      }*/
+
   }]);
 
   return ProductsTable;
@@ -25742,7 +25590,7 @@ ProductsTable.propTypes = {
 exports.default = ProductsTable;
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25764,7 +25612,7 @@ exports.isSuspense=function(a){return t(a)===p};
 
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25999,7 +25847,7 @@ exports.isSuspense = isSuspense;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26012,7 +25860,7 @@ exports.isSuspense = isSuspense;
 
 
 
-var ReactIs = __webpack_require__(9);
+var ReactIs = __webpack_require__(8);
 var assign = __webpack_require__(2);
 
 var ReactPropTypesSecret = __webpack_require__(4);
@@ -26598,7 +26446,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26669,13 +26517,13 @@ module.exports = function() {
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26695,11 +26543,7 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactDomFactories = __webpack_require__(6);
-
-var _reactDomFactories2 = _interopRequireDefault(_reactDomFactories);
-
-__webpack_require__(28);
+__webpack_require__(27);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26708,6 +26552,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+//import DOM from 'react-dom-factories';
 
 var TableHeader = function (_React$Component) {
     _inherits(TableHeader, _React$Component);
@@ -26721,8 +26566,56 @@ var TableHeader = function (_React$Component) {
     _createClass(TableHeader, [{
         key: 'render',
         value: function render() {
-            return _reactDomFactories2.default.tr({ className: 'ProdHeader' }, _reactDomFactories2.default.th({ className: 'HId' }, this.props.hId), _reactDomFactories2.default.th({ className: 'HName' }, this.props.hName), _reactDomFactories2.default.th({ className: 'HCost' }, this.props.hCost), _reactDomFactories2.default.th({ className: 'HPhoto' }, this.props.hPhotoUrl), _reactDomFactories2.default.th({ className: 'HCount' }, this.props.hCount), _reactDomFactories2.default.th({ className: 'HControl' }, this.props.hControl));
+            return _react2.default.createElement(
+                'tr',
+                { className: 'ProdHeader' },
+                _react2.default.createElement(
+                    'td',
+                    { className: 'HId' },
+                    this.props.hId
+                ),
+                _react2.default.createElement(
+                    'td',
+                    { className: 'HName' },
+                    this.props.hName
+                ),
+                _react2.default.createElement(
+                    'td',
+                    { className: 'HCost' },
+                    this.props.hCost
+                ),
+                _react2.default.createElement(
+                    'td',
+                    { className: 'HPhoto' },
+                    this.props.hPhotoUrl
+                ),
+                _react2.default.createElement(
+                    'td',
+                    { className: 'HCount' },
+                    this.props.hCount
+                ),
+                _react2.default.createElement(
+                    'td',
+                    { className: 'HControl' },
+                    this.props.hControl
+                )
+            );
         }
+
+        /*without JSX*/
+        /*render() {
+            return (
+                DOM.tr({className:'ProdHeader'},
+                    DOM.th({className:'HId'} ,this.props.hId),
+                    DOM.th({className:'HName'} ,this.props.hName),
+                    DOM.th({className:'HCost'} ,this.props.hCost),
+                    DOM.th({className:'HPhoto'} ,this.props.hPhotoUrl),
+                    DOM.th({className:'HCount'} ,this.props.hCount),
+                    DOM.th({className:'HControl'} ,this.props.hControl),
+                )
+            )
+        }*/
+
     }]);
 
     return TableHeader;
@@ -26765,13 +26658,13 @@ TableHeader.propTypes = {
 exports.default = TableHeader;
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26791,7 +26684,7 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactDomFactories = __webpack_require__(6);
+var _reactDomFactories = __webpack_require__(29);
 
 var _reactDomFactories2 = _interopRequireDefault(_reactDomFactories);
 
@@ -26832,8 +26725,67 @@ var Product = function (_React$Component) {
     _createClass(Product, [{
         key: 'render',
         value: function render() {
-            return _reactDomFactories2.default.tr(this.props.selectedTableRow == this.props.id ? { className: 'SelectedProd' } : { className: 'Prod', onClick: this.productClicked }, _reactDomFactories2.default.td({ className: 'Id' }, this.props.id), _reactDomFactories2.default.td({ className: 'Name' }, this.props.name), _reactDomFactories2.default.td({ className: 'Cost' }, this.props.cost), _reactDomFactories2.default.td({ className: 'ImgTd' }, _reactDomFactories2.default.img({ className: 'Img', src: this.props.photoUrl })), _reactDomFactories2.default.td({ className: 'Count' }, this.props.count), _reactDomFactories2.default.td({ className: 'Control' }, _reactDomFactories2.default.input({ type: 'button', value: "Удалить", onClick: this.deleteRow })));
+            return _react2.default.createElement(
+                'tr',
+                { className: this.props.selectedTableRow == this.props.id ? "SelectedProd" : "Prod",
+                    onClick: this.productClicked
+                    /*onClick={
+                        this.props.selectedTableRow==this.props.id
+                        ?this.productClicked
+                        :null
+                    }*/
+                },
+                _react2.default.createElement(
+                    'td',
+                    { className: 'Id' },
+                    this.props.id
+                ),
+                _react2.default.createElement(
+                    'td',
+                    { className: 'Name' },
+                    this.props.name
+                ),
+                _react2.default.createElement(
+                    'td',
+                    { className: 'Cost' },
+                    this.props.cost
+                ),
+                _react2.default.createElement(
+                    'td',
+                    { className: 'ImgTd' },
+                    _react2.default.createElement('img', { className: 'Img', src: this.props.photoUrl })
+                ),
+                _react2.default.createElement(
+                    'td',
+                    { className: 'Count' },
+                    this.props.count
+                ),
+                _react2.default.createElement(
+                    'td',
+                    { className: 'Control' },
+                    _react2.default.createElement('input', { type: 'button', value: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C', onClick: this.deleteRow })
+                )
+            );
         }
+
+        /*without JSX*/
+        /*render() {
+            return DOM.tr(
+                this.props.selectedTableRow==this.props.id
+                    ?{className:'SelectedProd'}
+                    :{className:'Prod', onClick:this.productClicked},
+                DOM.td({className:'Id'} ,this.props.id),
+                DOM.td({className:'Name'} ,this.props.name),
+                DOM.td({className:'Cost'} ,this.props.cost),
+                DOM.td({className:'ImgTd'},
+                    DOM.img({className: 'Img', src:this.props.photoUrl}),
+                ),
+                DOM.td({className:'Count'}, this.props.count),
+                DOM.td({className:'Control'}, 
+                    DOM.input({type:'button', value:"Удалить", onClick:this.deleteRow}),),  
+            );
+        }*/
+
     }]);
 
     return Product;
@@ -26897,6 +26849,208 @@ Product.propTypes = {
     selectedTableRow: _propTypes2.default.number
 };
 exports.default = Product;
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+(function(f) {
+  if (true) {
+    module.exports = f(__webpack_require__(1));
+    /* global define */
+  } else if (typeof define === 'function' && define.amd) {
+    define(['react'], f);
+  } else {
+    var g;
+    if (typeof window !== 'undefined') {
+      g = window;
+    } else if (typeof global !== 'undefined') {
+      g = global;
+    } else if (typeof self !== 'undefined') {
+      g = self;
+    } else {
+      g = this;
+    }
+
+    if (typeof g.React === 'undefined') {
+      throw Error('React module should be required before ReactDOMFactories');
+    }
+
+    g.ReactDOMFactories = f(g.React);
+  }
+})(function(React) {
+  /**
+   * Create a factory that creates HTML tag elements.
+   */
+  function createDOMFactory(type) {
+    var factory = React.createElement.bind(null, type);
+    // Expose the type on the factory and the prototype so that it can be
+    // easily accessed on elements. E.g. `<Foo />.type === Foo`.
+    // This should not be named `constructor` since this may not be the function
+    // that created the element, and it may not even be a constructor.
+    factory.type = type;
+    return factory;
+  };
+
+  /**
+   * Creates a mapping from supported HTML tags to `ReactDOMComponent` classes.
+   */
+  var ReactDOMFactories = {
+    a: createDOMFactory('a'),
+    abbr: createDOMFactory('abbr'),
+    address: createDOMFactory('address'),
+    area: createDOMFactory('area'),
+    article: createDOMFactory('article'),
+    aside: createDOMFactory('aside'),
+    audio: createDOMFactory('audio'),
+    b: createDOMFactory('b'),
+    base: createDOMFactory('base'),
+    bdi: createDOMFactory('bdi'),
+    bdo: createDOMFactory('bdo'),
+    big: createDOMFactory('big'),
+    blockquote: createDOMFactory('blockquote'),
+    body: createDOMFactory('body'),
+    br: createDOMFactory('br'),
+    button: createDOMFactory('button'),
+    canvas: createDOMFactory('canvas'),
+    caption: createDOMFactory('caption'),
+    cite: createDOMFactory('cite'),
+    code: createDOMFactory('code'),
+    col: createDOMFactory('col'),
+    colgroup: createDOMFactory('colgroup'),
+    data: createDOMFactory('data'),
+    datalist: createDOMFactory('datalist'),
+    dd: createDOMFactory('dd'),
+    del: createDOMFactory('del'),
+    details: createDOMFactory('details'),
+    dfn: createDOMFactory('dfn'),
+    dialog: createDOMFactory('dialog'),
+    div: createDOMFactory('div'),
+    dl: createDOMFactory('dl'),
+    dt: createDOMFactory('dt'),
+    em: createDOMFactory('em'),
+    embed: createDOMFactory('embed'),
+    fieldset: createDOMFactory('fieldset'),
+    figcaption: createDOMFactory('figcaption'),
+    figure: createDOMFactory('figure'),
+    footer: createDOMFactory('footer'),
+    form: createDOMFactory('form'),
+    h1: createDOMFactory('h1'),
+    h2: createDOMFactory('h2'),
+    h3: createDOMFactory('h3'),
+    h4: createDOMFactory('h4'),
+    h5: createDOMFactory('h5'),
+    h6: createDOMFactory('h6'),
+    head: createDOMFactory('head'),
+    header: createDOMFactory('header'),
+    hgroup: createDOMFactory('hgroup'),
+    hr: createDOMFactory('hr'),
+    html: createDOMFactory('html'),
+    i: createDOMFactory('i'),
+    iframe: createDOMFactory('iframe'),
+    img: createDOMFactory('img'),
+    input: createDOMFactory('input'),
+    ins: createDOMFactory('ins'),
+    kbd: createDOMFactory('kbd'),
+    keygen: createDOMFactory('keygen'),
+    label: createDOMFactory('label'),
+    legend: createDOMFactory('legend'),
+    li: createDOMFactory('li'),
+    link: createDOMFactory('link'),
+    main: createDOMFactory('main'),
+    map: createDOMFactory('map'),
+    mark: createDOMFactory('mark'),
+    menu: createDOMFactory('menu'),
+    menuitem: createDOMFactory('menuitem'),
+    meta: createDOMFactory('meta'),
+    meter: createDOMFactory('meter'),
+    nav: createDOMFactory('nav'),
+    noscript: createDOMFactory('noscript'),
+    object: createDOMFactory('object'),
+    ol: createDOMFactory('ol'),
+    optgroup: createDOMFactory('optgroup'),
+    option: createDOMFactory('option'),
+    output: createDOMFactory('output'),
+    p: createDOMFactory('p'),
+    param: createDOMFactory('param'),
+    picture: createDOMFactory('picture'),
+    pre: createDOMFactory('pre'),
+    progress: createDOMFactory('progress'),
+    q: createDOMFactory('q'),
+    rp: createDOMFactory('rp'),
+    rt: createDOMFactory('rt'),
+    ruby: createDOMFactory('ruby'),
+    s: createDOMFactory('s'),
+    samp: createDOMFactory('samp'),
+    script: createDOMFactory('script'),
+    section: createDOMFactory('section'),
+    select: createDOMFactory('select'),
+    small: createDOMFactory('small'),
+    source: createDOMFactory('source'),
+    span: createDOMFactory('span'),
+    strong: createDOMFactory('strong'),
+    style: createDOMFactory('style'),
+    sub: createDOMFactory('sub'),
+    summary: createDOMFactory('summary'),
+    sup: createDOMFactory('sup'),
+    table: createDOMFactory('table'),
+    tbody: createDOMFactory('tbody'),
+    td: createDOMFactory('td'),
+    textarea: createDOMFactory('textarea'),
+    tfoot: createDOMFactory('tfoot'),
+    th: createDOMFactory('th'),
+    thead: createDOMFactory('thead'),
+    time: createDOMFactory('time'),
+    title: createDOMFactory('title'),
+    tr: createDOMFactory('tr'),
+    track: createDOMFactory('track'),
+    u: createDOMFactory('u'),
+    ul: createDOMFactory('ul'),
+    var: createDOMFactory('var'),
+    video: createDOMFactory('video'),
+    wbr: createDOMFactory('wbr'),
+
+    // SVG
+    circle: createDOMFactory('circle'),
+    clipPath: createDOMFactory('clipPath'),
+    defs: createDOMFactory('defs'),
+    ellipse: createDOMFactory('ellipse'),
+    g: createDOMFactory('g'),
+    image: createDOMFactory('image'),
+    line: createDOMFactory('line'),
+    linearGradient: createDOMFactory('linearGradient'),
+    mask: createDOMFactory('mask'),
+    path: createDOMFactory('path'),
+    pattern: createDOMFactory('pattern'),
+    polygon: createDOMFactory('polygon'),
+    polyline: createDOMFactory('polyline'),
+    radialGradient: createDOMFactory('radialGradient'),
+    rect: createDOMFactory('rect'),
+    stop: createDOMFactory('stop'),
+    svg: createDOMFactory('svg'),
+    text: createDOMFactory('text'),
+    tspan: createDOMFactory('tspan'),
+  };
+
+  // due to wrapper and conditionals at the top, this will either become
+  // `module.exports ReactDOMFactories` if that is available,
+  // otherwise it will be defined via `define(['react'], ReactDOMFactories)`
+  // if that is available,
+  // otherwise it will be defined as global variable.
+  return ReactDOMFactories;
+});
+
+
 
 /***/ }),
 /* 30 */

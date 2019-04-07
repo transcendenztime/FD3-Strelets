@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DOM from 'react-dom-factories';
+//import DOM from 'react-dom-factories';
 
 import './ProductsTable.css';
 
@@ -40,6 +40,38 @@ class ProductsTable extends React.Component {
 
   render() {
 
+    var tableHeader = 
+    <TableHeader key={0}
+      hId={this.props.tableHeaders.hId} hName={this.props.tableHeaders.hName}
+      hCost={this.props.tableHeaders.hCost} hPhotoUrl={this.props.tableHeaders.hPhotoUrl}
+      hCount={this.props.tableHeaders.hCount} hControl={this.props.tableHeaders.hControl}
+    />;
+
+    var allProducts = this.state.productsState.map( p =>
+      <Product key={p.id} 
+        id={p.id} name={p.name} cost={p.cost} photoUrl={p.photoUrl} count={p.count}
+        cbMarked={this.productMarked}
+        cbDeleteRow={this.deleteRow}
+        selectedTableRow={this.state.selectedTableRow}
+      />
+    );
+
+    return (
+      <div className="ProductsTable">
+        <h1 className="ShopName">{this.props.shopName}</h1>
+        <h2 className="InfoDiv">Таблица со списком товаров:</h2>
+        <table className="ProductsTableOne">
+            <thead>{tableHeader}</thead>
+            <tbody>{allProducts}</tbody>
+        </table>
+      </div>
+    )
+
+  }
+
+  /*without JSX*/
+  /*render() {
+
     var tableHeader = React.createElement(TableHeader, {key:0,
       hId:this.props.tableHeaders.hId, hName:this.props.tableHeaders.hName,
       hCost:this.props.tableHeaders.hCost, hPhotoUrl:this.props.tableHeaders.hPhotoUrl,
@@ -48,7 +80,7 @@ class ProductsTable extends React.Component {
 
     //в качестве props для компонента "Product"
     //передаем "this.state.productsState", где хранится массив с товарами
-    var allProducts=this.state.productsState.map( p =>
+    var allProducts = this.state.productsState.map( p =>
       React.createElement(Product, {key:p.id, 
         id:p.id, name:p.name, cost:p.cost, photoUrl:p.photoUrl, count:p.count,
         cbMarked:this.productMarked,
@@ -66,7 +98,7 @@ class ProductsTable extends React.Component {
       ),
     );
 
-  }
+  }*/
 
 }
 
