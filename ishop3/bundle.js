@@ -9595,31 +9595,33 @@ module.exports = getHostComponentFromComposite;
 
 /***/ }),
 /* 82 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_ProductsTable__ = __webpack_require__(187);
 
 
+var _react = __webpack_require__(24);
 
+var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = __webpack_require__(101);
 
+var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _ProductsTable = __webpack_require__(187);
+
+var _ProductsTable2 = _interopRequireDefault(_ProductsTable);
+
+var _products = __webpack_require__(193);
+
+var _products2 = _interopRequireDefault(_products);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var nameForMyShop = "Интернет-магазин ishop";
-var tableHeaders = {hId:'id',hName:'Название',hCost:'Цена',hPhotoUrl:'Фото',hCount:'Количество', hControl: 'Управление'};
+var tableHeaders = { hId: 'id', hName: 'Название', hCost: 'Цена', hPhotoUrl: 'Фото', hCount: 'Количество', hControl: 'Управление' };
 
-var productsArr=__webpack_require__(193);
-
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(
-  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_ProductsTable__["a" /* default */],{shopName:nameForMyShop,tableHeaders:tableHeaders,products:productsArr,}), 
-  document.getElementById('MainContainer') 
-);
+_reactDom2.default.render(_react2.default.createElement(_ProductsTable2.default, { shopName: nameForMyShop, tableHeaders: tableHeaders, products: _products2.default }), document.getElementById('MainContainer'));
 
 /***/ }),
 /* 83 */
@@ -22506,91 +22508,97 @@ module.exports = ReactDOMInvalidARIAHook;
 
 /***/ }),
 /* 187 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ProductsTable_css__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ProductsTable_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ProductsTable_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TableHeader__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Product__ = __webpack_require__(191);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
+var _react = __webpack_require__(24);
 
+var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(188);
 
+var _TableHeader = __webpack_require__(189);
 
-var ProductsTable = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createClass({
+var _TableHeader2 = _interopRequireDefault(_TableHeader);
+
+var _Product = __webpack_require__(191);
+
+var _Product2 = _interopRequireDefault(_Product);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ProductsTable = _react2.default.createClass({
 
   displayName: 'ProductsTable',
-  
+
   propTypes: {
-    shopName: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
-    tableHeaders: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.object,
-    products: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.array,
+    shopName: _react2.default.PropTypes.string,
+    tableHeaders: _react2.default.PropTypes.object,
+    products: _react2.default.PropTypes.array
   },
 
-  getDefaultProps: function() {
-    return { shopName: "Мой интернет-магазин",};
+  getDefaultProps: function getDefaultProps() {
+    return { shopName: "Мой интернет-магазин" };
   },
 
-  getInitialState: function() {
-    return { 
+  getInitialState: function getInitialState() {
+    return {
       selectedTableRow: null, //номер выделенной строки
-      productsState: this.props.products,
+      productsState: this.props.products
     };
   },
 
-  productMarked: function(id) {
-    this.setState( {selectedTableRow:id} );
+  productMarked: function productMarked(id) {
+    this.setState({ selectedTableRow: id });
   },
 
-  deleteRow: function(id) {
+  deleteRow: function deleteRow(id) {
     var tmpPoductsState = this.state.productsState;
     //найдем индекс удаляемого элемента,
     //так как он не соответствует "id", который пришел из callback'а
-    var deleteIndex = tmpPoductsState.findIndex(x => x.id === id);
-    tmpPoductsState.splice(deleteIndex, 1);//удалим элемент (товар) из массива
+    var deleteIndex = tmpPoductsState.findIndex(function (x) {
+      return x.id === id;
+    });
+    tmpPoductsState.splice(deleteIndex, 1); //удалим элемент (товар) из массива
     //изменим state, что вызовет перерисовку компонента
-    this.setState( {productsState:tmpPoductsState} );
+    this.setState({ productsState: tmpPoductsState });
   },
 
-  render: function() {
+  render: function render() {
+    var _this = this;
+
     //console.log(this.state.deletedRows);
     //console.log(this.props.tableHeaders);
 
-    var tableHeader = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__TableHeader__["a" /* default */], {key:0,
-      hId:this.props.tableHeaders.hId, hName:this.props.tableHeaders.hName,
-      hCost:this.props.tableHeaders.hCost, hPhotoUrl:this.props.tableHeaders.hPhotoUrl,
-      hCount:this.props.tableHeaders.hCount, hControl:this.props.tableHeaders.hControl,
-    } );
+    var tableHeader = _react2.default.createElement(_TableHeader2.default, { key: 0,
+      hId: this.props.tableHeaders.hId, hName: this.props.tableHeaders.hName,
+      hCost: this.props.tableHeaders.hCost, hPhotoUrl: this.props.tableHeaders.hPhotoUrl,
+      hCount: this.props.tableHeaders.hCount, hControl: this.props.tableHeaders.hControl
+    });
 
     //в качестве props для компонента "Product"
     //передаем "this.state.productsState", где хранится массив с товарами
-    var allProducts=this.state.productsState.map( p =>
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Product__["a" /* default */], {key:p.id, 
-        id:p.id, name:p.name, cost:p.cost, photoUrl:p.photoUrl, count:p.count,
-        cbMarked:this.productMarked,
-        cbDeleteRow:this.deleteRow,
-        selectedTableRow:this.state.selectedTableRow,
-      })
-    );
+    var allProducts = this.state.productsState.map(function (p) {
+      return _react2.default.createElement(_Product2.default, { key: p.id,
+        id: p.id, name: p.name, cost: p.cost, photoUrl: p.photoUrl, count: p.count,
+        cbMarked: _this.productMarked,
+        cbDeleteRow: _this.deleteRow,
+        selectedTableRow: _this.state.selectedTableRow
+      });
+    });
 
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.div( {className:'ProductsTable'}, 
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.h1( {className:'ShopName'}, this.props.shopName),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.h2( {className:'InfoDiv'}, "Таблица со списком товаров:" ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.table( {className:'ProductsTableOne'}, 
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.thead( null, tableHeader ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.tbody( null, allProducts ), 
-      ),
-    );
-  },
-  
+    return _react2.default.DOM.div({ className: 'ProductsTable' }, _react2.default.DOM.h1({ className: 'ShopName' }, this.props.shopName), _react2.default.DOM.h2({ className: 'InfoDiv' }, "Таблица со списком товаров:"), _react2.default.DOM.table({ className: 'ProductsTableOne' }, _react2.default.DOM.thead(null, tableHeader), _react2.default.DOM.tbody(null, allProducts)));
+  }
+
 });
 
-/* harmony default export */ __webpack_exports__["a"] = (ProductsTable);
+exports.default = ProductsTable;
 
 /***/ }),
 /* 188 */
@@ -22600,43 +22608,42 @@ var ProductsTable = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createClass({
 
 /***/ }),
 /* 189 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TableHeader_css__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TableHeader_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__TableHeader_css__);
 
 
-
-
-var TableHeader = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createClass({
-
-    displayName: 'TableHeader',
-    
-    propTypes: {
-      hId: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-      hName: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-      hCost: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-      hPhotoUrl: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-      hCount: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-      hControl: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-    },
- 
-    render: function() {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.tr({className:'ProdHeader'},
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.th({className:'HId'} ,this.props.hId),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.th({className:'HName'} ,this.props.hName),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.th({className:'HCost'} ,this.props.hCost),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.th({className:'HPhoto'} ,this.props.hPhotoUrl),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.th({className:'HCount'} ,this.props.hCount),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.th({className:'HControl'} ,this.props.hControl),
-        );
-    },
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-/* harmony default export */ __webpack_exports__["a"] = (TableHeader);
+var _react = __webpack_require__(24);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(190);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var TableHeader = _react2.default.createClass({
+
+    displayName: 'TableHeader',
+
+    propTypes: {
+        hId: _react2.default.PropTypes.string.isRequired,
+        hName: _react2.default.PropTypes.string.isRequired,
+        hCost: _react2.default.PropTypes.string.isRequired,
+        hPhotoUrl: _react2.default.PropTypes.string.isRequired,
+        hCount: _react2.default.PropTypes.string.isRequired,
+        hControl: _react2.default.PropTypes.string.isRequired
+    },
+
+    render: function render() {
+        return _react2.default.DOM.tr({ className: 'ProdHeader' }, _react2.default.DOM.th({ className: 'HId' }, this.props.hId), _react2.default.DOM.th({ className: 'HName' }, this.props.hName), _react2.default.DOM.th({ className: 'HCost' }, this.props.hCost), _react2.default.DOM.th({ className: 'HPhoto' }, this.props.hPhotoUrl), _react2.default.DOM.th({ className: 'HCount' }, this.props.hCount), _react2.default.DOM.th({ className: 'HControl' }, this.props.hControl));
+    }
+});
+
+exports.default = TableHeader;
 
 /***/ }),
 /* 190 */
@@ -22646,64 +22653,56 @@ var TableHeader = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createClass({
 
 /***/ }),
 /* 191 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Product_css__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Product_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Product_css__);
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
+var _react = __webpack_require__(24);
 
-var Product = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createClass({
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(192);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Product = _react2.default.createClass({
 
     displayName: 'Product',
-    
+
     propTypes: {
-      id: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.number.isRequired,
-      name: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-      cost: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.number.isRequired,
-      photoUrl: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
-      count: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.number.isRequired,
-      cbMarked: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.func.isRequired,
-      cbDeleteRow: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.func.isRequired,
-      selectedTableRow: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.number, // может быть null, пока ни один ответ не выбран
+        id: _react2.default.PropTypes.number.isRequired,
+        name: _react2.default.PropTypes.string.isRequired,
+        cost: _react2.default.PropTypes.number.isRequired,
+        photoUrl: _react2.default.PropTypes.string.isRequired,
+        count: _react2.default.PropTypes.number.isRequired,
+        cbMarked: _react2.default.PropTypes.func.isRequired,
+        cbDeleteRow: _react2.default.PropTypes.func.isRequired,
+        selectedTableRow: _react2.default.PropTypes.number // может быть null, пока ни один ответ не выбран
     },
- 
-    productClicked: function(EO) {
+
+    productClicked: function productClicked(EO) {
         this.props.cbMarked(this.props.id);
     },
 
-    deleteRow: function(EO) {
-        if(confirm("Удалить товар?"))
-		{
-			this.props.cbDeleteRow(this.props.id);
-		}
-		EO.stopPropagation();//прекращаем всплытие
+    deleteRow: function deleteRow(EO) {
+        if (confirm("Удалить товар?")) {
+            this.props.cbDeleteRow(this.props.id);
+        }
+        EO.stopPropagation(); //прекращаем всплытие
     },
 
-    render: function() {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.tr(
-            this.props.selectedTableRow==this.props.id
-                ?{className:'SelectedProd'}
-                :{className:'Prod', onClick:this.productClicked},
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({className:'Id'} ,this.props.id),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({className:'Name'} ,this.props.name),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({className:'Cost'} ,this.props.cost),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({className:'ImgTd'},
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.img({className: 'Img', src:this.props.photoUrl}),
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({className:'Count'}, this.props.count),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.td({className:'Control'}, 
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.DOM.input({type:'button', value:"Удалить", onClick:this.deleteRow}),),  
-        );
-    },
-    
+    render: function render() {
+        return _react2.default.DOM.tr(this.props.selectedTableRow == this.props.id ? { className: 'SelectedProd' } : { className: 'Prod', onClick: this.productClicked }, _react2.default.DOM.td({ className: 'Id' }, this.props.id), _react2.default.DOM.td({ className: 'Name' }, this.props.name), _react2.default.DOM.td({ className: 'Cost' }, this.props.cost), _react2.default.DOM.td({ className: 'ImgTd' }, _react2.default.DOM.img({ className: 'Img', src: this.props.photoUrl })), _react2.default.DOM.td({ className: 'Count' }, this.props.count), _react2.default.DOM.td({ className: 'Control' }, _react2.default.DOM.input({ type: 'button', value: "Удалить", onClick: this.deleteRow })));
+    }
+
 });
 
-/* harmony default export */ __webpack_exports__["a"] = (Product);
+exports.default = Product;
 
 /***/ }),
 /* 192 */
