@@ -1,3 +1,10 @@
+import React from 'react';
+
+import './ProductsTable.css';
+
+import TableHeader from './TableHeader';
+import Product from './Product';
+
 var ProductsTable = React.createClass({
 
   displayName: 'ProductsTable',
@@ -35,10 +42,12 @@ var ProductsTable = React.createClass({
 
   render: function() {
     //console.log(this.state.deletedRows);
+    //console.log(this.props.tableHeaders);
+
     var tableHeader = React.createElement(TableHeader, {key:0,
-      hId:tableHeaders.hId, hName:tableHeaders.hName,
-      hCost:tableHeaders.hCost, hPhotoUrl:tableHeaders.hPhotoUrl,
-      hCount:tableHeaders.hCount, hControl:tableHeaders.hControl,
+      hId:this.props.tableHeaders.hId, hName:this.props.tableHeaders.hName,
+      hCost:this.props.tableHeaders.hCost, hPhotoUrl:this.props.tableHeaders.hPhotoUrl,
+      hCount:this.props.tableHeaders.hCount, hControl:this.props.tableHeaders.hControl,
     } );
 
     //в качестве props для компонента "Product"
@@ -63,3 +72,5 @@ var ProductsTable = React.createClass({
   },
   
 });
+
+export default ProductsTable;

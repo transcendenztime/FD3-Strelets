@@ -1,3 +1,7 @@
+import React from 'react';
+
+import './TableHeader.css';
+
 var TableHeader = React.createClass({
 
     displayName: 'TableHeader',
@@ -22,3 +26,5 @@ var TableHeader = React.createClass({
         );
     },
 });
+
+export default TableHeader;
