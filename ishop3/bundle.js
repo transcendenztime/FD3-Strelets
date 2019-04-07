@@ -9613,13 +9613,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 var nameForMyShop = "Интернет-магазин ishop";
 var tableHeaders = {hId:'id',hName:'Название',hCost:'Цена',hPhotoUrl:'Фото',hCount:'Количество', hControl: 'Управление'};
-var productsArr = [
-      {id:1,name:'Кроссовки',cost:250,photoUrl:'image/products/krossovki.jpg',count:5},
-      {id:2,name:'Джинсы',cost:300,photoUrl:'image/products/dzhinsy.jpg',count:2},
-      {id:3,name:'Майка',cost:200,photoUrl:'image/products/majka.png',count:4},
-      {id:4,name:'Байка',cost:400,photoUrl:'image/products/bajka.jpg',count:4},
-      {id:5,name:'Кепка',cost:150,photoUrl:'image/products/kepka.jpg',count:6},
-    ];
+
+var productsArr=__webpack_require__(193);
 
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(
   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_ProductsTable__["a" /* default */],{shopName:nameForMyShop,tableHeaders:tableHeaders,products:productsArr,}), 
@@ -22565,12 +22560,6 @@ var ProductsTable = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createClass({
   render: function() {
     //console.log(this.state.deletedRows);
     //console.log(this.props.tableHeaders);
-    //console.log(tableHeaders);
-    /*var tableHeader = React.createElement(TableHeader, {key:0,
-      hId:tableHeaders.hId, hName:tableHeaders.hName,
-      hCost:tableHeaders.hCost, hPhotoUrl:tableHeaders.hPhotoUrl,
-      hCount:tableHeaders.hCount, hControl:tableHeaders.hControl,
-    } );*/
 
     var tableHeader = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__TableHeader__["a" /* default */], {key:0,
       hId:this.props.tableHeaders.hId, hName:this.props.tableHeaders.hName,
@@ -22721,6 +22710,12 @@ var Product = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createClass({
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports) {
+
+module.exports = [{"id":1,"name":"Кроссовки","cost":250,"photoUrl":"image/products/krossovki.jpg","count":5},{"id":2,"name":"Джинсы","cost":300,"photoUrl":"image/products/dzhinsy.jpg","count":2},{"id":3,"name":"Майка","cost":200,"photoUrl":"image/products/majka.png","count":4},{"id":4,"name":"Байка","cost":400,"photoUrl":"image/products/bajka.jpg","count":4},{"id":5,"name":"Кепка","cost":150,"photoUrl":"image/products/kepka.jpg","count":6}]
 
 /***/ })
 /******/ ]);
