@@ -1,8 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import DOM from 'react-dom-factories';
 
 import './TableHeader.css';
 
-var TableHeader = React.createClass({
+class TableHeader extends React.Component {
+    
+    static propTypes = {
+        hId: PropTypes.string.isRequired,
+        hName: PropTypes.string.isRequired,
+        hCost: PropTypes.string.isRequired,
+        hPhotoUrl: PropTypes.string.isRequired,
+        hCount: PropTypes.string.isRequired,
+        hControl: PropTypes.string.isRequired,
+    };
+
+    render() {
+        return DOM.tr({className:'ProdHeader'},
+            DOM.th({className:'HId'} ,this.props.hId),
+            DOM.th({className:'HName'} ,this.props.hName),
+            DOM.th({className:'HCost'} ,this.props.hCost),
+            DOM.th({className:'HPhoto'} ,this.props.hPhotoUrl),
+            DOM.th({className:'HCount'} ,this.props.hCount),
+            DOM.th({className:'HControl'} ,this.props.hControl),
+        );
+    }
+}
+
+/*react 15*/
+/*var TableHeader = React.createClass({
 
     displayName: 'TableHeader',
     
@@ -25,6 +51,6 @@ var TableHeader = React.createClass({
             React.DOM.th({className:'HControl'} ,this.props.hControl),
         );
     },
-});
+});*/
 
 export default TableHeader;
