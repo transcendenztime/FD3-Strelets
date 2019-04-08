@@ -73,3 +73,8 @@
     padding: 5px;
     cursor: pointer;
 }
+
+.Control input
+{
+    margin-right: 10px;
+}

@@ -51,6 +51,7 @@ class Product extends React.Component {
                 </td>
                 <td className="Count">{this.props.count}</td>
                 <td className="Control">
+                    <input type="button" value="Редактировать" />
                     <input type="button" value="Удалить" onClick={this.deleteRow} />
                 </td>
             </tr>

@@ -77,6 +77,7 @@ class ProductsTable extends React.Component {
               <thead>{tableHeader}</thead>
               <tbody>{allProducts}</tbody>
             </table>
+            <input className="AddButton" type="button" value="Добавить товар"/>
           </div>
           { (this.state.productToView) &&
             <div className="ProductsTableRight">

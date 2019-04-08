@@ -25,3 +25,8 @@
     background-color: #F0F0F0;
     border-spacing: inherit;
 }
+
+.ProductsTable .ProductsTableLeft .AddButton
+{
+    margin-top: 10px;
+}
