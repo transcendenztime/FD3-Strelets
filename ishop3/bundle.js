@@ -369,6 +369,32 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactIs = __webpack_require__(8);
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(23)(ReactIs.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(24)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -382,7 +408,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(4);
+  var ReactPropTypesSecret = __webpack_require__(5);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -476,7 +502,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -493,32 +519,6 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(8);
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(23)(ReactIs.isElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(24)();
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 6 */
@@ -596,7 +596,7 @@ var _ProductsTable = __webpack_require__(20);
 
 var _ProductsTable2 = _interopRequireDefault(_ProductsTable);
 
-var _products = __webpack_require__(31);
+var _products = __webpack_require__(33);
 
 var _products2 = _interopRequireDefault(_products);
 
@@ -605,7 +605,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var nameForMyShop = "Интернет-магазин ishop";
 var tableHeaders = { hId: 'id', hName: 'Название', hCost: 'Цена', hPhotoUrl: 'Фото', hCount: 'Количество', hControl: 'Управление' };
 
-_reactDom2.default.render(_react2.default.createElement(_ProductsTable2.default, { shopName: nameForMyShop, tableHeaders: tableHeaders, products: _products2.default }), document.getElementById('MainContainer'));
+_reactDom2.default.render(
+//React.createElement(ProductsTable,{shopName:nameForMyShop,tableHeaders:tableHeaders,products:productsArr,}), 
+//document.getElementById('MainContainer')
+
+_react2.default.createElement(_ProductsTable2.default, {
+  shopName: nameForMyShop,
+  tableHeaders: tableHeaders,
+  products: _products2.default
+}), document.getElementById('MainContainer'));
 
 /***/ }),
 /* 10 */
@@ -662,7 +670,7 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var _assign = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(3);
+var checkPropTypes = __webpack_require__(4);
 
 // TODO: this is special because it gets imported during build.
 
@@ -3630,7 +3638,7 @@ if (process.env.NODE_ENV !== "production") {
 
 var React = __webpack_require__(1);
 var _assign = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(3);
+var checkPropTypes = __webpack_require__(4);
 var scheduler = __webpack_require__(6);
 var tracing = __webpack_require__(17);
 
@@ -25372,7 +25380,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -25385,6 +25393,10 @@ var _TableHeader2 = _interopRequireDefault(_TableHeader);
 var _Product = __webpack_require__(28);
 
 var _Product2 = _interopRequireDefault(_Product);
+
+var _ProductView = __webpack_require__(31);
+
+var _ProductView2 = _interopRequireDefault(_ProductView);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25411,9 +25423,15 @@ var ProductsTable = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProductsTable.__proto__ || Object.getPrototypeOf(ProductsTable)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       selectedTableRow: null, //номер выделенной строки
-      productsState: _this.props.products
+      productsState: _this.props.products, //массив с товарами
+      productToView: null //тут храним хеш с элементами просматриваемого товара
     }, _this.productMarked = function (id) {
       _this.setState({ selectedTableRow: id });
+      //получаем данные товара для просмотра
+      var productToViewIndex = _this.state.productsState.findIndex(function (x) {
+        return x.id === id;
+      });
+      _this.setState({ productToView: _this.state.productsState[productToViewIndex] });
     }, _this.deleteRow = function (id) {
       var tmpPoductsState = _this.state.productsState;
       //найдем индекс удаляемого элемента,
@@ -25422,8 +25440,13 @@ var ProductsTable = function (_React$Component) {
         return x.id === id;
       });
       tmpPoductsState.splice(deleteIndex, 1); //удалим элемент (товар) из массива
-      //изменим state, что вызовет перерисовку компонента
       _this.setState({ productsState: tmpPoductsState });
+      //если удаляется выбранный для товар, нужно закрыть его карточку карточку
+      //обнуляем state, где хранится номер товара для просмотра
+      //компонент перерисуется без карточки товара
+      if (id === _this.state.selectedTableRow) {
+        _this.setState({ productToView: null });
+      }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -25465,17 +25488,39 @@ var ProductsTable = function (_React$Component) {
           '\u0422\u0430\u0431\u043B\u0438\u0446\u0430 \u0441\u043E \u0441\u043F\u0438\u0441\u043A\u043E\u043C \u0442\u043E\u0432\u0430\u0440\u043E\u0432:'
         ),
         _react2.default.createElement(
-          'table',
-          { className: 'ProductsTableOne' },
+          'div',
+          { className: 'ProductsMainDiv' },
           _react2.default.createElement(
-            'thead',
-            null,
-            tableHeader
+            'div',
+            { className: 'ProductsTableLeft' },
+            _react2.default.createElement(
+              'table',
+              { className: 'ProductsTableOne' },
+              _react2.default.createElement(
+                'thead',
+                null,
+                tableHeader
+              ),
+              _react2.default.createElement(
+                'tbody',
+                null,
+                allProducts
+              )
+            )
           ),
-          _react2.default.createElement(
-            'tbody',
-            null,
-            allProducts
+          this.state.productToView && _react2.default.createElement(
+            'div',
+            { className: 'ProductsTableRight' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              '\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u0442\u043E\u0432\u0430\u0440\u0430: ',
+              this.state.productToView.name
+            ),
+            _react2.default.createElement(_ProductView2.default, { key: this.state.productToView.id,
+              id: this.state.productToView.id, name: this.state.productToView.name,
+              cost: this.state.productToView.cost, photoUrl: this.state.productToView.photoUrl,
+              count: this.state.productToView.count })
           )
         )
       );
@@ -25863,8 +25908,8 @@ exports.isSuspense = isSuspense;
 var ReactIs = __webpack_require__(8);
 var assign = __webpack_require__(2);
 
-var ReactPropTypesSecret = __webpack_require__(4);
-var checkPropTypes = __webpack_require__(3);
+var ReactPropTypesSecret = __webpack_require__(5);
+var checkPropTypes = __webpack_require__(4);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function() {};
@@ -26459,7 +26504,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(4);
+var ReactPropTypesSecret = __webpack_require__(5);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -26539,7 +26584,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -26680,7 +26725,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -27060,6 +27105,151 @@ exports.default = Product;
 
 /***/ }),
 /* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(3);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(32);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ProductView = function (_React$Component) {
+    _inherits(ProductView, _React$Component);
+
+    function ProductView() {
+        _classCallCheck(this, ProductView);
+
+        return _possibleConstructorReturn(this, (ProductView.__proto__ || Object.getPrototypeOf(ProductView)).apply(this, arguments));
+    }
+
+    _createClass(ProductView, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'table',
+                { className: 'ProductView' },
+                _react2.default.createElement(
+                    'tbody',
+                    null,
+                    _react2.default.createElement(
+                        'tr',
+                        null,
+                        _react2.default.createElement(
+                            'td',
+                            null,
+                            'ID:'
+                        ),
+                        _react2.default.createElement(
+                            'td',
+                            null,
+                            this.props.id
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'tr',
+                        null,
+                        _react2.default.createElement(
+                            'td',
+                            null,
+                            '\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:'
+                        ),
+                        _react2.default.createElement(
+                            'td',
+                            null,
+                            this.props.name
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'tr',
+                        null,
+                        _react2.default.createElement(
+                            'td',
+                            null,
+                            '\u0426\u0435\u043D\u0430:'
+                        ),
+                        _react2.default.createElement(
+                            'td',
+                            null,
+                            this.props.cost
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'tr',
+                        null,
+                        _react2.default.createElement(
+                            'td',
+                            null,
+                            'Url \u0444\u043E\u0442\u043E:'
+                        ),
+                        _react2.default.createElement(
+                            'td',
+                            null,
+                            this.props.photoUrl
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'tr',
+                        null,
+                        _react2.default.createElement(
+                            'td',
+                            null,
+                            '\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E:'
+                        ),
+                        _react2.default.createElement(
+                            'td',
+                            null,
+                            this.props.count
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return ProductView;
+}(_react2.default.Component);
+
+ProductView.propTypes = {
+    id: _propTypes2.default.number.isRequired,
+    name: _propTypes2.default.string.isRequired,
+    cost: _propTypes2.default.number.isRequired,
+    photoUrl: _propTypes2.default.string.isRequired,
+    count: _propTypes2.default.number.isRequired
+    //cbMarked: PropTypes.func.isRequired,
+    //cbDeleteRow: PropTypes.func.isRequired,
+    //selectedTableRow: PropTypes.number, */
+};
+exports.default = ProductView;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 33 */
 /***/ (function(module, exports) {
 
 module.exports = [{"id":1,"name":"Кроссовки","cost":250,"photoUrl":"image/products/krossovki.jpg","count":5},{"id":2,"name":"Джинсы","cost":300,"photoUrl":"image/products/dzhinsy.jpg","count":2},{"id":3,"name":"Майка","cost":200,"photoUrl":"image/products/majka.png","count":4},{"id":4,"name":"Байка","cost":400,"photoUrl":"image/products/bajka.jpg","count":4},{"id":5,"name":"Кепка","cost":150,"photoUrl":"image/products/kepka.jpg","count":6}]

@@ -6,6 +6,7 @@ import './ProductsTable.css';
 
 import TableHeader from './TableHeader';
 import Product from './Product';
+import ProductView from './ProductView';
 
 class ProductsTable extends React.Component {
 
@@ -21,33 +22,43 @@ class ProductsTable extends React.Component {
 
   state = {
     selectedTableRow: null, //номер выделенной строки
-    productsState: this.props.products,
+    productsState: this.props.products, //массив с товарами
+    productToView: null, //тут храним хеш с элементами просматриваемого товара
   }
 
   productMarked = (id) => {
     this.setState( {selectedTableRow:id} );
+    //получаем данные товара для просмотра
+    let productToViewIndex = this.state.productsState.findIndex(x => x.id === id);
+    this.setState( {productToView: this.state.productsState[productToViewIndex]} );
   }
 
   deleteRow = (id) => {
-    var tmpPoductsState = this.state.productsState;
+    let tmpPoductsState = this.state.productsState;
     //найдем индекс удаляемого элемента,
     //так как он не соответствует "id", который пришел из callback'а
-    var deleteIndex = tmpPoductsState.findIndex(x => x.id === id);
+    let deleteIndex = tmpPoductsState.findIndex(x => x.id === id);
     tmpPoductsState.splice(deleteIndex, 1);//удалим элемент (товар) из массива
-    //изменим state, что вызовет перерисовку компонента
     this.setState( {productsState:tmpPoductsState} );
+    //если удаляется выбранный для товар, нужно закрыть его карточку карточку
+    //обнуляем state, где хранится номер товара для просмотра
+    //компонент перерисуется без карточки товара
+    if(id === this.state.selectedTableRow)
+    {
+      this.setState( {productToView: null} );
+    }
   }
 
   render() {
 
-    var tableHeader = 
+    let tableHeader = 
     <TableHeader key={0}
       hId={this.props.tableHeaders.hId} hName={this.props.tableHeaders.hName}
       hCost={this.props.tableHeaders.hCost} hPhotoUrl={this.props.tableHeaders.hPhotoUrl}
       hCount={this.props.tableHeaders.hCount} hControl={this.props.tableHeaders.hControl}
     />;
 
-    var allProducts = this.state.productsState.map( p =>
+    let allProducts = this.state.productsState.map( p =>
       <Product key={p.id} 
         id={p.id} name={p.name} cost={p.cost} photoUrl={p.photoUrl} count={p.count}
         cbMarked={this.productMarked}
@@ -60,10 +71,23 @@ class ProductsTable extends React.Component {
       <div className="ProductsTable">
         <h1 className="ShopName">{this.props.shopName}</h1>
         <h2 className="InfoDiv">Таблица со списком товаров:</h2>
-        <table className="ProductsTableOne">
-            <thead>{tableHeader}</thead>
-            <tbody>{allProducts}</tbody>
-        </table>
+        <div className="ProductsMainDiv">
+          <div className="ProductsTableLeft">
+            <table className="ProductsTableOne">
+              <thead>{tableHeader}</thead>
+              <tbody>{allProducts}</tbody>
+            </table>
+          </div>
+          { (this.state.productToView) &&
+            <div className="ProductsTableRight">
+              <h2>Просмотр товара: {this.state.productToView.name}</h2>
+              <ProductView key={this.state.productToView.id}
+              id={this.state.productToView.id} name={this.state.productToView.name}
+              cost={this.state.productToView.cost} photoUrl={this.state.productToView.photoUrl}
+              count={this.state.productToView.count} />
+            </div>
+          }
+        </div>
       </div>
     )
 

@@ -2,3 +2,8 @@
 {
     background-color: #e0dbdb;
 }
+
+.ProdHeader td
+{
+    text-align: center;
+}

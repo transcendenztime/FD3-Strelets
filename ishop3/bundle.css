@@ -1,4 +1,24 @@
-.ProductsTable .ProductsTableOne
+.ProductsTable .ProductsTableLeft
+{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.ProductsTable .ProductsTableRight
+{
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    margin: 0 0 0 10px;
+    border: double gray 6px;
+}
+
+/*.ProductsTable .ProductsMainDiv
+{
+    
+}*/
+
+.ProductsTable .ProductsTableLeft .ProductsTableOne
 {
     border: double gray 3px;
     padding: 3px 7px;
@@ -7,6 +27,11 @@
 }.ProdHeader
 {
     background-color: #e0dbdb;
+}
+
+.ProdHeader td
+{
+    text-align: center;
 }.Prod:hover
 {
     background-color: #FFFFFF;
