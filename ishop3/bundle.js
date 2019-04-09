@@ -596,7 +596,7 @@ var _ProductsTable = __webpack_require__(20);
 
 var _ProductsTable2 = _interopRequireDefault(_ProductsTable);
 
-var _products = __webpack_require__(32);
+var _products = __webpack_require__(34);
 
 var _products2 = _interopRequireDefault(_products);
 
@@ -25398,6 +25398,10 @@ var _ProductView = __webpack_require__(30);
 
 var _ProductView2 = _interopRequireDefault(_ProductView);
 
+var _ProductAddEdit = __webpack_require__(32);
+
+var _ProductAddEdit2 = _interopRequireDefault(_ProductAddEdit);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25424,14 +25428,54 @@ var ProductsTable = function (_React$Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProductsTable.__proto__ || Object.getPrototypeOf(ProductsTable)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       selectedTableRow: null, //номер выделенной строки
       productsState: _this.props.products, //массив с товарами
-      productToView: null //тут храним хеш с элементами просматриваемого товара
+      productToView: null, //тут храним хеш с элементами просматриваемого товара
+      productToEdit: null, //тут храним хеш с элементами редактируемого товара
+      //mode: 0 - только таблица
+      //      1 - просмотр товара
+      //      2 - редактирование товара
+      //      3 - добавление товара
+      mode: 0,
+      //isAnyProductChanged: станет равен true, если в каком-либо товаре есть несохраненные изменения
+      isAnyProductChanged: false
     }, _this.productMarked = function (id) {
       _this.setState({ selectedTableRow: id });
       //получаем данные товара для просмотра
       var productToViewIndex = _this.state.productsState.findIndex(function (x) {
         return x.id === id;
       });
-      _this.setState({ productToView: _this.state.productsState[productToViewIndex] });
+      _this.setState({ productToView: _this.state.productsState[productToViewIndex],
+        productToEdit: null,
+        mode: 1
+      });
+    }, _this.editProduct = function (id) {
+      var productToEditIndex = _this.state.productsState.findIndex(function (x) {
+        return x.id === id;
+      });
+      _this.setState({ productToEdit: _this.state.productsState[productToEditIndex],
+        selectedTableRow: null,
+        productToView: null,
+        mode: 2
+      });
+    }, _this.save = function (id, name, cost, photoUrl, count) {
+      var newEditProductData = { id: id, name: name, cost: cost, photoUrl: photoUrl, count: count }; //хэш с новым товаром
+      var tmpPoductsState = _this.state.productsState.slice();
+      var editIndex = tmpPoductsState.findIndex(function (x) {
+        return x.id === id;
+      });
+      //меняем данные редактируемого товара, перезаписав хэш по индексу в массиве товаров
+      tmpPoductsState[editIndex] = newEditProductData;
+      _this.setState({ productsState: tmpPoductsState,
+        productToEdit: null,
+        mode: 0,
+        isAnyProductChanged: false //указываем, что несохраненных данных о товаре нет
+      });
+    }, _this.cancel = function () {
+      _this.setState({ productToEdit: null,
+        mode: 0,
+        isAnyProductChanged: false //указываем, что несохраненных данных о товаре нет
+      });
+    }, _this.productNotSave = function () {
+      _this.setState({ isAnyProductChanged: true });
     }, _this.deleteRow = function (id) {
       var tmpPoductsState = _this.state.productsState;
       //найдем индекс удаляемого элемента,
@@ -25445,7 +25489,9 @@ var ProductsTable = function (_React$Component) {
       //обнуляем state, где хранится номер товара для просмотра
       //компонент перерисуется без карточки товара
       if (id === _this.state.selectedTableRow) {
-        _this.setState({ productToView: null });
+        _this.setState({ productToView: null,
+          mode: 0
+        });
       }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -25453,6 +25499,9 @@ var ProductsTable = function (_React$Component) {
   /*getDefaultProps: function() {
     return { shopName: "Мой интернет-магазин",};
   },*/
+
+  //редактирование товара
+
 
   _createClass(ProductsTable, [{
     key: 'render',
@@ -25469,8 +25518,11 @@ var ProductsTable = function (_React$Component) {
         return _react2.default.createElement(_Product2.default, { key: p.id,
           id: p.id, name: p.name, cost: p.cost, photoUrl: p.photoUrl, count: p.count,
           cbMarked: _this2.productMarked,
+          cbEditProduct: _this2.editProduct,
           cbDeleteRow: _this2.deleteRow,
-          selectedTableRow: _this2.state.selectedTableRow
+          selectedTableRow: _this2.state.selectedTableRow,
+          mode: _this2.state.mode,
+          isAnyProductChanged: _this2.state.isAnyProductChanged
         });
       });
 
@@ -25507,9 +25559,12 @@ var ProductsTable = function (_React$Component) {
                 allProducts
               )
             ),
-            _react2.default.createElement('input', { className: 'AddButton', type: 'button', value: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0442\u043E\u0432\u0430\u0440' })
+            _react2.default.createElement('input', { className: 'AddButton', type: 'button', value: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0442\u043E\u0432\u0430\u0440',
+              disabled: this.state.mode > 1
+            })
           ),
-          this.state.productToView && _react2.default.createElement(
+          this.state.mode === 1 && /*(this.state.productToView) &&*/
+          _react2.default.createElement(
             'div',
             { className: 'ProductsTableRight' },
             _react2.default.createElement(
@@ -25519,9 +25574,31 @@ var ProductsTable = function (_React$Component) {
               this.state.productToView.name
             ),
             _react2.default.createElement(_ProductView2.default, { key: this.state.productToView.id,
-              id: this.state.productToView.id, name: this.state.productToView.name,
-              cost: this.state.productToView.cost, photoUrl: this.state.productToView.photoUrl,
+              id: this.state.productToView.id,
+              name: this.state.productToView.name,
+              cost: this.state.productToView.cost,
+              photoUrl: this.state.productToView.photoUrl,
               count: this.state.productToView.count })
+          ),
+          this.state.mode === 2 && /*(this.state.productToEdit) &&*/
+          _react2.default.createElement(
+            'div',
+            { className: 'ProductsTableRight' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              '\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u0442\u043E\u0432\u0430\u0440\u0430'
+            ),
+            _react2.default.createElement(_ProductAddEdit2.default, { key: this.state.productToEdit.id,
+              id: this.state.productToEdit.id,
+              name: this.state.productToEdit.name,
+              cost: this.state.productToEdit.cost,
+              photoUrl: this.state.productToEdit.photoUrl,
+              count: this.state.productToEdit.count,
+              cbSave: this.save,
+              cbCancel: this.cancel,
+              cbProductNotSave: this.productNotSave
+            })
           )
         )
       );
@@ -26756,7 +26833,14 @@ var Product = function (_React$Component) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref, [this].concat(args))), _this), _this.productClicked = function (EO) {
-            _this.props.cbMarked(_this.props.id);
+            if (!_this.props.isAnyProductChanged) {
+                _this.props.cbMarked(_this.props.id);
+            }
+        }, _this.editProduct = function (EO) {
+            if (!_this.props.isAnyProductChanged) {
+                _this.props.cbEditProduct(_this.props.id);
+            }
+            EO.stopPropagation(); //прекращаем всплытие
         }, _this.deleteRow = function (EO) {
             if (confirm("Удалить товар?")) {
                 _this.props.cbDeleteRow(_this.props.id);
@@ -26764,6 +26848,9 @@ var Product = function (_React$Component) {
             EO.stopPropagation(); //прекращаем всплытие
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
+
+    //редактирование товара
+
 
     _createClass(Product, [{
         key: 'render',
@@ -26806,8 +26893,8 @@ var Product = function (_React$Component) {
                 _react2.default.createElement(
                     'td',
                     { className: 'Control' },
-                    _react2.default.createElement('input', { type: 'button', value: '\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C' }),
-                    _react2.default.createElement('input', { type: 'button', value: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C', onClick: this.deleteRow })
+                    _react2.default.createElement('input', { type: 'button', value: '\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C', onClick: this.editProduct }),
+                    _react2.default.createElement('input', { type: 'button', value: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C', onClick: this.deleteRow, disabled: this.props.mode > 1 })
                 )
             );
         }
@@ -26885,12 +26972,15 @@ var Product = function (_React$Component) {
 Product.propTypes = {
     id: _propTypes2.default.number.isRequired,
     name: _propTypes2.default.string.isRequired,
-    cost: _propTypes2.default.number.isRequired,
+    cost: _propTypes2.default.string.isRequired,
     photoUrl: _propTypes2.default.string.isRequired,
-    count: _propTypes2.default.number.isRequired,
+    count: _propTypes2.default.string.isRequired,
     cbMarked: _propTypes2.default.func.isRequired,
+    cbEditProduct: _propTypes2.default.func.isRequired,
     cbDeleteRow: _propTypes2.default.func.isRequired,
-    selectedTableRow: _propTypes2.default.number
+    selectedTableRow: _propTypes2.default.number,
+    mode: _propTypes2.default.number.isRequired,
+    isAnyProductChanged: _propTypes2.default.bool.isRequired
 };
 exports.default = Product;
 
@@ -27030,9 +27120,9 @@ var ProductView = function (_React$Component) {
 ProductView.propTypes = {
     id: _propTypes2.default.number.isRequired,
     name: _propTypes2.default.string.isRequired,
-    cost: _propTypes2.default.number.isRequired,
+    cost: _propTypes2.default.string.isRequired,
     photoUrl: _propTypes2.default.string.isRequired,
-    count: _propTypes2.default.number.isRequired
+    count: _propTypes2.default.string.isRequired
     //cbMarked: PropTypes.func.isRequired,
     //cbDeleteRow: PropTypes.func.isRequired,
     //selectedTableRow: PropTypes.number, */
@@ -27047,9 +27137,268 @@ exports.default = ProductView;
 
 /***/ }),
 /* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(3);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+__webpack_require__(33);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ProductAddEdit = function (_React$Component) {
+    _inherits(ProductAddEdit, _React$Component);
+
+    function ProductAddEdit() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, ProductAddEdit);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProductAddEdit.__proto__ || Object.getPrototypeOf(ProductAddEdit)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            id: _this.props.id,
+            name: _this.props.name,
+            cost: _this.props.cost,
+            photoUrl: _this.props.photoUrl,
+            count: _this.props.count,
+            isNameValid: true,
+            isCostValid: true,
+            isPhotoUrlValid: true,
+            isCountValid: true
+        }, _this.validateName = function () {
+            if (_this.state.name !== "") _this.setState({ isNameValid: true });else _this.setState({ isNameValid: false });
+        }, _this.validateCost = function () {
+            if (_this.state.cost !== "") _this.setState({ isCostValid: true });else _this.setState({ isCostValid: false });
+        }, _this.validatePhotoUrl = function () {
+            if (_this.state.photoUrl !== "") _this.setState({ isPhotoUrlValid: true });else _this.setState({ isPhotoUrlValid: false });
+        }, _this.validateCount = function () {
+            if (_this.state.count !== "") _this.setState({ isCountValid: true });else _this.setState({ isCountValid: false });
+        }, _this.editName = function (EO) {
+            //сообщаем родительскому компоненту, что у нас в товаре
+            //появились несохраненные изменения
+            _this.props.cbProductNotSave();
+            _this.setState({ name: EO.target.value }, _this.validateName);
+        }, _this.editCost = function (EO) {
+            //сообщаем родительскому компоненту, что у нас в товаре
+            //появились несохраненные изменения
+            _this.props.cbProductNotSave();
+            _this.setState({ cost: EO.target.value }, _this.validateCost);
+        }, _this.editPhotoUrl = function (EO) {
+            //сообщаем родительскому компоненту, что у нас в товаре
+            //появились несохраненные изменения
+            _this.props.cbProductNotSave();
+            _this.setState({ photoUrl: EO.target.value }, _this.validatePhotoUrl);
+        }, _this.editCount = function (EO) {
+            //сообщаем родительскому компоненту, что у нас в товаре
+            //появились несохраненные изменения
+            _this.props.cbProductNotSave();
+            _this.setState({ count: EO.target.value }, _this.validateCount);
+        }, _this.save = function () {
+            _this.props.cbSave(_this.state.id, _this.state.name, _this.state.cost, _this.state.photoUrl, _this.state.count);
+        }, _this.cancel = function () {
+            _this.props.cbCancel();
+        }, _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    _createClass(ProductAddEdit, [{
+        key: 'render',
+
+
+        /*productNotSave = () => {
+            this.props.cbProductNotSave();
+        }*/
+
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'ProductAddEdit' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'PrId' },
+                    'ID: ',
+                    this.state.id
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'PrParam' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrKey' },
+                        '\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrVal' },
+                        _react2.default.createElement('input', { value: this.state.name, onChange: this.editName })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrValid' },
+                        !this.state.isNameValid && _react2.default.createElement(
+                            'span',
+                            null,
+                            '\u0417\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u0435 \u043F\u043E\u043B\u0435 \'\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\''
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'PrParam' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrKey' },
+                        '\u0426\u0435\u043D\u0430'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrVal' },
+                        _react2.default.createElement('input', { value: this.state.cost, onChange: this.editCost })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrValid' },
+                        !this.state.isCostValid && _react2.default.createElement(
+                            'span',
+                            null,
+                            '\u0417\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u0435 \u043F\u043E\u043B\u0435 \'\u0426\u0435\u043D\u0430\''
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'PrParam' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrKey' },
+                        'Url \u0444\u043E\u0442\u043E'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrVal' },
+                        _react2.default.createElement('input', { value: this.state.photoUrl, onChange: this.editPhotoUrl })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrValid' },
+                        !this.state.isPhotoUrlValid && _react2.default.createElement(
+                            'span',
+                            null,
+                            '\u0417\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u0435 \u043F\u043E\u043B\u0435 \'Url \u0444\u043E\u0442\u043E\''
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'PrParam' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrKey' },
+                        '\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrVal' },
+                        _react2.default.createElement('input', { value: this.state.count, onChange: this.editCount })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'PrValid' },
+                        !this.state.isCountValid && _react2.default.createElement(
+                            'span',
+                            null,
+                            '\u0417\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u0435 \u043F\u043E\u043B\u0435 \'\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E\''
+                        )
+                    )
+                ),
+                _react2.default.createElement('input', { className: 'SaveButton', type: 'button', value: '\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C', onClick: this.save,
+                    disabled: !this.state.isNameValid || !this.state.isCostValid || !this.state.isPhotoUrlValid || !this.state.isCountValid }),
+                _react2.default.createElement('input', { type: 'button', value: '\u041E\u0442\u043C\u0435\u043D\u0430', onClick: this.cancel })
+            )
+
+            /*<table className="ProductView">
+                <tbody>
+                    <tr>
+                        <td>ID:</td>
+                        <td>{this.props.id}</td>
+                    </tr>
+                    <tr>
+                        <td>Название:</td>
+                        <td>{this.props.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Цена:</td>
+                        <td>{this.props.cost}</td>
+                    </tr>
+                    <tr>
+                        <td>Url фото:</td>
+                        <td>{this.props.photoUrl}</td>
+                    </tr>
+                    <tr>
+                        <td>Количество:</td>
+                        <td>{this.props.count}</td>
+                    </tr>
+                </tbody>
+            </table>*/
+            ;
+        }
+    }]);
+
+    return ProductAddEdit;
+}(_react2.default.Component);
+
+ProductAddEdit.propTypes = {
+    /*header: PropTypes.string.isRequired,*/
+    id: _propTypes2.default.number.isRequired,
+    name: _propTypes2.default.string.isRequired,
+    cost: _propTypes2.default.string.isRequired,
+    photoUrl: _propTypes2.default.string.isRequired,
+    count: _propTypes2.default.string.isRequired,
+    cbSave: _propTypes2.default.func.isRequired,
+    cbCancel: _propTypes2.default.func.isRequired,
+    //cbProductNotSave: вызовется при изменении товара
+    cbProductNotSave: _propTypes2.default.func.isRequired
+    //cbMarked: PropTypes.func.isRequired,
+    //cbDeleteRow: PropTypes.func.isRequired,
+    //selectedTableRow: PropTypes.number, */
+};
+exports.default = ProductAddEdit;
+
+/***/ }),
+/* 33 */
 /***/ (function(module, exports) {
 
-module.exports = [{"id":1,"name":"Кроссовки","cost":250,"photoUrl":"image/products/krossovki.jpg","count":5},{"id":2,"name":"Джинсы","cost":300,"photoUrl":"image/products/dzhinsy.jpg","count":2},{"id":3,"name":"Майка","cost":200,"photoUrl":"image/products/majka.png","count":4},{"id":4,"name":"Байка","cost":400,"photoUrl":"image/products/bajka.jpg","count":4},{"id":5,"name":"Кепка","cost":150,"photoUrl":"image/products/kepka.jpg","count":6}]
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports) {
+
+module.exports = [{"id":1,"name":"Кроссовки","cost":"250","photoUrl":"image/products/krossovki.jpg","count":"5"},{"id":2,"name":"Джинсы","cost":"300","photoUrl":"image/products/dzhinsy.jpg","count":"2"},{"id":3,"name":"Майка","cost":"200","photoUrl":"image/products/majka.png","count":"4"},{"id":4,"name":"Байка","cost":"400","photoUrl":"image/products/bajka.jpg","count":"4"},{"id":5,"name":"Кепка","cost":"150","photoUrl":"image/products/kepka.jpg","count":"6"}]
 
 /***/ })
 /******/ ]);

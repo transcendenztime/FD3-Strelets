@@ -11,6 +11,7 @@
     padding: 10px;
     margin: 0 0 0 10px;
     border: double gray 6px;
+    min-width: 475px;
 }
 
 /*.ProductsTable .ProductsMainDiv
@@ -116,5 +117,30 @@
 .Control input
 {
     margin-right: 10px;
+}.ProductAddEdit .PrParam
+{
+    vertical-align: top;
+}
+
+.ProductAddEdit .PrParam div
+{
+    display: inline-block;
+}
+
+.ProductAddEdit .PrParam .PrKey
+{
+    width: 90px;
+}
+
+.ProductAddEdit .PrParam .PrValid
+{
+    color: red;
+    padding-left: 5px;
+}
+
+
+.ProductAddEdit .SaveButton
+{
+    margin-right: 8px;
 }
 /*# sourceMappingURL=bundle.css.map*/

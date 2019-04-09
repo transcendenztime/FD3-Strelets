@@ -8,9 +8,9 @@ class ProductView extends React.Component {
     static propTypes = {
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
-        cost: PropTypes.number.isRequired,
+        cost: PropTypes.string.isRequired,
         photoUrl: PropTypes.string.isRequired,
-        count: PropTypes.number.isRequired,
+        count: PropTypes.string.isRequired,
         //cbMarked: PropTypes.func.isRequired,
         //cbDeleteRow: PropTypes.func.isRequired,
         //selectedTableRow: PropTypes.number, */

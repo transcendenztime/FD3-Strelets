@@ -7,6 +7,7 @@ import './ProductsTable.css';
 import TableHeader from './TableHeader';
 import Product from './Product';
 import ProductView from './ProductView';
+import ProductAddEdit from './ProductAddEdit';
 
 class ProductsTable extends React.Component {
 
@@ -24,13 +25,58 @@ class ProductsTable extends React.Component {
     selectedTableRow: null, //номер выделенной строки
     productsState: this.props.products, //массив с товарами
     productToView: null, //тут храним хеш с элементами просматриваемого товара
+    productToEdit: null, //тут храним хеш с элементами редактируемого товара
+    //mode: 0 - только таблица
+    //      1 - просмотр товара
+    //      2 - редактирование товара
+    //      3 - добавление товара
+    mode: 0,
+    //isAnyProductChanged: станет равен true, если в каком-либо товаре есть несохраненные изменения
+    isAnyProductChanged: false,
   }
 
   productMarked = (id) => {
     this.setState( {selectedTableRow:id} );
     //получаем данные товара для просмотра
     let productToViewIndex = this.state.productsState.findIndex(x => x.id === id);
-    this.setState( {productToView: this.state.productsState[productToViewIndex]} );
+    this.setState( {productToView: this.state.productsState[productToViewIndex],
+      productToEdit: null,
+      mode: 1,
+    } );
+  }
+
+  //редактирование товара
+  editProduct = (id) => {
+    let productToEditIndex = this.state.productsState.findIndex(x => x.id === id);
+    this.setState( {productToEdit: this.state.productsState[productToEditIndex],
+      selectedTableRow: null,
+      productToView: null,
+      mode: 2,
+    } );
+  }
+
+  save = (id, name, cost, photoUrl, count) => {
+    let newEditProductData = {id,name,cost,photoUrl,count};//хэш с новым товаром
+    let tmpPoductsState = this.state.productsState.slice();
+    let editIndex = tmpPoductsState.findIndex(x => x.id === id);
+    //меняем данные редактируемого товара, перезаписав хэш по индексу в массиве товаров
+    tmpPoductsState[editIndex] = newEditProductData;
+    this.setState({productsState: tmpPoductsState,
+      productToEdit: null,
+      mode: 0,
+      isAnyProductChanged: false,//указываем, что несохраненных данных о товаре нет
+    });
+  }
+
+  cancel = () => {
+    this.setState( {productToEdit: null,
+      mode: 0,
+      isAnyProductChanged: false,//указываем, что несохраненных данных о товаре нет
+    } );
+  }
+
+  productNotSave = () => {
+    this.setState({isAnyProductChanged: true});
   }
 
   deleteRow = (id) => {
@@ -45,7 +91,9 @@ class ProductsTable extends React.Component {
     //компонент перерисуется без карточки товара
     if(id === this.state.selectedTableRow)
     {
-      this.setState( {productToView: null} );
+      this.setState( {productToView: null,
+        mode:0,
+      } );
     }
   }
 
@@ -62,8 +110,11 @@ class ProductsTable extends React.Component {
       <Product key={p.id} 
         id={p.id} name={p.name} cost={p.cost} photoUrl={p.photoUrl} count={p.count}
         cbMarked={this.productMarked}
+        cbEditProduct={this.editProduct}
         cbDeleteRow={this.deleteRow}
         selectedTableRow={this.state.selectedTableRow}
+        mode={this.state.mode}
+        isAnyProductChanged={this.state.isAnyProductChanged}
       />
     );
 
@@ -77,15 +128,36 @@ class ProductsTable extends React.Component {
               <thead>{tableHeader}</thead>
               <tbody>{allProducts}</tbody>
             </table>
-            <input className="AddButton" type="button" value="Добавить товар"/>
+            <input className="AddButton" type="button" value="Добавить товар"
+                disabled={(this.state.mode > 1)}
+              />
           </div>
-          { (this.state.productToView) &&
+          { 
+            (this.state.mode === 1) &&/*(this.state.productToView) &&*/
             <div className="ProductsTableRight">
               <h2>Просмотр товара: {this.state.productToView.name}</h2>
               <ProductView key={this.state.productToView.id}
-              id={this.state.productToView.id} name={this.state.productToView.name}
-              cost={this.state.productToView.cost} photoUrl={this.state.productToView.photoUrl}
+              id={this.state.productToView.id}
+              name={this.state.productToView.name}
+              cost={this.state.productToView.cost}
+              photoUrl={this.state.productToView.photoUrl}
               count={this.state.productToView.count} />
+            </div>
+          }
+          {
+            (this.state.mode === 2) &&/*(this.state.productToEdit) &&*/
+            <div className="ProductsTableRight">
+              <h2>Редактирование товара</h2>
+              <ProductAddEdit key={this.state.productToEdit.id}
+              id={this.state.productToEdit.id}
+              name={this.state.productToEdit.name}
+              cost={this.state.productToEdit.cost}
+              photoUrl={this.state.productToEdit.photoUrl}
+              count={this.state.productToEdit.count}
+              cbSave={this.save}
+              cbCancel={this.cancel}
+              cbProductNotSave={this.productNotSave}
+            />
             </div>
           }
         </div>

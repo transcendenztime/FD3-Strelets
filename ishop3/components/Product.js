@@ -9,16 +9,32 @@ class Product extends React.Component {
     static propTypes = {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      cost: PropTypes.number.isRequired,
+      cost: PropTypes.string.isRequired,
       photoUrl: PropTypes.string.isRequired,
-      count: PropTypes.number.isRequired,
+      count: PropTypes.string.isRequired,
       cbMarked: PropTypes.func.isRequired,
+      cbEditProduct: PropTypes.func.isRequired,
       cbDeleteRow: PropTypes.func.isRequired,
-      selectedTableRow: PropTypes.number, 
+      selectedTableRow: PropTypes.number,
+      mode: PropTypes.number.isRequired,
+      isAnyProductChanged: PropTypes.bool.isRequired,
     };
 
     productClicked = (EO) => {
-        this.props.cbMarked(this.props.id);
+        if(!this.props.isAnyProductChanged)
+        {
+            this.props.cbMarked(this.props.id);
+        }
+    }
+
+    //редактирование товара
+    editProduct = (EO) => {
+        if(!this.props.isAnyProductChanged)
+        {
+            this.props.cbEditProduct(this.props.id);
+        }
+        EO.stopPropagation();//прекращаем всплытие
+            
     }
 
     deleteRow = (EO) => {
@@ -51,8 +67,8 @@ class Product extends React.Component {
                 </td>
                 <td className="Count">{this.props.count}</td>
                 <td className="Control">
-                    <input type="button" value="Редактировать" />
-                    <input type="button" value="Удалить" onClick={this.deleteRow} />
+                    <input type="button" value="Редактировать" onClick={this.editProduct} />
+                    <input type="button" value="Удалить" onClick={this.deleteRow} disabled={this.props.mode > 1}/>
                 </td>
             </tr>
         )
