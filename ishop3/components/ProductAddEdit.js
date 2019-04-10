@@ -12,14 +12,27 @@ class ProductAddEdit extends React.Component {
         cost: PropTypes.string.isRequired,
         photoUrl: PropTypes.string.isRequired,
         count: PropTypes.string.isRequired,
-        cbSave: PropTypes.func.isRequired,
-        cbCancel: PropTypes.func.isRequired,
-        //cbProductNotSave: вызовется при изменении товара
+        cbSave: PropTypes.func.isRequired,//сохраниение товара
+        cbCancel: PropTypes.func.isRequired,//отмена
         cbProductNotSave: PropTypes.func.isRequired,
-        //cbMarked: PropTypes.func.isRequired,
-        //cbDeleteRow: PropTypes.func.isRequired,
-        //selectedTableRow: PropTypes.number, */
+        mode: PropTypes.number.isRequired,
     };
+
+    constructor(props) {
+        super(props);
+        if(this.props.mode === 2)
+        {
+            this.state.isNameValid = true;
+            this.state.isCostValid = true;
+            this.state.isPhotoUrlValid = true;
+            this.state.isCountValid = true;
+        }else if(this.props.mode === 3){
+            this.state.isNameValid = false;
+            this.state.isCostValid = false;
+            this.state.isPhotoUrlValid = false;
+            this.state.isCountValid = false;
+        }
+    }
 
     state = {
         id: this.props.id,
@@ -27,12 +40,13 @@ class ProductAddEdit extends React.Component {
         cost: this.props.cost,
         photoUrl: this.props.photoUrl,
         count: this.props.count,
-        isNameValid: true,
+        /*isNameValid: true,
         isCostValid: true,
         isPhotoUrlValid: true,
-        isCountValid: true,
+        isCountValid: true,*/
     }
 
+    //тут функции валидации (простые правила: поле должно быть НЕ пустым)
     validateName = () => {
         if(this.state.name !== "")
             this.setState( {isNameValid: true});
@@ -103,10 +117,6 @@ class ProductAddEdit extends React.Component {
         this.props.cbCancel();
     }
 
-    /*productNotSave = () => {
-        this.props.cbProductNotSave();
-    }*/
-
     render() {
         return(
             <div className="ProductAddEdit">
@@ -151,40 +161,30 @@ class ProductAddEdit extends React.Component {
                     }
                     </div>
                 </div>
-                <input className="SaveButton" type="button" value="Сохранить" onClick={this.save}
-                    disabled={
-                        !this.state.isNameValid ||
-                        !this.state.isCostValid ||
-                        !this.state.isPhotoUrlValid ||
-                        !this.state.isCountValid
-                        }/>
+                {
+                    (this.props.mode === 2) &&
+                    <input className="SaveButton" type="button" value="Сохранить" onClick={this.save}
+                        disabled={
+                            !this.state.isNameValid ||
+                            !this.state.isCostValid ||
+                            !this.state.isPhotoUrlValid ||
+                            !this.state.isCountValid
+                        }
+                    />
+                }
+                {
+                    (this.props.mode === 3) &&
+                    <input className="SaveButton" type="button" value="Добавить" onClick={this.save}
+                        disabled={
+                            !this.state.isNameValid ||
+                            !this.state.isCostValid ||
+                            !this.state.isPhotoUrlValid ||
+                            !this.state.isCountValid
+                        }
+                    />
+                }
                 <input type="button" value="Отмена" onClick={this.cancel}/>
             </div>
-            
-            /*<table className="ProductView">
-                <tbody>
-                    <tr>
-                        <td>ID:</td>
-                        <td>{this.props.id}</td>
-                    </tr>
-                    <tr>
-                        <td>Название:</td>
-                        <td>{this.props.name}</td>
-                    </tr>
-                    <tr>
-                        <td>Цена:</td>
-                        <td>{this.props.cost}</td>
-                    </tr>
-                    <tr>
-                        <td>Url фото:</td>
-                        <td>{this.props.photoUrl}</td>
-                    </tr>
-                    <tr>
-                        <td>Количество:</td>
-                        <td>{this.props.count}</td>
-                    </tr>
-                </tbody>
-            </table>*/
         )
     }
 

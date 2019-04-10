@@ -25469,10 +25469,30 @@ var ProductsTable = function (_React$Component) {
         mode: 0,
         isAnyProductChanged: false //указываем, что несохраненных данных о товаре нет
       });
+    }, _this.add = function (id, name, cost, photoUrl, count) {
+      //console.log(this.state.productsState[this.state.productsState.length - 1]);
+      var newAddProductData = { id: id, name: name, cost: cost, photoUrl: photoUrl, count: count }; //хэш с новым товаром
+      var tmpPoductsState = _this.state.productsState.slice();
+      //let editIndex = tmpPoductsState.findIndex(x => x.id === id);
+      //меняем данные редактируемого товара, перезаписав хэш по индексу в массиве товаров
+      //tmpPoductsState[editIndex] = newAddProductData;
+      tmpPoductsState.push(newAddProductData);
+      _this.setState({ productsState: tmpPoductsState,
+        //productToEdit: null,
+        mode: 0,
+        isAnyProductChanged: false //указываем, что несохраненных данных о товаре нет
+      });
     }, _this.cancel = function () {
       _this.setState({ productToEdit: null,
         mode: 0,
         isAnyProductChanged: false //указываем, что несохраненных данных о товаре нет
+      });
+    }, _this.addNewProduct = function () {
+      //console.log(this.state.productsState[this.state.productsState.length - 1].id);
+      _this.setState({ mode: 3,
+        selectedTableRow: null,
+        productToView: null,
+        isAnyProductChanged: true
       });
     }, _this.productNotSave = function () {
       _this.setState({ isAnyProductChanged: true });
@@ -25501,6 +25521,18 @@ var ProductsTable = function (_React$Component) {
   },*/
 
   //редактирование товара
+
+
+  //сохраняем товар
+
+
+  //долбавляем товар
+
+
+  //отмена
+
+
+  //нажали на кнопку "Добавить товар"
 
 
   _createClass(ProductsTable, [{
@@ -25560,7 +25592,7 @@ var ProductsTable = function (_React$Component) {
               )
             ),
             _react2.default.createElement('input', { className: 'AddButton', type: 'button', value: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0442\u043E\u0432\u0430\u0440',
-              disabled: this.state.mode > 1
+              disabled: this.state.mode > 1, onClick: this.addNewProduct
             })
           ),
           this.state.mode === 1 && /*(this.state.productToView) &&*/
@@ -25597,114 +25629,38 @@ var ProductsTable = function (_React$Component) {
               count: this.state.productToEdit.count,
               cbSave: this.save,
               cbCancel: this.cancel,
-              cbProductNotSave: this.productNotSave
+              cbProductNotSave: this.productNotSave,
+              mode: this.state.mode
+            })
+          ),
+          this.state.mode === 3 && /*(this.state.productToEdit) &&*/
+          _react2.default.createElement(
+            'div',
+            { className: 'ProductsTableRight' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              '\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u043D\u043E\u0432\u043E\u0433\u043E \u0442\u043E\u0432\u0430\u0440\u0430'
+            ),
+            _react2.default.createElement(_ProductAddEdit2.default, { key: this.state.productsState[this.state.productsState.length - 1].id + 1,
+              id: this.state.productsState[this.state.productsState.length - 1].id + 1,
+              name: "",
+              cost: "",
+              photoUrl: "",
+              count: "",
+              cbSave: this.add,
+              cbCancel: this.cancel,
+              cbProductNotSave: this.productNotSave,
+              mode: this.state.mode
             })
           )
         )
       );
     }
-
-    /*without JSX*/
-    /*render() {
-        var tableHeader = React.createElement(TableHeader, {key:0,
-        hId:this.props.tableHeaders.hId, hName:this.props.tableHeaders.hName,
-        hCost:this.props.tableHeaders.hCost, hPhotoUrl:this.props.tableHeaders.hPhotoUrl,
-        hCount:this.props.tableHeaders.hCount, hControl:this.props.tableHeaders.hControl,
-      } );
-        //в качестве props для компонента "Product"
-      //передаем "this.state.productsState", где хранится массив с товарами
-      var allProducts = this.state.productsState.map( p =>
-        React.createElement(Product, {key:p.id, 
-          id:p.id, name:p.name, cost:p.cost, photoUrl:p.photoUrl, count:p.count,
-          cbMarked:this.productMarked,
-          cbDeleteRow:this.deleteRow,
-          selectedTableRow:this.state.selectedTableRow,
-        })
-      );
-        return DOM.div( {className:'ProductsTable'}, 
-        DOM.h1( {className:'ShopName'}, this.props.shopName),
-        DOM.h2( {className:'InfoDiv'}, "Таблица со списком товаров:" ),
-        DOM.table( {className:'ProductsTableOne'}, 
-          DOM.thead( null, tableHeader ),
-          DOM.tbody( null, allProducts ), 
-        ),
-      );
-      }*/
-
   }]);
 
   return ProductsTable;
 }(_react2.default.Component);
-
-/*react 15*/
-/*
-var ProductsTable = React.createClass({
-
-  displayName: 'ProductsTable',
-  
-  propTypes: {
-    shopName: React.PropTypes.string,
-    tableHeaders: React.PropTypes.object,
-    products: React.PropTypes.array,
-  },
-
-  getDefaultProps: function() {
-    return { shopName: "Мой интернет-магазин",};
-  },
-
-  getInitialState: function() {
-    return { 
-      selectedTableRow: null, //номер выделенной строки
-      productsState: this.props.products,
-    };
-  },
-
-  productMarked: function(id) {
-    this.setState( {selectedTableRow:id} );
-  },
-
-  deleteRow: function(id) {
-    var tmpPoductsState = this.state.productsState;
-    //найдем индекс удаляемого элемента,
-    //так как он не соответствует "id", который пришел из callback'а
-    var deleteIndex = tmpPoductsState.findIndex(x => x.id === id);
-    tmpPoductsState.splice(deleteIndex, 1);//удалим элемент (товар) из массива
-    //изменим state, что вызовет перерисовку компонента
-    this.setState( {productsState:tmpPoductsState} );
-  },
-
-  render: function() {
-    //console.log(this.state.deletedRows);
-    //console.log(this.props.tableHeaders);
-
-    var tableHeader = React.createElement(TableHeader, {key:0,
-      hId:this.props.tableHeaders.hId, hName:this.props.tableHeaders.hName,
-      hCost:this.props.tableHeaders.hCost, hPhotoUrl:this.props.tableHeaders.hPhotoUrl,
-      hCount:this.props.tableHeaders.hCount, hControl:this.props.tableHeaders.hControl,
-    } );
-
-    //в качестве props для компонента "Product"
-    //передаем "this.state.productsState", где хранится массив с товарами
-    var allProducts=this.state.productsState.map( p =>
-      React.createElement(Product, {key:p.id, 
-        id:p.id, name:p.name, cost:p.cost, photoUrl:p.photoUrl, count:p.count,
-        cbMarked:this.productMarked,
-        cbDeleteRow:this.deleteRow,
-        selectedTableRow:this.state.selectedTableRow,
-      })
-    );
-
-    return React.DOM.div( {className:'ProductsTable'}, 
-      React.DOM.h1( {className:'ShopName'}, this.props.shopName),
-      React.DOM.h2( {className:'InfoDiv'}, "Таблица со списком товаров:" ),
-      React.DOM.table( {className:'ProductsTableOne'}, 
-        React.DOM.thead( null, tableHeader ),
-        React.DOM.tbody( null, allProducts ), 
-      ),
-    );
-  },
-  
-});*/
 
 ProductsTable.propTypes = {
   shopName: _propTypes2.default.string,
@@ -26837,9 +26793,10 @@ var Product = function (_React$Component) {
                 _this.props.cbMarked(_this.props.id);
             }
         }, _this.editProduct = function (EO) {
-            if (!_this.props.isAnyProductChanged) {
-                _this.props.cbEditProduct(_this.props.id);
-            }
+            //if(!this.props.isAnyProductChanged)
+            //{
+            _this.props.cbEditProduct(_this.props.id);
+            //}
             EO.stopPropagation(); //прекращаем всплытие
         }, _this.deleteRow = function (EO) {
             if (confirm("Удалить товар?")) {
@@ -26893,81 +26850,15 @@ var Product = function (_React$Component) {
                 _react2.default.createElement(
                     'td',
                     { className: 'Control' },
-                    _react2.default.createElement('input', { type: 'button', value: '\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C', onClick: this.editProduct }),
+                    _react2.default.createElement('input', { type: 'button', value: '\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C', onClick: this.editProduct, disabled: this.props.isAnyProductChanged }),
                     _react2.default.createElement('input', { type: 'button', value: '\u0423\u0434\u0430\u043B\u0438\u0442\u044C', onClick: this.deleteRow, disabled: this.props.mode > 1 })
                 )
             );
         }
-
-        /*without JSX*/
-        /*render() {
-            return DOM.tr(
-                this.props.selectedTableRow==this.props.id
-                    ?{className:'SelectedProd'}
-                    :{className:'Prod', onClick:this.productClicked},
-                DOM.td({className:'Id'} ,this.props.id),
-                DOM.td({className:'Name'} ,this.props.name),
-                DOM.td({className:'Cost'} ,this.props.cost),
-                DOM.td({className:'ImgTd'},
-                    DOM.img({className: 'Img', src:this.props.photoUrl}),
-                ),
-                DOM.td({className:'Count'}, this.props.count),
-                DOM.td({className:'Control'}, 
-                    DOM.input({type:'button', value:"Удалить", onClick:this.deleteRow}),),  
-            );
-        }*/
-
     }]);
 
     return Product;
 }(_react2.default.Component);
-
-/*react 15*/
-/*var Product = React.createClass({
-
-    displayName: 'Product',
-    
-    propTypes: {
-      id: React.PropTypes.number.isRequired,
-      name: React.PropTypes.string.isRequired,
-      cost: React.PropTypes.number.isRequired,
-      photoUrl: React.PropTypes.string.isRequired,
-      count: React.PropTypes.number.isRequired,
-      cbMarked: React.PropTypes.func.isRequired,
-      cbDeleteRow: React.PropTypes.func.isRequired,
-      selectedTableRow: React.PropTypes.number, // может быть null, пока ни один ответ не выбран
-    },
- 
-    productClicked: function(EO) {
-        this.props.cbMarked(this.props.id);
-    },
-
-    deleteRow: function(EO) {
-        if(confirm("Удалить товар?"))
-		{
-			this.props.cbDeleteRow(this.props.id);
-		}
-		EO.stopPropagation();//прекращаем всплытие
-    },
-
-    render: function() {
-        return React.DOM.tr(
-            this.props.selectedTableRow==this.props.id
-                ?{className:'SelectedProd'}
-                :{className:'Prod', onClick:this.productClicked},
-            React.DOM.td({className:'Id'} ,this.props.id),
-            React.DOM.td({className:'Name'} ,this.props.name),
-            React.DOM.td({className:'Cost'} ,this.props.cost),
-            React.DOM.td({className:'ImgTd'},
-            React.DOM.img({className: 'Img', src:this.props.photoUrl}),
-            ),
-            React.DOM.td({className:'Count'}, this.props.count),
-            React.DOM.td({className:'Control'}, 
-                React.DOM.input({type:'button', value:"Удалить", onClick:this.deleteRow}),),  
-        );
-    },
-    
-});*/
 
 Product.propTypes = {
     id: _propTypes2.default.number.isRequired,
@@ -27123,9 +27014,6 @@ ProductView.propTypes = {
     cost: _propTypes2.default.string.isRequired,
     photoUrl: _propTypes2.default.string.isRequired,
     count: _propTypes2.default.string.isRequired
-    //cbMarked: PropTypes.func.isRequired,
-    //cbDeleteRow: PropTypes.func.isRequired,
-    //selectedTableRow: PropTypes.number, */
 };
 exports.default = ProductView;
 
@@ -27169,70 +27057,94 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ProductAddEdit = function (_React$Component) {
     _inherits(ProductAddEdit, _React$Component);
 
-    function ProductAddEdit() {
-        var _ref;
-
-        var _temp, _this, _ret;
-
+    function ProductAddEdit(props) {
         _classCallCheck(this, ProductAddEdit);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
+        var _this = _possibleConstructorReturn(this, (ProductAddEdit.__proto__ || Object.getPrototypeOf(ProductAddEdit)).call(this, props));
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ProductAddEdit.__proto__ || Object.getPrototypeOf(ProductAddEdit)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+        _this.state = {
             id: _this.props.id,
             name: _this.props.name,
             cost: _this.props.cost,
             photoUrl: _this.props.photoUrl,
-            count: _this.props.count,
-            isNameValid: true,
+            count: _this.props.count
+            /*isNameValid: true,
             isCostValid: true,
             isPhotoUrlValid: true,
-            isCountValid: true
-        }, _this.validateName = function () {
+            isCountValid: true,*/
+
+
+            //тут функции валидации (простые правила: поле должно быть НЕ пустым)
+        };
+
+        _this.validateName = function () {
             if (_this.state.name !== "") _this.setState({ isNameValid: true });else _this.setState({ isNameValid: false });
-        }, _this.validateCost = function () {
+        };
+
+        _this.validateCost = function () {
             if (_this.state.cost !== "") _this.setState({ isCostValid: true });else _this.setState({ isCostValid: false });
-        }, _this.validatePhotoUrl = function () {
+        };
+
+        _this.validatePhotoUrl = function () {
             if (_this.state.photoUrl !== "") _this.setState({ isPhotoUrlValid: true });else _this.setState({ isPhotoUrlValid: false });
-        }, _this.validateCount = function () {
+        };
+
+        _this.validateCount = function () {
             if (_this.state.count !== "") _this.setState({ isCountValid: true });else _this.setState({ isCountValid: false });
-        }, _this.editName = function (EO) {
+        };
+
+        _this.editName = function (EO) {
             //сообщаем родительскому компоненту, что у нас в товаре
             //появились несохраненные изменения
             _this.props.cbProductNotSave();
             _this.setState({ name: EO.target.value }, _this.validateName);
-        }, _this.editCost = function (EO) {
+        };
+
+        _this.editCost = function (EO) {
             //сообщаем родительскому компоненту, что у нас в товаре
             //появились несохраненные изменения
             _this.props.cbProductNotSave();
             _this.setState({ cost: EO.target.value }, _this.validateCost);
-        }, _this.editPhotoUrl = function (EO) {
+        };
+
+        _this.editPhotoUrl = function (EO) {
             //сообщаем родительскому компоненту, что у нас в товаре
             //появились несохраненные изменения
             _this.props.cbProductNotSave();
             _this.setState({ photoUrl: EO.target.value }, _this.validatePhotoUrl);
-        }, _this.editCount = function (EO) {
+        };
+
+        _this.editCount = function (EO) {
             //сообщаем родительскому компоненту, что у нас в товаре
             //появились несохраненные изменения
             _this.props.cbProductNotSave();
             _this.setState({ count: EO.target.value }, _this.validateCount);
-        }, _this.save = function () {
+        };
+
+        _this.save = function () {
             _this.props.cbSave(_this.state.id, _this.state.name, _this.state.cost, _this.state.photoUrl, _this.state.count);
-        }, _this.cancel = function () {
+        };
+
+        _this.cancel = function () {
             _this.props.cbCancel();
-        }, _temp), _possibleConstructorReturn(_this, _ret);
+        };
+
+        if (_this.props.mode === 2) {
+            _this.state.isNameValid = true;
+            _this.state.isCostValid = true;
+            _this.state.isPhotoUrlValid = true;
+            _this.state.isCountValid = true;
+        } else if (_this.props.mode === 3) {
+            _this.state.isNameValid = false;
+            _this.state.isCostValid = false;
+            _this.state.isPhotoUrlValid = false;
+            _this.state.isCountValid = false;
+        }
+        return _this;
     }
 
     _createClass(ProductAddEdit, [{
         key: 'render',
-
-
-        /*productNotSave = () => {
-            this.props.cbProductNotSave();
-        }*/
-
         value: function render() {
             return _react2.default.createElement(
                 'div',
@@ -27335,36 +27247,14 @@ var ProductAddEdit = function (_React$Component) {
                         )
                     )
                 ),
-                _react2.default.createElement('input', { className: 'SaveButton', type: 'button', value: '\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C', onClick: this.save,
-                    disabled: !this.state.isNameValid || !this.state.isCostValid || !this.state.isPhotoUrlValid || !this.state.isCountValid }),
+                this.props.mode === 2 && _react2.default.createElement('input', { className: 'SaveButton', type: 'button', value: '\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C', onClick: this.save,
+                    disabled: !this.state.isNameValid || !this.state.isCostValid || !this.state.isPhotoUrlValid || !this.state.isCountValid
+                }),
+                this.props.mode === 3 && _react2.default.createElement('input', { className: 'SaveButton', type: 'button', value: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C', onClick: this.save,
+                    disabled: !this.state.isNameValid || !this.state.isCostValid || !this.state.isPhotoUrlValid || !this.state.isCountValid
+                }),
                 _react2.default.createElement('input', { type: 'button', value: '\u041E\u0442\u043C\u0435\u043D\u0430', onClick: this.cancel })
-            )
-
-            /*<table className="ProductView">
-                <tbody>
-                    <tr>
-                        <td>ID:</td>
-                        <td>{this.props.id}</td>
-                    </tr>
-                    <tr>
-                        <td>Название:</td>
-                        <td>{this.props.name}</td>
-                    </tr>
-                    <tr>
-                        <td>Цена:</td>
-                        <td>{this.props.cost}</td>
-                    </tr>
-                    <tr>
-                        <td>Url фото:</td>
-                        <td>{this.props.photoUrl}</td>
-                    </tr>
-                    <tr>
-                        <td>Количество:</td>
-                        <td>{this.props.count}</td>
-                    </tr>
-                </tbody>
-            </table>*/
-            ;
+            );
         }
     }]);
 
@@ -27378,13 +27268,10 @@ ProductAddEdit.propTypes = {
     cost: _propTypes2.default.string.isRequired,
     photoUrl: _propTypes2.default.string.isRequired,
     count: _propTypes2.default.string.isRequired,
-    cbSave: _propTypes2.default.func.isRequired,
-    cbCancel: _propTypes2.default.func.isRequired,
-    //cbProductNotSave: вызовется при изменении товара
-    cbProductNotSave: _propTypes2.default.func.isRequired
-    //cbMarked: PropTypes.func.isRequired,
-    //cbDeleteRow: PropTypes.func.isRequired,
-    //selectedTableRow: PropTypes.number, */
+    cbSave: _propTypes2.default.func.isRequired, //сохраниение товара
+    cbCancel: _propTypes2.default.func.isRequired, //отмена
+    cbProductNotSave: _propTypes2.default.func.isRequired,
+    mode: _propTypes2.default.number.isRequired
 };
 exports.default = ProductAddEdit;
 

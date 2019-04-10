@@ -11,9 +11,6 @@ class ProductView extends React.Component {
         cost: PropTypes.string.isRequired,
         photoUrl: PropTypes.string.isRequired,
         count: PropTypes.string.isRequired,
-        //cbMarked: PropTypes.func.isRequired,
-        //cbDeleteRow: PropTypes.func.isRequired,
-        //selectedTableRow: PropTypes.number, */
     };
 
     render() {
