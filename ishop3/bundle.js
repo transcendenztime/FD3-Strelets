@@ -25452,7 +25452,7 @@ var ProductsTable = function (_React$Component) {
         return x.id === id;
       });
       _this.setState({ productToEdit: _this.state.productsState[productToEditIndex],
-        selectedTableRow: null,
+        selectedTableRow: id,
         productToView: null,
         mode: 2
       });
@@ -25466,6 +25466,7 @@ var ProductsTable = function (_React$Component) {
       tmpPoductsState[editIndex] = newEditProductData;
       _this.setState({ productsState: tmpPoductsState,
         productToEdit: null,
+        selectedTableRow: null,
         mode: 0,
         isAnyProductChanged: false //указываем, что несохраненных данных о товаре нет
       });
@@ -25479,11 +25480,13 @@ var ProductsTable = function (_React$Component) {
       tmpPoductsState.push(newAddProductData);
       _this.setState({ productsState: tmpPoductsState,
         //productToEdit: null,
+        selectedTableRow: null,
         mode: 0,
         isAnyProductChanged: false //указываем, что несохраненных данных о товаре нет
       });
     }, _this.cancel = function () {
       _this.setState({ productToEdit: null,
+        selectedTableRow: null,
         mode: 0,
         isAnyProductChanged: false //указываем, что несохраненных данных о товаре нет
       });

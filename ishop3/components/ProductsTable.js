@@ -49,7 +49,7 @@ class ProductsTable extends React.Component {
   editProduct = (id) => {
     let productToEditIndex = this.state.productsState.findIndex(x => x.id === id);
     this.setState( {productToEdit: this.state.productsState[productToEditIndex],
-      selectedTableRow: null,
+      selectedTableRow: id,
       productToView: null,
       mode: 2,
     } );
@@ -64,6 +64,7 @@ class ProductsTable extends React.Component {
     tmpPoductsState[editIndex] = newEditProductData;
     this.setState({productsState: tmpPoductsState,
       productToEdit: null,
+      selectedTableRow: null,
       mode: 0,
       isAnyProductChanged: false,//указываем, что несохраненных данных о товаре нет
     });
@@ -80,6 +81,7 @@ class ProductsTable extends React.Component {
     tmpPoductsState.push(newAddProductData);
     this.setState({productsState: tmpPoductsState,
       //productToEdit: null,
+      selectedTableRow: null,
       mode: 0,
       isAnyProductChanged: false,//указываем, что несохраненных данных о товаре нет
     });
@@ -88,6 +90,7 @@ class ProductsTable extends React.Component {
   //отмена
   cancel = () => {
     this.setState({productToEdit: null,
+      selectedTableRow: null,
       mode: 0,
       isAnyProductChanged: false,//указываем, что несохраненных данных о товаре нет
     });
