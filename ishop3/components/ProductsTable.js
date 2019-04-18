@@ -179,7 +179,7 @@ class ProductsTable extends React.Component {
             (this.state.mode === 2) &&/*(this.state.productToEdit) &&*/
             <div className="ProductsTableRight">
               <h2>Редактирование товара</h2>
-              <ProductAddEdit key={this.state.productToEdit.id}
+              <ProductAddEdit /*key={7}*/ key={this.state.productToEdit.id}
               id={this.state.productToEdit.id}
               name={this.state.productToEdit.name}
               cost={this.state.productToEdit.cost}

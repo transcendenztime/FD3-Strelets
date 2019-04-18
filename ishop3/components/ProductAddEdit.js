@@ -46,6 +46,17 @@ class ProductAddEdit extends React.Component {
         isCountValid: true,*/
     }
 
+    /*componentWillReceiveProps = (newProps) => {
+        console.log('componentWillReceiveProps'); 
+        this.setState({
+            id:newProps.id,
+            name:newProps.name,
+            cost:newProps.cost,
+            photoUrl:newProps.photoUrl,
+            count:newProps.count,
+        }); // сработает при обновлении компонента (WRP+WU+DU)
+    };*/
+
     //тут функции валидации (простые правила: поле должно быть НЕ пустым)
     validateName = () => {
         if(this.state.name !== "")
