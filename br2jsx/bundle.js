@@ -566,19 +566,15 @@ var _reactDom = __webpack_require__(11);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _RainbowFrame = __webpack_require__(19);
+var _Br2Jsx = __webpack_require__(19);
 
-var _RainbowFrame2 = _interopRequireDefault(_RainbowFrame);
+var _Br2Jsx2 = _interopRequireDefault(_Br2Jsx);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var colors = ['red', 'orange', 'yellow', 'green', '#00BFFF', 'blue', 'purple'];
+var text = "первый<br>второй<br/>третий<br />последний";
 
-_reactDom2.default.render(_react2.default.createElement(
-  _RainbowFrame2.default,
-  { colors: colors },
-  'Hello!'
-), document.getElementById('MainContainer'));
+_reactDom2.default.render(_react2.default.createElement(_Br2Jsx2.default, { text: text }), document.getElementById('MainContainer'));
 
 /***/ }),
 /* 9 */
@@ -25349,8 +25345,6 @@ var _propTypes = __webpack_require__(20);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-__webpack_require__(25);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25359,44 +25353,36 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var RainbowFrame = function (_React$Component) {
-  _inherits(RainbowFrame, _React$Component);
+//import './br2jsx.css';
 
-  function RainbowFrame() {
-    _classCallCheck(this, RainbowFrame);
+var Br2Jsx = function (_React$Component) {
+  _inherits(Br2Jsx, _React$Component);
 
-    return _possibleConstructorReturn(this, (RainbowFrame.__proto__ || Object.getPrototypeOf(RainbowFrame)).apply(this, arguments));
+  function Br2Jsx(props) {
+    _classCallCheck(this, Br2Jsx);
+
+    return _possibleConstructorReturn(this, (Br2Jsx.__proto__ || Object.getPrototypeOf(Br2Jsx)).call(this, props));
+    //this.rainbow = this.props.children; //инициализируем сразу тем, что пришло в "children" (в нашем случае это "hello")
   }
 
-  _createClass(RainbowFrame, [{
+  _createClass(Br2Jsx, [{
     key: 'render',
     value: function render() {
-      var rainbow = this.props.children;
-      //проходим по массиву с цветами
-      //в каждой итерации цикла rainbow заменяем на <div>, в качестве props.children которого передаем текущее значение rainbow
-      this.props.colors.forEach(function (c) {
-        return rainbow = _react2.default.createElement(
-          'div',
-          { style: { border: "solid 5px " + c, padding: "5px" } },
-          rainbow
-        );
-      });
-
       return _react2.default.createElement(
         'div',
-        { className: 'Rainbow' },
-        rainbow
+        null,
+        this.props.text
       );
     }
   }]);
 
-  return RainbowFrame;
+  return Br2Jsx;
 }(_react2.default.Component);
 
-RainbowFrame.propTypes = {
-  colors: _propTypes2.default.array.isRequired
+Br2Jsx.propTypes = {
+  text: _propTypes2.default.string.isRequired
 };
-exports.default = RainbowFrame;
+exports.default = Br2Jsx;
 
 /***/ }),
 /* 20 */
@@ -26350,12 +26336,6 @@ module.exports = function() {
   return ReactPropTypes;
 };
 
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
