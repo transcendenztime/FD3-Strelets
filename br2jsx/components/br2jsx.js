@@ -12,7 +12,7 @@ class Br2Jsx extends React.Component {
   render() {
 
     let reg = /<br\s?\/?>/;
-    let arrOfStr = this.props.text.split(reg);
+    let arrOfStr = this.props.text.split(reg);//разбиваем строку на массив подстрок без различных <br>
     let resultArr = [];
     arrOfStr.forEach((el,ind) => {
       if(ind != arrOfStr.length - 1)

@@ -25345,6 +25345,8 @@ var _propTypes = __webpack_require__(20);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+__webpack_require__(25);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25353,25 +25355,44 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-//import './br2jsx.css';
-
 var Br2Jsx = function (_React$Component) {
   _inherits(Br2Jsx, _React$Component);
 
-  function Br2Jsx(props) {
+  function Br2Jsx() {
     _classCallCheck(this, Br2Jsx);
 
-    return _possibleConstructorReturn(this, (Br2Jsx.__proto__ || Object.getPrototypeOf(Br2Jsx)).call(this, props));
-    //this.rainbow = this.props.children; //инициализируем сразу тем, что пришло в "children" (в нашем случае это "hello")
+    return _possibleConstructorReturn(this, (Br2Jsx.__proto__ || Object.getPrototypeOf(Br2Jsx)).apply(this, arguments));
   }
 
   _createClass(Br2Jsx, [{
     key: 'render',
     value: function render() {
+
+      var reg = /<br\s?\/?>/;
+      var arrOfStr = this.props.text.split(reg);
+      var resultArr = [];
+      arrOfStr.forEach(function (el, ind) {
+        if (ind != arrOfStr.length - 1) {
+          resultArr.push(_react2.default.createElement(
+            _react.Fragment,
+            { key: ind },
+            el,
+            _react2.default.createElement('br', null)
+          ));
+        } else {
+          //после последнего элемента не добавляем <br>
+          resultArr.push(_react2.default.createElement(
+            _react.Fragment,
+            { key: ind },
+            el
+          ));
+        }
+      });
+      //console.log(resultArr);
       return _react2.default.createElement(
         'div',
-        null,
-        this.props.text
+        { className: 'Br2jsx' },
+        resultArr
       );
     }
   }]);
@@ -26336,6 +26357,12 @@ module.exports = function() {
   return ReactPropTypes;
 };
 
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
