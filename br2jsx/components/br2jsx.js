@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-//import './br2jsx.css';
+import './br2jsx.css';
 
 class Br2Jsx extends React.Component {
 
@@ -9,13 +9,22 @@ class Br2Jsx extends React.Component {
     text: PropTypes.string.isRequired,
   };
   
-  constructor(props) {
-    super(props);
-  }
-  
   render() {
+
+    let reg = /<br\s?\/?>/;
+    let arrOfStr = this.props.text.split(reg);
+    let resultArr = [];
+    arrOfStr.forEach((el,ind) => {
+      if(ind != arrOfStr.length - 1)
+      {
+        resultArr.push(<Fragment key={ind}>{el}<br/></Fragment>);
+      }else{//после последнего элемента не добавляем <br>
+        resultArr.push(<Fragment key={ind}>{el}</Fragment>);
+      }
+    });
+    //console.log(resultArr);
     return (
-      <div>{this.props.text}</div>
+      <div className="Br2jsx">{resultArr}</div>
     );
   }
 
