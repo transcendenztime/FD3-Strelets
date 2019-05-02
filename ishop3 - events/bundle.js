@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -261,9 +261,9 @@ process.umask = function() { return 0; };
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(10);
-} else {
   module.exports = __webpack_require__(11);
+} else {
+  module.exports = __webpack_require__(12);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -377,16 +377,16 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
  */
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(8);
+  var ReactIs = __webpack_require__(9);
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(23)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(24)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(24)();
+  module.exports = __webpack_require__(25)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -525,18 +525,38 @@ module.exports = ReactPropTypesSecret;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.prodEvents = undefined;
+
+var _events = __webpack_require__(26);
+
+var prodEvents = new _events.EventEmitter();
+// в потоке prodEvents будут все события, связанные с товарами
+// лучше работать не с текстовыми литералами, а объявить переменные с соответствующими значениями
+
+exports.prodEvents = prodEvents;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(14);
-} else {
   module.exports = __webpack_require__(15);
+} else {
+  module.exports = __webpack_require__(16);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 var g;
@@ -563,22 +583,22 @@ module.exports = g;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(21);
-} else {
   module.exports = __webpack_require__(22);
+} else {
+  module.exports = __webpack_require__(23);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -588,15 +608,15 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(12);
+var _reactDom = __webpack_require__(13);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _ProductsTable = __webpack_require__(20);
+var _ProductsTable = __webpack_require__(21);
 
 var _ProductsTable2 = _interopRequireDefault(_ProductsTable);
 
-var _products = __webpack_require__(34);
+var _products = __webpack_require__(36);
 
 var _products2 = _interopRequireDefault(_products);
 
@@ -616,7 +636,7 @@ _react2.default.createElement(_ProductsTable2.default, {
 }), document.getElementById('MainContainer'));
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -648,7 +668,7 @@ unstable_ConcurrentMode:x,unstable_Profiler:u,__SECRET_INTERNALS_DO_NOT_USE_OR_Y
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2557,7 +2577,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2595,15 +2615,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(13);
+  module.exports = __webpack_require__(14);
 } else {
-  module.exports = __webpack_require__(16);
+  module.exports = __webpack_require__(17);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2619,7 +2639,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),n=__webpack_require__(2),r=__webpack_require__(6);function ba(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[c,d,e,f,g,h],k=0;a=Error(b.replace(/%s/g,function(){return l[k++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
+var aa=__webpack_require__(1),n=__webpack_require__(2),r=__webpack_require__(7);function ba(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[c,d,e,f,g,h],k=0;a=Error(b.replace(/%s/g,function(){return l[k++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
 function x(a){for(var b=arguments.length-1,c="https://reactjs.org/docs/error-decoder.html?invariant="+a,d=0;d<b;d++)c+="&args[]="+encodeURIComponent(arguments[d+1]);ba(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}aa?void 0:x("227");function ca(a,b,c,d,e,f,g,h,l){var k=Array.prototype.slice.call(arguments,3);try{b.apply(c,k)}catch(m){this.onError(m)}}
 var da=!1,ea=null,fa=!1,ha=null,ia={onError:function(a){da=!0;ea=a}};function ja(a,b,c,d,e,f,g,h,l){da=!1;ea=null;ca.apply(ia,arguments)}function ka(a,b,c,d,e,f,g,h,l){ja.apply(this,arguments);if(da){if(da){var k=ea;da=!1;ea=null}else x("198"),k=void 0;fa||(fa=!0,ha=k)}}var la=null,ma={};
 function na(){if(la)for(var a in ma){var b=ma[a],c=la.indexOf(a);-1<c?void 0:x("96",a);if(!oa[c]){b.extractEvents?void 0:x("97",a);oa[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;pa.hasOwnProperty(h)?x("99",h):void 0;pa[h]=f;var l=f.phasedRegistrationNames;if(l){for(e in l)l.hasOwnProperty(e)&&qa(l[e],g,h);e=!0}else f.registrationName?(qa(f.registrationName,g,h),e=!0):e=!1;e?void 0:x("98",d,a)}}}}
@@ -2879,7 +2899,7 @@ X;X=!0;try{ki(a)}finally{(X=b)||W||Yh(1073741823,!1)}},__SECRET_INTERNALS_DO_NOT
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2905,10 +2925,10 @@ exports.unstable_scheduleCallback=function(a,b){var c=-1!==k?k:exports.unstable_
 b=c.previous;b.next=c.previous=a;a.next=c;a.previous=b}return a};exports.unstable_cancelCallback=function(a){var b=a.next;if(null!==b){if(b===a)d=null;else{a===d&&(d=b);var c=a.previous;c.next=b;b.previous=c}a.next=a.previous=null}};exports.unstable_wrapCallback=function(a){var b=g;return function(){var c=g,f=k;g=b;k=exports.unstable_now();try{return a.apply(this,arguments)}finally{g=c,k=f,v()}}};exports.unstable_getCurrentPriorityLevel=function(){return g};
 exports.unstable_shouldYield=function(){return!e&&(null!==d&&d.expirationTime<l||w())};exports.unstable_continueExecution=function(){null!==d&&p()};exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNode=function(){return d};
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3612,10 +3632,10 @@ exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(8)))
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3639,8 +3659,8 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(1);
 var _assign = __webpack_require__(2);
 var checkPropTypes = __webpack_require__(4);
-var scheduler = __webpack_require__(6);
-var tracing = __webpack_require__(17);
+var scheduler = __webpack_require__(7);
+var tracing = __webpack_require__(18);
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -24901,22 +24921,22 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(18);
-} else {
   module.exports = __webpack_require__(19);
+} else {
+  module.exports = __webpack_require__(20);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24933,7 +24953,7 @@ Object.defineProperty(exports,"__esModule",{value:!0});var b=0;exports.__interac
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25364,7 +25384,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25384,21 +25404,23 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-__webpack_require__(25);
+var _events = __webpack_require__(6);
 
-var _TableHeader = __webpack_require__(26);
+__webpack_require__(27);
+
+var _TableHeader = __webpack_require__(28);
 
 var _TableHeader2 = _interopRequireDefault(_TableHeader);
 
-var _Product = __webpack_require__(28);
+var _Product = __webpack_require__(30);
 
 var _Product2 = _interopRequireDefault(_Product);
 
-var _ProductView = __webpack_require__(30);
+var _ProductView = __webpack_require__(32);
 
 var _ProductView2 = _interopRequireDefault(_ProductView);
 
-var _ProductAddEdit = __webpack_require__(32);
+var _ProductAddEdit = __webpack_require__(34);
 
 var _ProductAddEdit2 = _interopRequireDefault(_ProductAddEdit);
 
@@ -25437,6 +25459,22 @@ var ProductsTable = function (_React$Component) {
       mode: 0,
       //isAnyProductChanged: станет равен true, если в каком-либо товаре есть несохраненные изменения
       isAnyProductChanged: false
+    }, _this.componentDidMount = function () {
+      _events.prodEvents.addListener('EMarked', _this.productMarked);
+      _events.prodEvents.addListener('EDeleteRow', _this.deleteRow);
+      _events.prodEvents.addListener('EEditProduct', _this.editProduct);
+      _events.prodEvents.addListener('ECancel', _this.cancel);
+      _events.prodEvents.addListener('EProductNotSave', _this.productNotSave);
+      _events.prodEvents.addListener('ESave', _this.save);
+      _events.prodEvents.addListener('EAdd', _this.add);
+    }, _this.componentWillUnmount = function () {
+      _events.prodEvents.removeListener('EMarked', _this.productMarked);
+      _events.prodEvents.removeListener('EDeleteRow', _this.deleteRow);
+      _events.prodEvents.removeListener('EEditProduct', _this.editProduct);
+      _events.prodEvents.removeListener('ECancel', _this.cancel);
+      _events.prodEvents.removeListener('EProductNotSave', _this.productNotSave);
+      _events.prodEvents.removeListener('ESave', _this.save);
+      _events.prodEvents.removeListener('EAdd', _this.add);
     }, _this.productMarked = function (id) {
       _this.setState({ selectedTableRow: id });
       //получаем данные товара для просмотра
@@ -25529,7 +25567,7 @@ var ProductsTable = function (_React$Component) {
   //сохраняем товар
 
 
-  //долбавляем товар
+  //добавляем товар
 
 
   //отмена
@@ -25551,11 +25589,11 @@ var ProductsTable = function (_React$Component) {
 
       var allProducts = this.state.productsState.map(function (p) {
         return _react2.default.createElement(_Product2.default, { key: p.id,
-          id: p.id, name: p.name, cost: p.cost, photoUrl: p.photoUrl, count: p.count,
-          cbMarked: _this2.productMarked,
-          cbEditProduct: _this2.editProduct,
-          cbDeleteRow: _this2.deleteRow,
-          selectedTableRow: _this2.state.selectedTableRow,
+          id: p.id, name: p.name, cost: p.cost, photoUrl: p.photoUrl, count: p.count
+          /*cbMarked={this.productMarked}*/
+          /*cbEditProduct={this.editProduct}*/
+          /*cbDeleteRow={this.deleteRow}*/
+          , selectedTableRow: _this2.state.selectedTableRow,
           mode: _this2.state.mode,
           isAnyProductChanged: _this2.state.isAnyProductChanged
         });
@@ -25629,11 +25667,11 @@ var ProductsTable = function (_React$Component) {
               name: this.state.productToEdit.name,
               cost: this.state.productToEdit.cost,
               photoUrl: this.state.productToEdit.photoUrl,
-              count: this.state.productToEdit.count,
-              cbSave: this.save,
-              cbCancel: this.cancel,
-              cbProductNotSave: this.productNotSave,
-              mode: this.state.mode
+              count: this.state.productToEdit.count
+              /*cbSave={this.save}*/
+              /*cbCancel={this.cancel}*/
+              /*cbProductNotSave={this.productNotSave}*/
+              , mode: this.state.mode
             })
           ),
           this.state.mode === 3 && /*(this.state.productToEdit) &&*/
@@ -25650,11 +25688,11 @@ var ProductsTable = function (_React$Component) {
               name: "",
               cost: "",
               photoUrl: "",
-              count: "",
-              cbSave: this.add,
-              cbCancel: this.cancel,
-              cbProductNotSave: this.productNotSave,
-              mode: this.state.mode
+              count: ""
+              /*cbSave={this.add}*/
+              /*cbCancel={this.cancel}*/
+              /*cbProductNotSave={this.productNotSave}*/
+              , mode: this.state.mode
             })
           )
         )
@@ -25672,7 +25710,7 @@ ProductsTable.propTypes = {
 exports.default = ProductsTable;
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25694,7 +25732,7 @@ exports.isSuspense=function(a){return t(a)===p};
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25929,7 +25967,7 @@ exports.isSuspense = isSuspense;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25942,7 +25980,7 @@ exports.isSuspense = isSuspense;
 
 
 
-var ReactIs = __webpack_require__(8);
+var ReactIs = __webpack_require__(9);
 var assign = __webpack_require__(2);
 
 var ReactPropTypesSecret = __webpack_require__(5);
@@ -26528,7 +26566,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26599,13 +26637,468 @@ module.exports = function() {
 
 
 /***/ }),
-/* 25 */
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+var R = typeof Reflect === 'object' ? Reflect : null
+var ReflectApply = R && typeof R.apply === 'function'
+  ? R.apply
+  : function ReflectApply(target, receiver, args) {
+    return Function.prototype.apply.call(target, receiver, args);
+  }
+
+var ReflectOwnKeys
+if (R && typeof R.ownKeys === 'function') {
+  ReflectOwnKeys = R.ownKeys
+} else if (Object.getOwnPropertySymbols) {
+  ReflectOwnKeys = function ReflectOwnKeys(target) {
+    return Object.getOwnPropertyNames(target)
+      .concat(Object.getOwnPropertySymbols(target));
+  };
+} else {
+  ReflectOwnKeys = function ReflectOwnKeys(target) {
+    return Object.getOwnPropertyNames(target);
+  };
+}
+
+function ProcessEmitWarning(warning) {
+  if (console && console.warn) console.warn(warning);
+}
+
+var NumberIsNaN = Number.isNaN || function NumberIsNaN(value) {
+  return value !== value;
+}
+
+function EventEmitter() {
+  EventEmitter.init.call(this);
+}
+module.exports = EventEmitter;
+
+// Backwards-compat with node 0.10.x
+EventEmitter.EventEmitter = EventEmitter;
+
+EventEmitter.prototype._events = undefined;
+EventEmitter.prototype._eventsCount = 0;
+EventEmitter.prototype._maxListeners = undefined;
+
+// By default EventEmitters will print a warning if more than 10 listeners are
+// added to it. This is a useful default which helps finding memory leaks.
+var defaultMaxListeners = 10;
+
+Object.defineProperty(EventEmitter, 'defaultMaxListeners', {
+  enumerable: true,
+  get: function() {
+    return defaultMaxListeners;
+  },
+  set: function(arg) {
+    if (typeof arg !== 'number' || arg < 0 || NumberIsNaN(arg)) {
+      throw new RangeError('The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received ' + arg + '.');
+    }
+    defaultMaxListeners = arg;
+  }
+});
+
+EventEmitter.init = function() {
+
+  if (this._events === undefined ||
+      this._events === Object.getPrototypeOf(this)._events) {
+    this._events = Object.create(null);
+    this._eventsCount = 0;
+  }
+
+  this._maxListeners = this._maxListeners || undefined;
+};
+
+// Obviously not all Emitters should be limited to 10. This function allows
+// that to be increased. Set to zero for unlimited.
+EventEmitter.prototype.setMaxListeners = function setMaxListeners(n) {
+  if (typeof n !== 'number' || n < 0 || NumberIsNaN(n)) {
+    throw new RangeError('The value of "n" is out of range. It must be a non-negative number. Received ' + n + '.');
+  }
+  this._maxListeners = n;
+  return this;
+};
+
+function $getMaxListeners(that) {
+  if (that._maxListeners === undefined)
+    return EventEmitter.defaultMaxListeners;
+  return that._maxListeners;
+}
+
+EventEmitter.prototype.getMaxListeners = function getMaxListeners() {
+  return $getMaxListeners(this);
+};
+
+EventEmitter.prototype.emit = function emit(type) {
+  var args = [];
+  for (var i = 1; i < arguments.length; i++) args.push(arguments[i]);
+  var doError = (type === 'error');
+
+  var events = this._events;
+  if (events !== undefined)
+    doError = (doError && events.error === undefined);
+  else if (!doError)
+    return false;
+
+  // If there is no 'error' event listener then throw.
+  if (doError) {
+    var er;
+    if (args.length > 0)
+      er = args[0];
+    if (er instanceof Error) {
+      // Note: The comments on the `throw` lines are intentional, they show
+      // up in Node's output if this results in an unhandled exception.
+      throw er; // Unhandled 'error' event
+    }
+    // At least give some kind of context to the user
+    var err = new Error('Unhandled error.' + (er ? ' (' + er.message + ')' : ''));
+    err.context = er;
+    throw err; // Unhandled 'error' event
+  }
+
+  var handler = events[type];
+
+  if (handler === undefined)
+    return false;
+
+  if (typeof handler === 'function') {
+    ReflectApply(handler, this, args);
+  } else {
+    var len = handler.length;
+    var listeners = arrayClone(handler, len);
+    for (var i = 0; i < len; ++i)
+      ReflectApply(listeners[i], this, args);
+  }
+
+  return true;
+};
+
+function _addListener(target, type, listener, prepend) {
+  var m;
+  var events;
+  var existing;
+
+  if (typeof listener !== 'function') {
+    throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
+  }
+
+  events = target._events;
+  if (events === undefined) {
+    events = target._events = Object.create(null);
+    target._eventsCount = 0;
+  } else {
+    // To avoid recursion in the case that type === "newListener"! Before
+    // adding it to the listeners, first emit "newListener".
+    if (events.newListener !== undefined) {
+      target.emit('newListener', type,
+                  listener.listener ? listener.listener : listener);
+
+      // Re-assign `events` because a newListener handler could have caused the
+      // this._events to be assigned to a new object
+      events = target._events;
+    }
+    existing = events[type];
+  }
+
+  if (existing === undefined) {
+    // Optimize the case of one listener. Don't need the extra array object.
+    existing = events[type] = listener;
+    ++target._eventsCount;
+  } else {
+    if (typeof existing === 'function') {
+      // Adding the second element, need to change to array.
+      existing = events[type] =
+        prepend ? [listener, existing] : [existing, listener];
+      // If we've already got an array, just append.
+    } else if (prepend) {
+      existing.unshift(listener);
+    } else {
+      existing.push(listener);
+    }
+
+    // Check for listener leak
+    m = $getMaxListeners(target);
+    if (m > 0 && existing.length > m && !existing.warned) {
+      existing.warned = true;
+      // No error code for this since it is a Warning
+      // eslint-disable-next-line no-restricted-syntax
+      var w = new Error('Possible EventEmitter memory leak detected. ' +
+                          existing.length + ' ' + String(type) + ' listeners ' +
+                          'added. Use emitter.setMaxListeners() to ' +
+                          'increase limit');
+      w.name = 'MaxListenersExceededWarning';
+      w.emitter = target;
+      w.type = type;
+      w.count = existing.length;
+      ProcessEmitWarning(w);
+    }
+  }
+
+  return target;
+}
+
+EventEmitter.prototype.addListener = function addListener(type, listener) {
+  return _addListener(this, type, listener, false);
+};
+
+EventEmitter.prototype.on = EventEmitter.prototype.addListener;
+
+EventEmitter.prototype.prependListener =
+    function prependListener(type, listener) {
+      return _addListener(this, type, listener, true);
+    };
+
+function onceWrapper() {
+  var args = [];
+  for (var i = 0; i < arguments.length; i++) args.push(arguments[i]);
+  if (!this.fired) {
+    this.target.removeListener(this.type, this.wrapFn);
+    this.fired = true;
+    ReflectApply(this.listener, this.target, args);
+  }
+}
+
+function _onceWrap(target, type, listener) {
+  var state = { fired: false, wrapFn: undefined, target: target, type: type, listener: listener };
+  var wrapped = onceWrapper.bind(state);
+  wrapped.listener = listener;
+  state.wrapFn = wrapped;
+  return wrapped;
+}
+
+EventEmitter.prototype.once = function once(type, listener) {
+  if (typeof listener !== 'function') {
+    throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
+  }
+  this.on(type, _onceWrap(this, type, listener));
+  return this;
+};
+
+EventEmitter.prototype.prependOnceListener =
+    function prependOnceListener(type, listener) {
+      if (typeof listener !== 'function') {
+        throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
+      }
+      this.prependListener(type, _onceWrap(this, type, listener));
+      return this;
+    };
+
+// Emits a 'removeListener' event if and only if the listener was removed.
+EventEmitter.prototype.removeListener =
+    function removeListener(type, listener) {
+      var list, events, position, i, originalListener;
+
+      if (typeof listener !== 'function') {
+        throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
+      }
+
+      events = this._events;
+      if (events === undefined)
+        return this;
+
+      list = events[type];
+      if (list === undefined)
+        return this;
+
+      if (list === listener || list.listener === listener) {
+        if (--this._eventsCount === 0)
+          this._events = Object.create(null);
+        else {
+          delete events[type];
+          if (events.removeListener)
+            this.emit('removeListener', type, list.listener || listener);
+        }
+      } else if (typeof list !== 'function') {
+        position = -1;
+
+        for (i = list.length - 1; i >= 0; i--) {
+          if (list[i] === listener || list[i].listener === listener) {
+            originalListener = list[i].listener;
+            position = i;
+            break;
+          }
+        }
+
+        if (position < 0)
+          return this;
+
+        if (position === 0)
+          list.shift();
+        else {
+          spliceOne(list, position);
+        }
+
+        if (list.length === 1)
+          events[type] = list[0];
+
+        if (events.removeListener !== undefined)
+          this.emit('removeListener', type, originalListener || listener);
+      }
+
+      return this;
+    };
+
+EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
+
+EventEmitter.prototype.removeAllListeners =
+    function removeAllListeners(type) {
+      var listeners, events, i;
+
+      events = this._events;
+      if (events === undefined)
+        return this;
+
+      // not listening for removeListener, no need to emit
+      if (events.removeListener === undefined) {
+        if (arguments.length === 0) {
+          this._events = Object.create(null);
+          this._eventsCount = 0;
+        } else if (events[type] !== undefined) {
+          if (--this._eventsCount === 0)
+            this._events = Object.create(null);
+          else
+            delete events[type];
+        }
+        return this;
+      }
+
+      // emit removeListener for all listeners on all events
+      if (arguments.length === 0) {
+        var keys = Object.keys(events);
+        var key;
+        for (i = 0; i < keys.length; ++i) {
+          key = keys[i];
+          if (key === 'removeListener') continue;
+          this.removeAllListeners(key);
+        }
+        this.removeAllListeners('removeListener');
+        this._events = Object.create(null);
+        this._eventsCount = 0;
+        return this;
+      }
+
+      listeners = events[type];
+
+      if (typeof listeners === 'function') {
+        this.removeListener(type, listeners);
+      } else if (listeners !== undefined) {
+        // LIFO order
+        for (i = listeners.length - 1; i >= 0; i--) {
+          this.removeListener(type, listeners[i]);
+        }
+      }
+
+      return this;
+    };
+
+function _listeners(target, type, unwrap) {
+  var events = target._events;
+
+  if (events === undefined)
+    return [];
+
+  var evlistener = events[type];
+  if (evlistener === undefined)
+    return [];
+
+  if (typeof evlistener === 'function')
+    return unwrap ? [evlistener.listener || evlistener] : [evlistener];
+
+  return unwrap ?
+    unwrapListeners(evlistener) : arrayClone(evlistener, evlistener.length);
+}
+
+EventEmitter.prototype.listeners = function listeners(type) {
+  return _listeners(this, type, true);
+};
+
+EventEmitter.prototype.rawListeners = function rawListeners(type) {
+  return _listeners(this, type, false);
+};
+
+EventEmitter.listenerCount = function(emitter, type) {
+  if (typeof emitter.listenerCount === 'function') {
+    return emitter.listenerCount(type);
+  } else {
+    return listenerCount.call(emitter, type);
+  }
+};
+
+EventEmitter.prototype.listenerCount = listenerCount;
+function listenerCount(type) {
+  var events = this._events;
+
+  if (events !== undefined) {
+    var evlistener = events[type];
+
+    if (typeof evlistener === 'function') {
+      return 1;
+    } else if (evlistener !== undefined) {
+      return evlistener.length;
+    }
+  }
+
+  return 0;
+}
+
+EventEmitter.prototype.eventNames = function eventNames() {
+  return this._eventsCount > 0 ? ReflectOwnKeys(this._events) : [];
+};
+
+function arrayClone(arr, n) {
+  var copy = new Array(n);
+  for (var i = 0; i < n; ++i)
+    copy[i] = arr[i];
+  return copy;
+}
+
+function spliceOne(list, index) {
+  for (; index + 1 < list.length; index++)
+    list[index] = list[index + 1];
+  list.pop();
+}
+
+function unwrapListeners(arr) {
+  var ret = new Array(arr.length);
+  for (var i = 0; i < ret.length; ++i) {
+    ret[i] = arr[i].listener || arr[i];
+  }
+  return ret;
+}
+
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26625,7 +27118,7 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-__webpack_require__(27);
+__webpack_require__(29);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26740,13 +27233,13 @@ TableHeader.propTypes = {
 exports.default = TableHeader;
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26766,7 +27259,9 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-__webpack_require__(29);
+var _events = __webpack_require__(6);
+
+__webpack_require__(31);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26793,17 +27288,20 @@ var Product = function (_React$Component) {
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Product.__proto__ || Object.getPrototypeOf(Product)).call.apply(_ref, [this].concat(args))), _this), _this.productClicked = function (EO) {
             if (!_this.props.isAnyProductChanged) {
-                _this.props.cbMarked(_this.props.id);
+                //this.props.cbMarked(this.props.id);
+                _events.prodEvents.emit('EMarked', _this.props.id);
             }
         }, _this.editProduct = function (EO) {
             //if(!this.props.isAnyProductChanged)
             //{
-            _this.props.cbEditProduct(_this.props.id);
+            //this.props.cbEditProduct(this.props.id);
+            _events.prodEvents.emit('EEditProduct', _this.props.id);
             //}
             EO.stopPropagation(); //прекращаем всплытие
         }, _this.deleteRow = function (EO) {
             if (confirm("Удалить товар?")) {
-                _this.props.cbDeleteRow(_this.props.id);
+                //this.props.cbDeleteRow(this.props.id);
+                _events.prodEvents.emit('EDeleteRow', _this.props.id);
             }
             EO.stopPropagation(); //прекращаем всплытие
         }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -26869,9 +27367,9 @@ Product.propTypes = {
     cost: _propTypes2.default.string.isRequired,
     photoUrl: _propTypes2.default.string.isRequired,
     count: _propTypes2.default.string.isRequired,
-    cbMarked: _propTypes2.default.func.isRequired,
-    cbEditProduct: _propTypes2.default.func.isRequired,
-    cbDeleteRow: _propTypes2.default.func.isRequired,
+    //cbMarked: PropTypes.func.isRequired,
+    //cbEditProduct: PropTypes.func.isRequired,
+    //cbDeleteRow: PropTypes.func.isRequired,
     selectedTableRow: _propTypes2.default.number,
     mode: _propTypes2.default.number.isRequired,
     isAnyProductChanged: _propTypes2.default.bool.isRequired
@@ -26879,13 +27377,13 @@ Product.propTypes = {
 exports.default = Product;
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26905,7 +27403,7 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-__webpack_require__(31);
+__webpack_require__(33);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27021,13 +27519,13 @@ ProductView.propTypes = {
 exports.default = ProductView;
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27047,7 +27545,9 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-__webpack_require__(33);
+var _events = __webpack_require__(6);
+
+__webpack_require__(35);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27110,37 +27610,60 @@ var ProductAddEdit = function (_React$Component) {
         _this.editName = function (EO) {
             //сообщаем родительскому компоненту, что у нас в товаре
             //появились несохраненные изменения
-            _this.props.cbProductNotSave();
+            //this.props.cbProductNotSave();
+            _events.prodEvents.emit('EProductNotSave');
             _this.setState({ name: EO.target.value }, _this.validateName);
         };
 
         _this.editCost = function (EO) {
             //сообщаем родительскому компоненту, что у нас в товаре
             //появились несохраненные изменения
-            _this.props.cbProductNotSave();
+            //this.props.cbProductNotSave();
+            _events.prodEvents.emit('EProductNotSave');
             _this.setState({ cost: EO.target.value }, _this.validateCost);
         };
 
         _this.editPhotoUrl = function (EO) {
             //сообщаем родительскому компоненту, что у нас в товаре
             //появились несохраненные изменения
-            _this.props.cbProductNotSave();
+            //this.props.cbProductNotSave();
+            _events.prodEvents.emit('EProductNotSave');
             _this.setState({ photoUrl: EO.target.value }, _this.validatePhotoUrl);
         };
 
         _this.editCount = function (EO) {
             //сообщаем родительскому компоненту, что у нас в товаре
             //появились несохраненные изменения
-            _this.props.cbProductNotSave();
+            //this.props.cbProductNotSave();
+            _events.prodEvents.emit('EProductNotSave');
             _this.setState({ count: EO.target.value }, _this.validateCount);
         };
 
         _this.save = function () {
-            _this.props.cbSave(_this.state.id, _this.state.name, _this.state.cost, _this.state.photoUrl, _this.state.count);
+            /*this.props.cbSave(
+                this.state.id,
+                this.state.name,
+                this.state.cost,
+                this.state.photoUrl,
+                this.state.count
+            );*/
+            _events.prodEvents.emit('ESave', _this.state.id, _this.state.name, _this.state.cost, _this.state.photoUrl, _this.state.count);
+        };
+
+        _this.add = function () {
+            /*this.props.cbSave(
+                this.state.id,
+                this.state.name,
+                this.state.cost,
+                this.state.photoUrl,
+                this.state.count
+            );*/
+            _events.prodEvents.emit('EAdd', _this.state.id, _this.state.name, _this.state.cost, _this.state.photoUrl, _this.state.count);
         };
 
         _this.cancel = function () {
-            _this.props.cbCancel();
+            //this.props.cbCancel();
+            _events.prodEvents.emit('ECancel');
         };
 
         if (_this.props.mode === 2) {
@@ -27264,7 +27787,7 @@ var ProductAddEdit = function (_React$Component) {
                 this.props.mode === 2 && _react2.default.createElement('input', { className: 'SaveButton', type: 'button', value: '\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C', onClick: this.save,
                     disabled: !this.state.isNameValid || !this.state.isCostValid || !this.state.isPhotoUrlValid || !this.state.isCountValid
                 }),
-                this.props.mode === 3 && _react2.default.createElement('input', { className: 'SaveButton', type: 'button', value: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C', onClick: this.save,
+                this.props.mode === 3 && _react2.default.createElement('input', { className: 'SaveButton', type: 'button', value: '\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C', onClick: this.add,
                     disabled: !this.state.isNameValid || !this.state.isCostValid || !this.state.isPhotoUrlValid || !this.state.isCountValid
                 }),
                 _react2.default.createElement('input', { type: 'button', value: '\u041E\u0442\u043C\u0435\u043D\u0430', onClick: this.cancel })
@@ -27282,21 +27805,21 @@ ProductAddEdit.propTypes = {
     cost: _propTypes2.default.string.isRequired,
     photoUrl: _propTypes2.default.string.isRequired,
     count: _propTypes2.default.string.isRequired,
-    cbSave: _propTypes2.default.func.isRequired, //сохраниение товара
-    cbCancel: _propTypes2.default.func.isRequired, //отмена
-    cbProductNotSave: _propTypes2.default.func.isRequired,
+    //cbSave: PropTypes.func.isRequired,//сохраниение товара
+    //cbCancel: PropTypes.func.isRequired,//отмена
+    //cbProductNotSave: PropTypes.func.isRequired,
     mode: _propTypes2.default.number.isRequired
 };
 exports.default = ProductAddEdit;
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports = [{"id":1,"name":"Кроссовки","cost":"250","photoUrl":"image/products/krossovki.jpg","count":"5"},{"id":2,"name":"Джинсы","cost":"300","photoUrl":"image/products/dzhinsy.jpg","count":"2"},{"id":3,"name":"Майка","cost":"200","photoUrl":"image/products/majka.png","count":"4"},{"id":4,"name":"Байка","cost":"400","photoUrl":"image/products/bajka.jpg","count":"4"},{"id":5,"name":"Кепка","cost":"150","photoUrl":"image/products/kepka.jpg","count":"6"}]

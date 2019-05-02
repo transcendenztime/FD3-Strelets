@@ -1,0 +1,146 @@
+.ProductsTable .ProductsTableLeft
+{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.ProductsTable .ProductsTableRight
+{
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    margin: 0 0 0 10px;
+    border: double gray 6px;
+    min-width: 475px;
+}
+
+/*.ProductsTable .ProductsMainDiv
+{
+    
+}*/
+
+.ProductsTable .ProductsTableLeft .ProductsTableOne
+{
+    border: double gray 3px;
+    padding: 3px 7px;
+    background-color: #F0F0F0;
+    border-spacing: inherit;
+}
+
+.ProductsTable .ProductsTableLeft .AddButton
+{
+    margin-top: 10px;
+}.ProdHeader
+{
+    background-color: #e0dbdb;
+}
+
+.ProdHeader td
+{
+    text-align: center;
+}.Prod:hover
+{
+    background-color: #FFFFFF;
+}
+
+.Prod .Id
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.Prod .Name
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.Prod .Cost
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.Prod .ImgTd
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.Prod .Count
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.Prod .ImgTd .Img
+{
+    padding: 5px;
+    cursor: pointer;
+}
+
+.SelectedProd
+{
+    background-color: #f7cd7f;
+}
+
+.SelectedProd .Id
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.SelectedProd .Name
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.SelectedProd .Cost
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.SelectedProd .ImgTd
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+.SelectedProd .Count
+{
+    padding: 3px 7px;
+    text-align: center;
+}
+
+.SelectedProd .ImgTd .Img
+{
+    padding: 5px;
+    cursor: pointer;
+}
+
+.Control input
+{
+    margin-right: 10px;
+}.ProductAddEdit .PrParam
+{
+    vertical-align: top;
+}
+
+.ProductAddEdit .PrParam div
+{
+    display: inline-block;
+}
+
+.ProductAddEdit .PrParam .PrKey
+{
+    width: 90px;
+}
+
+.ProductAddEdit .PrParam .PrValid
+{
+    color: red;
+    padding-left: 5px;
+}
+
+
+.ProductAddEdit .SaveButton
+{
+    margin-right: 8px;
+}
+/*# sourceMappingURL=bundle.css.map*/

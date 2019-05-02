@@ -1,0 +1,33 @@
+.ProductsTable .ProductsTableLeft
+{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.ProductsTable .ProductsTableRight
+{
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    margin: 0 0 0 10px;
+    border: double gray 6px;
+    min-width: 475px;
+}
+
+/*.ProductsTable .ProductsMainDiv
+{
+    
+}*/
+
+.ProductsTable .ProductsTableLeft .ProductsTableOne
+{
+    border: double gray 3px;
+    padding: 3px 7px;
+    background-color: #F0F0F0;
+    border-spacing: inherit;
+}
+
+.ProductsTable .ProductsTableLeft .AddButton
+{
+    margin-top: 10px;
+}
