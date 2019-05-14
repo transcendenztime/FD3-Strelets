@@ -27,12 +27,12 @@ class MobileClient extends React.PureComponent {
   };
 
   //редактирование клиента
-  editClient = (EO) => {
+  editClient = () => {
     mobileEvents.emit('EEditClient',this.props.info.id);
   }
 
   //удаление клмента
-  deleteRow = (EO) => {
+  deleteRow = () => {
     if(confirm("Удалить товар?"))
     {
       //this.props.cbDeleteRow(this.props.id);
@@ -45,17 +45,6 @@ class MobileClient extends React.PureComponent {
     console.log("MobileClient id="+this.state.info.id+" render");
     
     return (
-      /*<div className='MobileClient'>
-        <span className='MobileClientFIO'>{this.state.info.clientF}</span>
-        <span className='MobileClientFIO'>{this.state.info.clientI}</span>
-        <span className='MobileClientFIO'>{this.state.info.clientO}</span>
-        {
-          (this.state.info.balance>=0)
-          ?<span className='MobileClientBalance MobileClientBalanceActive'>аккаунт активен</span>
-          :<span className='MobileClientBalance MobileClientBalanceBlocked'>аккаунт блокирован</span>
-        }
-        <span className='MobileClientBalance'>{this.state.info.balance}</span>
-      </div>*/
       <tr className="MobileClient">
         <td className='Str'>{this.state.info.clientF}</td>
         <td className='Str'>{this.state.info.clientI}</td>
@@ -73,19 +62,6 @@ class MobileClient extends React.PureComponent {
     );
 
   }
-
-  /*render() {
-
-    console.log("MobileClient id="+this.state.info.id+" render");
-    
-    return (
-      <div className='MobileClient'>
-        <span className='MobileClientBalance'>{this.state.info.balance}</span>
-        <span className='MobileClientFIO'>{this.state.info.fio}</span>
-      </div>
-    );
-
-  }*/
 
 }
 
