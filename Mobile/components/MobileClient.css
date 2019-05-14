@@ -1,13 +1,29 @@
-﻿div.MobileClient
+﻿.MobileClient
 {
   padding: 2px 0;
 }
 
-span.MobileClientBalance
+/*.MobileClient .Str
 {
-  width: 30px;
+  padding: 5px 7px;
+}*/
+
+/*.MobileClient .Str
+{
+  padding: 5px 7px;
+}*/
+
+.MobileCompanyClients thead tr td
+{
   font-weight: bold;
-  text-align: right;
+}
+
+.MobileClientBalance
+{
+  /*width: 30px;*/
+  font-weight: bold;
+  /*text-align: right;
+  padding: 5px 7px;*/
 }
 
 span.MobileClientFIO
@@ -15,12 +31,12 @@ span.MobileClientFIO
   margin-right: 30px;
 }
 
-span.MobileClientBalanceActive 
+.MobileClientBalanceActive 
 {
-  color: green;
+  background-color: green;
 }
 
-span.MobileClientBalanceBlocked
+.MobileClientBalanceBlocked
 {
-  color: red;
+  background-color: red;
 }

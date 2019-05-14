@@ -1,9 +1,40 @@
 ﻿.MobileCompany
 {
-  border: double gray 3px;
-  width: 480px;
+  /*border: double gray 3px;
+  width: 680px;*/
   padding: 3px 7px;
-  background-color: lightyellow;
+  /*background-color: lightyellow;*/
+}
+
+.MobileCompanyClients
+{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.TableRight
+{
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    margin: 0 0 0 10px;
+    border: double gray 6px;
+    min-width: 475px;
+}
+
+.MobileCompanyClients table tr
+{
+  border-top: 1px solid gray;
+}
+
+.MobileCompanyClients table tr td
+{
+  padding: 10px 30px;
+}
+
+.MobileCompanyClients table
+{
+  border-collapse: collapse; 
 }
 
 .MobileCompanyName
@@ -13,5 +44,5 @@
 
 .MobileCompanyClients
 {
-  padding-top: 5px;
+  padding-top: 20px;
 }
