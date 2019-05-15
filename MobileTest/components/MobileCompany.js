@@ -11,7 +11,7 @@ import './MobileCompany.css';
 class MobileCompany extends React.PureComponent {
 
   static propTypes = {
-    name: PropTypes.string.isRequired,
+    //name: PropTypes.string.isRequired,
     clients:PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -24,7 +24,7 @@ class MobileCompany extends React.PureComponent {
   };
 
   state = {
-    name: this.props.name,
+    //name: this.props.name,
     clients: this.props.clients,
     clientToEdit: null,
     //mode: 0 - только таблица
@@ -131,13 +131,13 @@ class MobileCompany extends React.PureComponent {
     this.setState( {mode:0} );
   }
 
-  setName1 = () => {
+  /*setName1 = () => {
     this.setState({name:'МТС'});
   };
 
   setName2 = () => {
     this.setState({name:'Velcom'});
-  };
+  };*/
 
   render() {
 
@@ -164,13 +164,15 @@ class MobileCompany extends React.PureComponent {
 
     return (
       <div className='MobileCompany'>
+        {/*
         <input type="button" value="МТС" onClick={this.setName1} />
         <input type="button" value="Velcom" onClick={this.setName2} />
         <div className="MobileCompanyName">Компания &laquo;{this.state.name}&raquo;</div>
+        */}
         <div className="FilterButtons">
-          <button onClick={this.clientsFilterAll}>Все</button>
-          <button onClick={this.clientsFilterActive}>Активные</button>
-          <button onClick={this.clientsFilterBlocked}>Заблокированные</button>
+          <button className="FilterAll" onClick={this.clientsFilterAll}>Все</button>
+          <button className="FilterActive" onClick={this.clientsFilterActive}>Активные</button>
+          <button className="FilterBlocked" onClick={this.clientsFilterBlocked}>Заблокированные</button>
         </div>
         <div className="MobileCompanyClients">
           <table>

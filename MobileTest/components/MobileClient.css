@@ -1,0 +1,29 @@
+﻿.MobileClient
+{
+  padding: 2px 0;
+}
+
+.MobileCompanyClients thead tr td
+{
+  font-weight: bold;
+}
+
+.MobileClientBalance
+{
+  font-weight: bold;
+}
+
+span.MobileClientFIO
+{
+  margin-right: 30px;
+}
+
+.MobileClientBalanceActive 
+{
+  background-color: green;
+}
+
+.MobileClientBalanceBlocked
+{
+  background-color: red;
+}
