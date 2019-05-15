@@ -113,7 +113,7 @@ class ClientAddEdit extends React.PureComponent {
                     <div className="ClVal"><input defaultValue="" ref={this.setClientORef}/></div>
                     </div>
                     <div className="ClParam">
-                    <div className="ClKey">Количество</div>
+                    <div className="ClKey">Баланс</div>
                     <div className="ClVal"><input defaultValue="" ref={this.setBalanceRef}/></div>
                     </div>
                     <input className="SaveButton" type="button" value="Добавить" onClick={this.add}/>

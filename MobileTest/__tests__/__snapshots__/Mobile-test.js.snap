@@ -8,19 +8,16 @@ exports[`тестируем MobileCompany (добавление клиента) 
     className="FilterButtons"
   >
     <button
-      className="FilterAll"
       onClick={[Function]}
     >
       Все
     </button>
     <button
-      className="FilterActive"
       onClick={[Function]}
     >
       Активные
     </button>
     <button
-      className="FilterBlocked"
       onClick={[Function]}
     >
       Заблокированные
@@ -258,6 +255,1281 @@ exports[`тестируем MobileCompany (добавление клиента) 
 </div>
 `;
 
+exports[`тестируем MobileCompany (добавление клиента) 2`] = `
+<div
+  className="MobileCompany"
+>
+  <div
+    className="FilterButtons"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Все
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Активные
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Заблокированные
+    </button>
+  </div>
+  <div
+    className="MobileCompanyClients"
+  >
+    <table>
+      <thead>
+        <tr
+          className="ClientsHeader"
+        >
+          <td>
+            Фамилия
+          </td>
+          <td>
+            Имя
+          </td>
+          <td>
+            Отчество
+          </td>
+          <td>
+            Баланс
+          </td>
+          <td>
+            Статус
+          </td>
+          <td>
+            Редактировать
+          </td>
+          <td>
+            Удалить
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Иванов
+          </td>
+          <td
+            className="Str"
+          >
+            Иван
+          </td>
+          <td
+            className="Str"
+          >
+            Иванович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            200
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Сидоров
+          </td>
+          <td
+            className="Str"
+          >
+            Сидор
+          </td>
+          <td
+            className="Str"
+          >
+            Сидорович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            250
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Петров
+          </td>
+          <td
+            className="Str"
+          >
+            Петр
+          </td>
+          <td
+            className="Str"
+          >
+            Петрович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            180
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Григорьев
+          </td>
+          <td
+            className="Str"
+          >
+            Григорий
+          </td>
+          <td
+            className="Str"
+          >
+            Григорьевич
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            -220
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceBlocked"
+          >
+            blocked
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Пантелеев
+          </td>
+          <td
+            className="Str"
+          >
+            Пантелей
+          </td>
+          <td
+            className="Str"
+          >
+            Пантелеевич
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            220
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input
+      className="AddButton"
+      onClick={[Function]}
+      type="button"
+      value="Добавить клиента"
+    />
+  </div>
+</div>
+`;
+
+exports[`тестируем MobileCompany (редактирование клиента) 1`] = `
+<div
+  className="MobileCompany"
+>
+  <div
+    className="FilterButtons"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Все
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Активные
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Заблокированные
+    </button>
+  </div>
+  <div
+    className="MobileCompanyClients"
+  >
+    <table>
+      <thead>
+        <tr
+          className="ClientsHeader"
+        >
+          <td>
+            Фамилия
+          </td>
+          <td>
+            Имя
+          </td>
+          <td>
+            Отчество
+          </td>
+          <td>
+            Баланс
+          </td>
+          <td>
+            Статус
+          </td>
+          <td>
+            Редактировать
+          </td>
+          <td>
+            Удалить
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Иванов
+          </td>
+          <td
+            className="Str"
+          >
+            Иван
+          </td>
+          <td
+            className="Str"
+          >
+            Иванович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            200
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Сидоров
+          </td>
+          <td
+            className="Str"
+          >
+            Сидор
+          </td>
+          <td
+            className="Str"
+          >
+            Сидорович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            250
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Петров
+          </td>
+          <td
+            className="Str"
+          >
+            Петр
+          </td>
+          <td
+            className="Str"
+          >
+            Петрович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            180
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Григорьев
+          </td>
+          <td
+            className="Str"
+          >
+            Григорий
+          </td>
+          <td
+            className="Str"
+          >
+            Григорьевич
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            -220
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceBlocked"
+          >
+            blocked
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input
+      className="AddButton"
+      onClick={[Function]}
+      type="button"
+      value="Добавить клиента"
+    />
+  </div>
+</div>
+`;
+
+exports[`тестируем MobileCompany (редактирование клиента) 2`] = `
+<div
+  className="MobileCompany"
+>
+  <div
+    className="FilterButtons"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Все
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Активные
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Заблокированные
+    </button>
+  </div>
+  <div
+    className="MobileCompanyClients"
+  >
+    <table>
+      <thead>
+        <tr
+          className="ClientsHeader"
+        >
+          <td>
+            Фамилия
+          </td>
+          <td>
+            Имя
+          </td>
+          <td>
+            Отчество
+          </td>
+          <td>
+            Баланс
+          </td>
+          <td>
+            Статус
+          </td>
+          <td>
+            Редактировать
+          </td>
+          <td>
+            Удалить
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Иванов
+          </td>
+          <td
+            className="Str"
+          >
+            Иван
+          </td>
+          <td
+            className="Str"
+          >
+            Иванович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            200
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Сидоров
+          </td>
+          <td
+            className="Str"
+          >
+            Сидор
+          </td>
+          <td
+            className="Str"
+          >
+            Сидорович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            250
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Павлов
+          </td>
+          <td
+            className="Str"
+          >
+            Павел
+          </td>
+          <td
+            className="Str"
+          >
+            Павлович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            220
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Григорьев
+          </td>
+          <td
+            className="Str"
+          >
+            Григорий
+          </td>
+          <td
+            className="Str"
+          >
+            Григорьевич
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            -220
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceBlocked"
+          >
+            blocked
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input
+      className="AddButton"
+      onClick={[Function]}
+      type="button"
+      value="Добавить клиента"
+    />
+  </div>
+</div>
+`;
+
+exports[`тестируем MobileCompany (удаление клиента) 1`] = `
+<div
+  className="MobileCompany"
+>
+  <div
+    className="FilterButtons"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Все
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Активные
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Заблокированные
+    </button>
+  </div>
+  <div
+    className="MobileCompanyClients"
+  >
+    <table>
+      <thead>
+        <tr
+          className="ClientsHeader"
+        >
+          <td>
+            Фамилия
+          </td>
+          <td>
+            Имя
+          </td>
+          <td>
+            Отчество
+          </td>
+          <td>
+            Баланс
+          </td>
+          <td>
+            Статус
+          </td>
+          <td>
+            Редактировать
+          </td>
+          <td>
+            Удалить
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Иванов
+          </td>
+          <td
+            className="Str"
+          >
+            Иван
+          </td>
+          <td
+            className="Str"
+          >
+            Иванович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            200
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Сидоров
+          </td>
+          <td
+            className="Str"
+          >
+            Сидор
+          </td>
+          <td
+            className="Str"
+          >
+            Сидорович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            250
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Петров
+          </td>
+          <td
+            className="Str"
+          >
+            Петр
+          </td>
+          <td
+            className="Str"
+          >
+            Петрович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            180
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Григорьев
+          </td>
+          <td
+            className="Str"
+          >
+            Григорий
+          </td>
+          <td
+            className="Str"
+          >
+            Григорьевич
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            -220
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceBlocked"
+          >
+            blocked
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input
+      className="AddButton"
+      onClick={[Function]}
+      type="button"
+      value="Добавить клиента"
+    />
+  </div>
+</div>
+`;
+
+exports[`тестируем MobileCompany (удаление клиента) 2`] = `
+<div
+  className="MobileCompany"
+>
+  <div
+    className="FilterButtons"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Все
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Активные
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Заблокированные
+    </button>
+  </div>
+  <div
+    className="MobileCompanyClients"
+  >
+    <table>
+      <thead>
+        <tr
+          className="ClientsHeader"
+        >
+          <td>
+            Фамилия
+          </td>
+          <td>
+            Имя
+          </td>
+          <td>
+            Отчество
+          </td>
+          <td>
+            Баланс
+          </td>
+          <td>
+            Статус
+          </td>
+          <td>
+            Редактировать
+          </td>
+          <td>
+            Удалить
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Иванов
+          </td>
+          <td
+            className="Str"
+          >
+            Иван
+          </td>
+          <td
+            className="Str"
+          >
+            Иванович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            200
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Петров
+          </td>
+          <td
+            className="Str"
+          >
+            Петр
+          </td>
+          <td
+            className="Str"
+          >
+            Петрович
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            180
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceActive"
+          >
+            active
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+        <tr
+          className="MobileClient"
+        >
+          <td
+            className="Str"
+          >
+            Григорьев
+          </td>
+          <td
+            className="Str"
+          >
+            Григорий
+          </td>
+          <td
+            className="Str"
+          >
+            Григорьевич
+          </td>
+          <td
+            className="MobileClientBalance"
+          >
+            -220
+          </td>
+          <td
+            className="MobileClientBalance MobileClientBalanceBlocked"
+          >
+            blocked
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Редактировать"
+            />
+          </td>
+          <td
+            className="Control"
+          >
+            <input
+              onClick={[Function]}
+              type="button"
+              value="Удалить"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input
+      className="AddButton"
+      onClick={[Function]}
+      type="button"
+      value="Добавить клиента"
+    />
+  </div>
+</div>
+`;
+
 exports[`тестируем MobileCompany (фильтрация клиентов) 1`] = `
 <div
   className="MobileCompany"
@@ -266,19 +1538,16 @@ exports[`тестируем MobileCompany (фильтрация клиентов
     className="FilterButtons"
   >
     <button
-      className="FilterAll"
       onClick={[Function]}
     >
       Все
     </button>
     <button
-      className="FilterActive"
       onClick={[Function]}
     >
       Активные
     </button>
     <button
-      className="FilterBlocked"
       onClick={[Function]}
     >
       Заблокированные
@@ -524,19 +1793,16 @@ exports[`тестируем MobileCompany (фильтрация клиентов
     className="FilterButtons"
   >
     <button
-      className="FilterAll"
       onClick={[Function]}
     >
       Все
     </button>
     <button
-      className="FilterActive"
       onClick={[Function]}
     >
       Активные
     </button>
     <button
-      className="FilterBlocked"
       onClick={[Function]}
     >
       Заблокированные
@@ -735,19 +2001,16 @@ exports[`тестируем MobileCompany (фильтрация клиентов
     className="FilterButtons"
   >
     <button
-      className="FilterAll"
       onClick={[Function]}
     >
       Все
     </button>
     <button
-      className="FilterActive"
       onClick={[Function]}
     >
       Активные
     </button>
     <button
-      className="FilterBlocked"
       onClick={[Function]}
     >
       Заблокированные
@@ -852,19 +2115,16 @@ exports[`тестируем MobileCompany (фильтрация клиентов
     className="FilterButtons"
   >
     <button
-      className="FilterAll"
       onClick={[Function]}
     >
       Все
     </button>
     <button
-      className="FilterActive"
       onClick={[Function]}
     >
       Активные
     </button>
     <button
-      className="FilterBlocked"
       onClick={[Function]}
     >
       Заблокированные

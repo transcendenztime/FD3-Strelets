@@ -80,7 +80,7 @@ class MobileCompany extends React.PureComponent {
       newClients[editIndex] = cliendData;
       changed = true;
     }
-    console.log(cliendData);
+    //console.log(cliendData);
     
     this.setState({clientToEdit: null,
       mode: 0,
@@ -170,9 +170,9 @@ class MobileCompany extends React.PureComponent {
         <div className="MobileCompanyName">Компания &laquo;{this.state.name}&raquo;</div>
         */}
         <div className="FilterButtons">
-          <button className="FilterAll" onClick={this.clientsFilterAll}>Все</button>
-          <button className="FilterActive" onClick={this.clientsFilterActive}>Активные</button>
-          <button className="FilterBlocked" onClick={this.clientsFilterBlocked}>Заблокированные</button>
+          <button onClick={this.clientsFilterAll}>Все</button>
+          <button onClick={this.clientsFilterActive}>Активные</button>
+          <button onClick={this.clientsFilterBlocked}>Заблокированные</button>
         </div>
         <div className="MobileCompanyClients">
           <table>
