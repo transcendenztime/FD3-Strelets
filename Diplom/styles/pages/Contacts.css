@@ -1,0 +1,158 @@
+.contacts-map {
+    width: 100%;
+}
+.content__contacts {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.feedback-form__container {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.feedback-form__container div {
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.feedback-input {
+	width: 200px;
+	height: 30px;
+    padding-left: 5px;
+	line-height: 14px;
+	font-size: 14px;
+	border: 1px solid #dbdbdb;
+	border-radius: 3px;
+	outline: none;
+}
+
+.feedback-textarea {    
+	min-width: 200px;
+	max-width: 800px;
+	width: 800px;
+	min-height: 30px;
+	max-height: 400px; 
+	height: 100px;
+	line-height: 30px;
+	padding-left: 5px;
+	font-size: 14px;
+	border: 1px solid #dbdbdb;
+	border-radius: 3px;
+    outline: none;
+    color: #888;
+}
+.contacts-title {
+	color: #888;
+	margin-top: 40px;
+	text-indent: 20px;
+}
+
+
+.feedback-submit-container{
+	position: relative;
+	width: 206px;
+	height: 56px;
+	background-color: #0d897f;
+	border-radius: 3px;
+	margin: auto;
+}
+.feedback-submit{
+	width: 200px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	background-color: #0d897f;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	border: 3px solid white;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	border-radius: 3px;
+}
+.feedback-submit:hover, .feedback-submit:active {
+	background-color: white;
+	color: #0d897f;		
+	font-size: 20px;
+	font-weight: bold;	
+}
+
+
+@media (max-width: 1280px) { 
+    
+	.feedback-textarea { 
+		max-width: 550px;
+		width: 550px;
+	}
+	
+}
+
+@media (max-width: 668px) {
+	.contacts-map {
+		height: 50%;
+	}
+	.feedback-textarea {
+		max-width: 80%;
+		width: 80%;
+	}
+	.content__contacts {
+		width: 100%;
+	}
+	.text {
+		font-size: 16px;
+	}
+
+	.feedback-submit-container{
+		width: 156px;
+		height: 46px;
+	}
+	.feedback-submit{
+		width: 150px;
+		height: 40px;
+		font-size: 16px;
+	}
+	.feedback-submit:hover, .feedback-submit:active {
+		font-size: 16px;	
+	}
+}
+
+@media (max-width: 340px) {
+    .contacts-title {
+        font-size: 14px;
+	}
+	.feedback-textarea {
+		font-size: 12px;
+		line-height: 12px;
+	}
+	.feedback-input {
+		font-size: 12px;
+		line-height: 12px;
+	}
+
+	.page-subtitle {
+		font-size: 16px;
+	}
+	.text {
+		font-size: 14px;
+	}
+	
+
+	.feedback-submit-container{
+		width: 124px;
+		height: 34px;
+	}
+	.feedback-submit{
+		width: 120px;
+		height: 30px;
+		font-size: 12px;
+		border: 2px solid white;
+		top: 2px;
+		left: 2px;
+	}
+	.feedback-submit:hover, .feedback-submit:active {
+		font-size: 12px;	
+	}
+}

@@ -1,0 +1,37 @@
+.order-table {
+    margin: 30px 0;
+    border: 1px solid #dbdbdb;
+    border-collapse: collapse;
+}
+
+.order-table tr {
+    border: 1px solid #dbdbdb;
+}
+.order-table th {
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #dbdbdb;
+}
+.order-table td {
+    width: 50%;
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+@media (max-width: 680px) {
+    .order-table tr {
+        display: flex;
+        flex-direction: column;
+    }
+    .order-table td {
+        width: 100%;
+        font-size: 14px;       
+        line-height: 20px;
+    }
+    .order-table tr:first-child th:not(:first-child) {
+        display: none;
+    }
+}

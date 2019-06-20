@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`внешний вид и работа PaginationPage 1`] = `
+<div
+  className="catalogue page"
+>
+  <div
+    className="products-container"
+  >
+    <div
+      className="product-wrap"
+    >
+      <h3>
+        <a
+          aria-current={null}
+          className="product-title"
+          href="/catalogue/semena-ovoshchey/1"
+          onClick={[Function]}
+          style={undefined}
+        >
+          Томат Гранатовая капля
+        </a>
+      </h3>
+      <a
+        aria-current={null}
+        className="product-title product-img-container"
+        href="/catalogue/semena-ovoshchey/1"
+        onClick={[Function]}
+        style={undefined}
+      >
+        <img
+          className="product-img"
+          src="./img/ed940bf6db9540b843b64bacabbae4ae.jpg"
+        />
+      </a>
+      <p>
+        1.32 руб.
+      </p>
+      <div
+        className="addCart-block"
+      >
+        <input
+          className="addQty_button"
+          defaultValue={1}
+          min="1"
+          step="1"
+          title="Кол-во"
+          type="number"
+        />
+        <button
+          className="addCart_button"
+          onClick={[Function]}
+          title="Добавить в корзину"
+        >
+          <i
+            className="fas fa-shopping-cart"
+          />
+        </button>
+        <div
+          className="invisibleAddSpinner"
+        >
+          <i
+            className="fa fa-spinner fa-spin fa-fw"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="product-wrap"
+    >
+      <h3>
+        <a
+          aria-current={null}
+          className="product-title"
+          href="/catalogue/semena-ovoshchey/2"
+          onClick={[Function]}
+          style={undefined}
+        >
+          Свекла Смуглянка
+        </a>
+      </h3>
+      <a
+        aria-current={null}
+        className="product-title product-img-container"
+        href="/catalogue/semena-ovoshchey/2"
+        onClick={[Function]}
+        style={undefined}
+      >
+        <img
+          className="product-img"
+          src="./img/f19a9bbfa325e1ae0b3e6bd185602826.jpg"
+        />
+      </a>
+      <p>
+        0.99 руб.
+      </p>
+      <div
+        className="addCart-block"
+      >
+        <input
+          className="addQty_button"
+          defaultValue={1}
+          min="1"
+          step="1"
+          title="Кол-во"
+          type="number"
+        />
+        <button
+          className="addCart_button"
+          onClick={[Function]}
+          title="Добавить в корзину"
+        >
+          <i
+            className="fas fa-shopping-cart"
+          />
+        </button>
+        <div
+          className="invisibleAddSpinner"
+        >
+          <i
+            className="fa fa-spinner fa-spin fa-fw"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`внешний вид и работа PaginationPage 2`] = `
+<div
+  className="catalogue page"
+>
+  <div
+    className="products-container"
+  >
+    <div
+      className="product-wrap"
+    >
+      <h3>
+        <a
+          aria-current={null}
+          className="product-title"
+          href="/catalogue/semena-ovoshchey/1"
+          onClick={[Function]}
+          style={undefined}
+        >
+          Томат Гранатовая капля
+        </a>
+      </h3>
+      <a
+        aria-current={null}
+        className="product-title product-img-container"
+        href="/catalogue/semena-ovoshchey/1"
+        onClick={[Function]}
+        style={undefined}
+      >
+        <img
+          className="product-img"
+          src="./img/ed940bf6db9540b843b64bacabbae4ae.jpg"
+        />
+      </a>
+      <p>
+        1.32 руб.
+      </p>
+      <div
+        className="addCart-block"
+      >
+        <input
+          className="addQty_button"
+          defaultValue={1}
+          min="1"
+          step="1"
+          title="Кол-во"
+          type="number"
+        />
+        <button
+          className="addCart_button"
+          onClick={[Function]}
+          title="Добавить в корзину"
+        >
+          <i
+            className="fas fa-shopping-cart"
+          />
+        </button>
+        <div
+          className="invisibleAddSpinner"
+        >
+          <i
+            className="fa fa-spinner fa-spin fa-fw"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="product-wrap"
+    >
+      <h3>
+        <a
+          aria-current={null}
+          className="product-title"
+          href="/catalogue/semena-ovoshchey/2"
+          onClick={[Function]}
+          style={undefined}
+        >
+          Свекла Смуглянка
+        </a>
+      </h3>
+      <a
+        aria-current={null}
+        className="product-title product-img-container"
+        href="/catalogue/semena-ovoshchey/2"
+        onClick={[Function]}
+        style={undefined}
+      >
+        <img
+          className="product-img"
+          src="./img/f19a9bbfa325e1ae0b3e6bd185602826.jpg"
+        />
+      </a>
+      <p>
+        0.99 руб.
+      </p>
+      <div
+        className="addCart-block"
+      >
+        <input
+          className="addQty_button"
+          defaultValue={1}
+          min="1"
+          step="1"
+          title="Кол-во"
+          type="number"
+        />
+        <button
+          className="addCart_button"
+          onClick={[Function]}
+          title="Добавить в корзину"
+        >
+          <i
+            className="fas fa-shopping-cart"
+          />
+        </button>
+        <div
+          className="invisibleAddSpinner"
+        >
+          <i
+            className="fa fa-spinner fa-spin fa-fw"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

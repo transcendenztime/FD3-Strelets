@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`внешний вид и работа PaginationItem 1`] = `
+<li
+  className="pagination-item"
+>
+  <a
+    aria-current={null}
+    className="activePage"
+    href="/catalogue"
+    onClick={[Function]}
+    style={undefined}
+  >
+    1
+  </a>
+</li>
+`;
+
+exports[`внешний вид и работа PaginationItem 2`] = `
+<li
+  className="pagination-item"
+>
+  <a
+    aria-current={null}
+    className={null}
+    href="/catalogue/category/5page"
+    onClick={[Function]}
+    style={undefined}
+  >
+    5
+  </a>
+</li>
+`;

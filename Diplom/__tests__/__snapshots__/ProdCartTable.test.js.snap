@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`внешний вид ProdCartTable 1`] = `
+<tr>
+  <td
+    className="td_delButton"
+  >
+    <input
+      className="delProd-button"
+      onClick={[Function]}
+      title="УДАЛИТЬ"
+      type="button"
+      value="×"
+    />
+  </td>
+  <td
+    className="td_img"
+  >
+    <img
+      className="cart_img "
+      src="./img/ed940bf6db9540b843b64bacabbae4ae.jpg"
+    />
+  </td>
+  <td
+    className="td_prodName"
+  >
+    <a
+      aria-current={null}
+      className="cart_prodName "
+      href="/catalogue/Семена овощей/1"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Томат Гранатовая капля
+    </a>
+  </td>
+  <td
+    className="td_prodPrice"
+  >
+    <div
+      className="cart_prodPrice"
+    >
+      1.32 руб.
+    </div>
+  </td>
+  <td
+    className="td_qty"
+  >
+    <div
+      className="CounterButton"
+    >
+      <input
+        className="prodQty-button"
+        defaultValue={1}
+        min="0"
+        onChange={[Function]}
+        step="1"
+        title="Кол-во"
+        type="number"
+      />
+    </div>
+  </td>
+  <td
+    className="td_sum"
+  >
+    <div
+      className="cart_prodPrice"
+    >
+      1.32 руб.
+    </div>
+  </td>
+</tr>
+`;

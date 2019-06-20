@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`внешний вид Logo 1`] = `
+<a
+  aria-current={null}
+  className="header__logo"
+  href="/"
+  onClick={[Function]}
+  style={undefined}
+>
+  <div
+    className="header__logo-text"
+  >
+    Долина
+  </div>
+  <div
+    className="header__logo-span"
+  >
+    Растений
+  </div>
+</a>
+`;

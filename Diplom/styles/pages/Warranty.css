@@ -1,0 +1,27 @@
+/*.about-list {
+    list-style-type: square;
+}
+.about-list li {
+    margin: 30px 0;
+}*/
+
+@media (max-width: 1100px) { 
+   /* .about-list li  {
+        font-size: 16px;
+    }*/
+    .description {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 340px) {
+    .main .content {
+        padding: 0 10px 10px;
+    }
+    /*.about-list li  {
+        font-size: 12px;
+    }
+    .about-list {
+        padding-inline-start: 10px;
+    }*/
+}

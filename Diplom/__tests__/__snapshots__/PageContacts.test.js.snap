@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`внешний вид PageContacts 1`] = `
+<div
+  className="contacts page"
+>
+  <h1
+    className="page-title"
+  >
+    Контакты:
+  </h1>
+  <div
+    className="breadcrumbs-container"
+  >
+    <a
+      aria-current={null}
+      className="breadcrumbs"
+      href="/"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Главная 
+    </a>
+    <span
+      className="breadcrumbs-arr"
+    >
+       → 
+    </span>
+    <a
+      aria-current={null}
+      className="breadcrumbs"
+      href="/contacts"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Контакты
+    </a>
+  </div>
+  <hr />
+  <div
+    className="content__contacts"
+  >
+    <h3
+      className="page-subtitle"
+    >
+       Время работы магазина:
+    </h3>
+    <p
+      className="text"
+    >
+      понедельник - пятница: с 9.00 до 18.00 
+    </p>
+    <h3
+      className="page-subtitle"
+    >
+       Адрес магазина:
+    </h3>
+    <p
+      className="text"
+    >
+      г. Минск, ул. Змитрока Бядули, 15
+    </p>
+    <h3
+      className="page-subtitle"
+    >
+       Телефон:
+    </h3>
+    <p
+      className="text"
+    >
+      +375 (33) 325-50-11
+    </p>
+    <p
+      className="text"
+    >
+      Прием заказов по телефону с 9.00 до 18.00
+    </p>
+    <p
+      className="text"
+    >
+      Заказы через сайт принимаются круглосуточно.
+    </p>
+  </div>
+  <h2
+    className="page-subtitle"
+  >
+     Карта проезда:
+  </h2>
+  <iframe
+    allowFullScreen={true}
+    className="contacts-map"
+    frameBorder="0"
+    height="450"
+    src="https://yandex.ru/map-widget/v1/?um=constructor%3A8d49deaeefa4b69aeec612972758a0dafd091fb16774e7a48873fbabbf0cca52&source=constructor"
+    width="600"
+  />
+  <div
+    className="contacts__feedback"
+  >
+    <h2
+      className="contacts-subtitle"
+    >
+      Обратная связь
+    </h2>
+    <hr />
+    <form
+      className="contacts__feedback-form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="feedback-form__container"
+      >
+        <div>
+          <label
+            className="contacts-title"
+            htmlFor="feedback-name"
+          >
+            Имя *
+          </label>
+          <br />
+          <input
+            className="feedback-input"
+            id="feedback-name"
+            name="feedback-name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="text"
+          />
+          <br />
+          <span
+            className="invisible"
+          >
+             * Обязательное поле
+          </span>
+          <span
+            className="invisible"
+          >
+             * Введите до 30 буквенных символов
+          </span>
+        </div>
+        <div>
+          <label
+            className="contacts-title"
+            htmlFor="feedback-email"
+          >
+            email
+          </label>
+          <br />
+          <input
+            className="feedback-input"
+            id="feedback-email"
+            name="feedback-email"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="email"
+          />
+          <br />
+          <span
+            className="invisible"
+          >
+             * Некорректный email 
+          </span>
+        </div>
+        <div>
+          <label
+            className="contacts-title"
+            htmlFor="feedback-tel"
+          >
+            Телефон *
+          </label>
+          <br />
+          <input
+            className="feedback-input"
+            id="feedback-tel"
+            name="feedback-tel"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="tel"
+          />
+          <br />
+          <span
+            className="invisible"
+          >
+             * Обязательное поле
+          </span>
+          <span
+            className="invisible"
+          >
+             * Некорректный номер телефона
+          </span>
+        </div>
+        <div>
+          <label
+            className="contacts-title"
+            htmlFor="feedback-text"
+          >
+            Комментарий *
+          </label>
+          <br />
+          <textarea
+            className="feedback-textarea"
+            id="feedback-text"
+            name="feedback-text"
+            onBlur={[Function]}
+            onChange={[Function]}
+          />
+          <br />
+          <span
+            className="invisible"
+          >
+             * Обязательное поле
+          </span>
+        </div>
+      </div>
+       
+      <br />
+      <div
+        className="feedback-submit-container"
+      >
+        <input
+          className="feedback-submit"
+          name="feedback-submit"
+          onClick={[Function]}
+          type="submit"
+          value="Отправить"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+`;

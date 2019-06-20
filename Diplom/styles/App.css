@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    color: #888;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    color: black;
+}
+
+.main {
+    max-width: 1170px;
+    margin: 20px auto 30px;
+    display: flex;
+
+}
+
+.main .nav-categories {
+    width: 30%;
+    max-width: 280px;
+}
+
+
+.content {
+    width: 90%;
+    padding: 0 40px 40px;
+    box-sizing: border-box;
+}
+
+
+.page > .page-title {
+    margin: 0;
+}
+.page-subtitle {
+	color: #333333;
+	margin-top: 40px;
+	text-indent: 20px;
+}
+.breadcrumbs-container {
+    padding: 0 20px 10px;
+}
+
+.breadcrumbs {
+    font-size: 14px;
+    text-decoration: none;
+    color: #888;
+}
+.breadcrumbs:hover {
+    color: #0d897f;
+}
+.breadcrumbs-arr {
+    padding: 5px;
+}
+
+.img-center
+{
+    text-align: center;
+}
+
+.img-center img
+{
+    width: 80%;
+}
+
+blockquote {
+    color: #383838;
+	padding: 10px 20px;
+    margin: 43px 0 45px;
+    min-height: 40px;
+    padding-left: 25px;
+    position: relative;
+    vertical-align: middle;
+    border: none;
+}
+
+blockquote:before {
+    bottom: 3px;
+    content: " ";
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 3px;
+    width: 3px;
+    background-color: #ddd;
+	background-color: #0b7c6b;
+}
+
+@media (max-width: 1100px) {
+    .content {
+        width: 70%;
+        padding: 10px;
+    }
+}
+@media (max-width: 840px) {
+    .content {
+        width: 90%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 340px) {
+    .page-title {
+        font-size: 26px;
+    }
+    .breadcrumbs {
+        font-size: 12px;
+    }
+}

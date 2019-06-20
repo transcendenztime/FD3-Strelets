@@ -1,0 +1,31 @@
+.productPage-container {
+    display: flex;
+    justify-content: start;
+    color: black;
+}
+.productPage-title {
+    width: 100%;
+    color: black;
+}
+.productPage-img-container {
+    
+    /*width: 300px;
+    height: 500px;*/
+    margin-right: 40px;
+}
+.productPage-img {
+    /*width: 100%;*/
+    width: 200px;
+}
+.productPage-price {
+    color: #0d897f;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+
+@media (max-width: 620px) {
+    .productPage-container {
+        flex-direction: column;
+    }
+}

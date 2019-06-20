@@ -1,0 +1,33 @@
+.invisibleAddSpinner {
+    display: none;
+}
+
+.visibleAddSpinner {
+    display: inline-block;
+    margin-left: 5px;
+    animation: visibleAddSpinner 1s forwards ease-in;
+}
+
+@keyframes visibleAddSpinner {
+    0% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+    80%{
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+    99%{
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(0);
+    }
+}
+
+.visibleAddSpinner .fa-spinner {
+    color: #0d897f;
+}

@@ -1,0 +1,310 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`внешний вид Footer 1`] = `
+<footer
+  className="footer"
+>
+  <div
+    className="footer_shadow"
+  />
+  <div
+    className="footer-nav"
+  >
+    <div
+      className="footer-nav__block footer-nav__block2"
+    >
+      <h3
+        className="footer-nav__title"
+      >
+        Информация
+      </h3>
+      <ul
+        className="main-menu"
+      >
+        <li>
+          <a
+            aria-current={null}
+            className="PageLink"
+            href="/"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Главная
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="PageLink catalogueLink"
+            href="/catalogue"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Каталог
+          </a>
+          <ul
+            className="category-menu main-menu"
+          >
+            <li>
+              <a
+                aria-current={null}
+                className="CategoryLink PageLink"
+                href="/catalogue/semena-ovoshchey"
+                onClick={[Function]}
+                style={undefined}
+              >
+                Семена овощей
+              </a>
+            </li>
+            <li>
+              <a
+                aria-current={null}
+                className="CategoryLink PageLink"
+                href="/catalogue/semena-cvetov"
+                onClick={[Function]}
+                style={undefined}
+              >
+                Семена цветов
+              </a>
+            </li>
+            <li>
+              <a
+                aria-current={null}
+                className="CategoryLink PageLink"
+                href="/catalogue/sazhency-roz"
+                onClick={[Function]}
+                style={undefined}
+              >
+                Саженцы роз
+              </a>
+            </li>
+            <li>
+              <a
+                aria-current={null}
+                className="CategoryLink PageLink"
+                href="/catalogue/lukovicy-i-klubnelukovicy-cvetov"
+                onClick={[Function]}
+                style={undefined}
+              >
+                Луковицы и клубнелуковицы цветов
+              </a>
+            </li>
+            <li>
+              <a
+                aria-current={null}
+                className="CategoryLink PageLink"
+                href="/catalogue/plodovye-derevya-i-kustarniki"
+                onClick={[Function]}
+                style={undefined}
+              >
+                Плодовые деревья и кустарники
+              </a>
+            </li>
+            <li>
+              <a
+                aria-current={null}
+                className="CategoryLink PageLink"
+                href="/catalogue/hvoynye-rasteniya"
+                onClick={[Function]}
+                style={undefined}
+              >
+                Хвойные растения
+              </a>
+            </li>
+            <li>
+              <a
+                aria-current={null}
+                className="CategoryLink PageLink"
+                href="/catalogue/dekorativnye-kustarniki"
+                onClick={[Function]}
+                style={undefined}
+              >
+                Декоративные кустарники
+              </a>
+            </li>
+            <li>
+              <a
+                aria-current={null}
+                className="CategoryLink PageLink"
+                href="/catalogue/rododendrony"
+                onClick={[Function]}
+                style={undefined}
+              >
+                Рододендроны
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="PageLink"
+            href="/warranty"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Гарантии
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="PageLink"
+            href="/partnership"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Сотрудничество
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="PageLink"
+            href="/contacts"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Контакты
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="PageLink"
+            href="/cart"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Корзина
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="footer-nav__block footer-nav__block1"
+    >
+      <h3
+        className="footer-nav__title"
+      >
+        Категории
+      </h3>
+      <ul
+        className="category-menu main-menu"
+      >
+        <li>
+          <a
+            aria-current={null}
+            className="CategoryLink PageLink"
+            href="/catalogue/semena-ovoshchey"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Семена овощей
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="CategoryLink PageLink"
+            href="/catalogue/semena-cvetov"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Семена цветов
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="CategoryLink PageLink"
+            href="/catalogue/sazhency-roz"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Саженцы роз
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="CategoryLink PageLink"
+            href="/catalogue/lukovicy-i-klubnelukovicy-cvetov"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Луковицы и клубнелуковицы цветов
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="CategoryLink PageLink"
+            href="/catalogue/plodovye-derevya-i-kustarniki"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Плодовые деревья и кустарники
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="CategoryLink PageLink"
+            href="/catalogue/hvoynye-rasteniya"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Хвойные растения
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="CategoryLink PageLink"
+            href="/catalogue/dekorativnye-kustarniki"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Декоративные кустарники
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={null}
+            className="CategoryLink PageLink"
+            href="/catalogue/rododendrony"
+            onClick={[Function]}
+            style={undefined}
+          >
+            Рододендроны
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="footer-nav__block footer-nav__block3"
+    >
+      <h3
+        className="footer-nav__title"
+      >
+        Контакты
+      </h3>
+      <p>
+        г. Минск, ул. Змитрока Бядули, 15
+      </p>
+      <p>
+        +375 (33) 325-50-11
+      </p>
+      <p>
+        Время работы 09:00-18:00 (Пн.-Пт.)
+      </p>
+    </div>
+  </div>
+  <div
+    className="footer-copyright"
+  >
+    2003 - 2019 Долина растений - садовый интернет-магазин саженцев, семян, луковиц и деревьев.
+  </div>
+</footer>
+`;

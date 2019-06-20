@@ -1,0 +1,29 @@
+.main-menu {    
+    list-style-type: none;
+}
+
+
+.PageLink {    
+	color: white;
+    text-decoration: none;
+    padding: 0 20px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.PageLink:hover {
+    animation: PageLink-hover .5s forwards;
+}
+@keyframes PageLink-hover {
+    0% {
+        color: white;
+    }
+    100% {
+        color: #112725;
+    }
+}
+
+.ActivePageLink {
+    font-weight: bold;
+    color: #112725;
+}

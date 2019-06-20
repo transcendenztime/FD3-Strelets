@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`внешний вид PagePartnership 1`] = `
+<div
+  className="partnership page"
+>
+  <h1
+    className="page-title"
+  >
+    О компании:
+  </h1>
+  <div
+    className="breadcrumbs-container"
+  >
+    <a
+      aria-current={null}
+      className="breadcrumbs"
+      href="/"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Главная 
+    </a>
+    <span>
+       → 
+    </span>
+    <a
+      aria-current={null}
+      className="breadcrumbs"
+      href="/partnership"
+      onClick={[Function]}
+      style={undefined}
+    >
+      Сотрудничество
+    </a>
+  </div>
+  <hr />
+  <section
+    className="description"
+  >
+    <blockquote>
+      <div>
+        Приглашаем Вас к взаимовыгодному сотрудничеству с нашей компанией.
+      </div>
+      <div>
+        Мы рады предложить Вам широкий ассортимент товаров по самым низким ценам.
+      </div>
+      <div>
+        На данный момент у нас более 5000 позиций.
+      </div>
+      <div>
+        Мы обеспечим индивидуальный подход, гибкую ценовую политику, наилучшее качество продукции.
+      </div>
+      <div>
+        По вопросам оптовых цен можно связаться по тел +375291643523.
+      </div>
+      <div>
+        или оставив заявку на наш электронный адрес: sadmir@bk.ru
+      </div>
+      <div>
+        Очень будем рады крепким и честным отношениям.
+      </div>
+      <div>
+        С Уважением! Долина Растений
+      </div>
+    </blockquote>
+  </section>
+</div>
+`;
