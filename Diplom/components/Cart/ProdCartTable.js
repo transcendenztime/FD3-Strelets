@@ -30,11 +30,14 @@ class ProdCartTable extends React.PureComponent {
   };
   
 
-  deleteProduct = () => {
-    
-    this.props.dispatch( prod_del(this.props.info.id) ); 
-    this.props.dispatch( sum_qty( - this.props.info.qty) );
-
+  deleteProduct = (e) => {
+    //анимация удаления товара из корзины
+    $( e.target.closest("tr") ).animate({
+      opacity: 0
+    }, 400, () => {
+      this.props.dispatch( prod_del(this.props.info.id) ); 
+      this.props.dispatch( sum_qty( - this.props.info.qty) );    
+    });
     delLocalStorage(this.props.info.id);
   }
 
@@ -43,7 +46,7 @@ class ProdCartTable extends React.PureComponent {
     //если количество стало равно "0", удаляем товар
     if(newQTY == 0)
     {
-      this.deleteProduct();
+      this.deleteProduct(e);
     }else{
 
       let newSum = round2(this.props.info.price * newQTY, 100)// округляем до вида 0,00

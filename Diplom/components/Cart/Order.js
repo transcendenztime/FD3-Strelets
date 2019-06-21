@@ -82,8 +82,13 @@ class Order extends React.PureComponent {
   };
 
   clearCart = () => {
-    this.props.dispatch( cart_clear() );
-    this.props.dispatch( qty_to_null() );
+    //анимация очистки корзины
+    $('.cart-table').animate({
+      opacity: 0
+    }, 400, () => {
+      this.props.dispatch( cart_clear() );
+      this.props.dispatch( qty_to_null() );
+    });    
     clearLocalStorage();
   }
 
