@@ -2,7 +2,7 @@ import { PRODUCTS_LOADING, PRODUCTS_ERROR, PRODUCTS_SET } from './productsAC';
 
 const initState={
 
-  status: 0, // 0 - ничего не началось, 1 - идёт загрузка, 2 - была ошибка, 3 - данные загружены
+  status: 0, // 0 - начальеное состояние, 1 - идёт загрузка, 2 - ошибка, 3 - данные загружены
   productsList: null,
 
 }

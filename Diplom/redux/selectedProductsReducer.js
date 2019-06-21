@@ -2,7 +2,7 @@ import { SUM_QTY, QTY_TO_NULL } from './cartAC';
 
 const initState = {
     
-  productsQTY: 0,
+  productsQTY: 0,// количество товаров в корзине
   
 }
   
