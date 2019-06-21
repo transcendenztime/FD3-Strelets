@@ -18,7 +18,7 @@ class PageCatalogue extends React.PureComponent {
   static propTypes = {
     products: PropTypes.object.isRequired,// получаем из redux
     prodFilter: PropTypes.object.isRequired,
-    page: PropTypes.number,//from Controller
+    page: PropTypes.number,//из Controller
   };
 
   componentDidMount() {
@@ -31,25 +31,23 @@ class PageCatalogue extends React.PureComponent {
       this.props.dispatch( productsLoadingAC() ); // переводим раздел products стора в состояние "загружается"
 
       isoFetch("../products.json")
-          .then( (response) => { // response - HTTP-ответ
-              if (!response.ok) {
-                  let Err = new Error("fetch error " + response.status);
-                  Err.userMessage = "Ошибка связи";
-                  throw Err;
-              }
-              else
-                  return response.json();
-          })
-          .then( (data) => {
-              this.props.dispatch( productsSetAC(data) ); // переводим раздел products стора в состояние "данные загружены"
-          })
-          .catch( (error) => {
-              console.error(error);
-              this.props.dispatch( productsErrorAC() ); // переводим раздел products стора в состояние "ошибка"
-            });
-        }
-
-    
+        .then( (response) => { // response - HTTP-ответ
+          if (!response.ok) {
+            let Err = new Error("fetch error " + response.status);
+            Err.userMessage = "Ошибка связи";
+            throw Err;
+          }
+          else
+            return response.json();
+        })
+        .then( (data) => {
+          this.props.dispatch( productsSetAC(data) ); // переводим раздел products стора в состояние "данные загружены"
+        })
+        .catch( (error) => {
+          console.error(error);
+            this.props.dispatch( productsErrorAC() ); // переводим раздел products стора в состояние "ошибка"
+        });
+    } 
   }
 
   componentWillUnmount() {

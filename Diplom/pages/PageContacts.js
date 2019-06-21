@@ -27,6 +27,7 @@ class PageContacts extends React.PureComponent {
   checkName = () => {
     let check = checkNameValue(this.state.name);
     this.setState( {errorName: check} );
+    return check;
   };
 
   changeEmail = (e)=> {
@@ -43,6 +44,7 @@ class PageContacts extends React.PureComponent {
   checkTel = () => {
     let check = checkTelValue(this.state.tel);
     this.setState( {errorTel: check} );
+    return check;
 	};
 	
   changeText = (e)=> {
@@ -51,14 +53,40 @@ class PageContacts extends React.PureComponent {
   checkText = () => {
     let check = checkTextValue(this.state.text);
     this.setState( {errorText: check} );
+    return check;
   };
 
   checkForm = (e) => {
-    this.checkName();
-    this.checkTel();
-    this.checkText();
+    let checkN = this.checkName();
+    let checkTel = this.checkTel();
+    let checkText = this.checkText();
 
-    if(this.state.errorName || this.state.errorEmail || this.state.errorTel || this.state.errorText) {
+    //if(this.state.errorName || this.state.errorEmail || this.state.errorTel || this.state.errorText) {
+    if(checkN!==0 || this.state.errorEmail || checkTel!==0 || checkText!==0) {
+      e.preventDefault();
+    }
+    else{
+      alert("Спасибо! Мы свяжемся с вами.");
+
+      let name = '';
+      let email = '';
+      let tel = '';
+      let text = '';
+      let errorName = 0; 
+      let errorEmail = 0; 
+      let errorTel = 0; 
+      let errorText = 0; 
+
+      this.setState({ name: '',
+        email: '',
+        tel: '',
+        text: '',
+        errorName: 0,
+        errorEmail: 0,
+        errorTel: 0,
+        errorText: 0
+      });
+    
       e.preventDefault();
     }
 	}
@@ -95,27 +123,27 @@ class PageContacts extends React.PureComponent {
 				<div className="contacts__feedback">
 					<h2 className="contacts-subtitle">Обратная связь</h2>
 					<hr />
-					<form className="contacts__feedback-form"  onSubmit = {this.checkForm}>
+					<form className="contacts__feedback-form"  >
 						<div className = "feedback-form__container">
 
 							<div>
 								<label htmlFor="feedback-name" className="contacts-title">Имя *</label><br />
-								<input type="text" name="feedback-name" id="feedback-name" className="feedback-input"
+								<input type="text" name="feedback-name" value={this.state.name} id="feedback-name" className="feedback-input"
 									onChange = {this.changeName} onBlur = {this.checkName} /><br />
 								<span className = {this.state.errorName == 1 ? "visible" : "invisible"}> * Обязательное поле</span>
-								<span className = {this.state.errorName == 2 ? "visible" : "invisible"}> * Введите до 30 буквенных символов</span>
+								<span className = {this.state.errorName == 2 ? "visible" : "invisible"}> * Введите до 30 букв</span>
 							</div>
 
 							<div>
 								<label htmlFor="feedback-email" className="contacts-title">email</label><br />
-								<input type="email" name="feedback-email" id="feedback-email" className="feedback-input"
+								<input type="email" name="feedback-email" value={this.state.email} id="feedback-email" className="feedback-input"
 									onChange = {this.changeEmail} onBlur = {this.checkEmail}  /><br />
 								<span className = {this.state.errorEmail == 2 ? "visible" : "invisible"}> * Некорректный email </span>
 							</div>
 							
 							<div>
 								<label htmlFor="feedback-tel" className="contacts-title">Телефон *</label><br />
-								<input type="tel" name="feedback-tel" id="feedback-tel" className="feedback-input"
+								<input type="tel" name="feedback-tel" value={this.state.tel} id="feedback-tel" className="feedback-input"
 									onChange = {this.changeTel} onBlur = {this.checkTel}  /><br />
 								<span className = {this.state.errorTel == 1 ? "visible" : "invisible"}> * Обязательное поле</span>
 								<span className = {this.state.errorTel == 2 ? "visible" : "invisible"}> * Некорректный номер телефона</span>
@@ -123,7 +151,7 @@ class PageContacts extends React.PureComponent {
 
 							<div>
 								<label htmlFor="feedback-text" className="contacts-title">Комментарий *</label><br />
-								<textarea name="feedback-text" id="feedback-text" className = "feedback-textarea"
+								<textarea name="feedback-text" value={this.state.text} id="feedback-text" className = "feedback-textarea"
 									onChange = {this.changeText} onBlur = {this.checkText}  ></textarea><br />										
 								<span className = {this.state.errorText == 1 ? "visible" : "invisible"}> * Обязательное поле</span>
 							</div>

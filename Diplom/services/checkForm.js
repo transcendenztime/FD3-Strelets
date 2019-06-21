@@ -40,7 +40,4 @@ const checkTextValue = function(text) {
     return 0
 }
 
-export {
-    checkNameValue, checkEmailValue, checkTelValue, checkTextValue
-
-};
+export { checkNameValue, checkEmailValue, checkTelValue, checkTextValue };

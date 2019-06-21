@@ -27,10 +27,12 @@ class PaginationPage extends React.PureComponent {
     let prodData;
     let pageArr = [];
 
+    let prodOnPage = 24;// столько товаров будет на странице, если больше - пагинация (24 - потому что кратно 2-м и 3-м)
+
     if(this.props.pagesQty == 1) {
       prodData = [];
-      let start = (this.props.page.page - 1) * 25; //по 25 продукта на странице
-      let end = this.props.page.page * 25;
+      let start = (this.props.page.page - 1) * prodOnPage; //по 24 товара на странице
+      let end = this.props.page.page * prodOnPage;
       for(let i = start; i < end; i++ ) {
           if(this.props.products[i])
             prodData.push(this.props.products[i]);
@@ -39,7 +41,7 @@ class PaginationPage extends React.PureComponent {
       let l = this.props.products.length;
 
       pageArr = [];
-      let pageQty = Math.ceil(l / 25);//по 25 продукта на странице
+      let pageQty = Math.ceil(l / prodOnPage);//по 24 товара на странице
       for(let i = 1; i <= pageQty; i++) {        
           pageArr.push(<PaginationItem key = {i} num = {i} startLink = {this.props.startLink} />)
         }

@@ -105,7 +105,6 @@ exports[`внешний вид PageContacts 1`] = `
     <hr />
     <form
       className="contacts__feedback-form"
-      onSubmit={[Function]}
     >
       <div
         className="feedback-form__container"
@@ -125,6 +124,7 @@ exports[`внешний вид PageContacts 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             type="text"
+            value=""
           />
           <br />
           <span
@@ -135,7 +135,7 @@ exports[`внешний вид PageContacts 1`] = `
           <span
             className="invisible"
           >
-             * Введите до 30 буквенных символов
+             * Введите до 30 букв
           </span>
         </div>
         <div>
@@ -153,6 +153,7 @@ exports[`внешний вид PageContacts 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             type="email"
+            value=""
           />
           <br />
           <span
@@ -176,6 +177,7 @@ exports[`внешний вид PageContacts 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             type="tel"
+            value=""
           />
           <br />
           <span
@@ -203,6 +205,7 @@ exports[`внешний вид PageContacts 1`] = `
             name="feedback-text"
             onBlur={[Function]}
             onChange={[Function]}
+            value=""
           />
           <br />
           <span

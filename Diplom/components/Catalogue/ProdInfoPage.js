@@ -94,11 +94,8 @@ class ProdInfoPage extends React.PureComponent {
 
       </div>            
     );
-
   }
-
 }
-
  
 const mapStateToProps = function (state) {
   // этому компоненту ничего не нужно из хранилища Redux

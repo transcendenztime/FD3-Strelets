@@ -56,7 +56,6 @@ class ProdCartTable extends React.PureComponent {
     }    
   }
   
-  
   render() {
 
     return (

@@ -49,7 +49,7 @@ class Order extends React.PureComponent {
   }
 
   changeDelivery = (e) => {
-        this.props.dispatch( delivery_chng(+e.target.value) );
+    this.props.dispatch( delivery_chng(+e.target.value) );
   }
 
   totalSum = 0;
@@ -85,9 +85,6 @@ class Order extends React.PureComponent {
     let checkN = this.checkName();
     let checkT = this.checkTel();
 
-    /*if(this.state.errorName || this.state.errorEmail || this.state.errorTel) {
-      e.preventDefault();
-    }*/
     if(checkN!==0 || this.state.errorEmail || checkT!==0) {
       (function($) {
         $(document).ready(function() {
@@ -139,8 +136,8 @@ class Order extends React.PureComponent {
 				      <label htmlFor="order-name" className="order-title">Ваше имя *</label><br />
               <input type="text" name="order-name" id="order-name" className="order-input"
                 onChange = {this.changeName} onBlur = {this.checkName} />
-              <span className = {this.state.errorName == 1 ? "visible" : "invisible"}> * Обязательное для заполнения поле</span>
-              <span className = {this.state.errorName == 2 ? "visible" : "invisible"}> * Введите до 30 буквенных символов</span>
+              <span className = {this.state.errorName == 1 ? "visible" : "invisible"}> * Обязательное поле</span>
+              <span className = {this.state.errorName == 2 ? "visible" : "invisible"}> * Введите до 30 букв</span>
 			      </div>
 
             <div>
@@ -154,7 +151,7 @@ class Order extends React.PureComponent {
               <label htmlFor="order-tel" className="order-title">Ваш телефон для связи *</label><br />
               <input type="tel" name="order-tel" id="order-tel" className="order-input"
                 onChange = {this.changeTel} onBlur = {this.checkTel}  />
-              <span className = {this.state.errorTel == 1 ? "visible" : "invisible"}> * Обязательное для заполнения поле</span>
+              <span className = {this.state.errorTel == 1 ? "visible" : "invisible"}> * Обязательное поле</span>
               <span className = {this.state.errorTel == 2 ? "visible" : "invisible"}> * Некорректный номер телефона</span>
             </div>
 
@@ -194,7 +191,7 @@ class Order extends React.PureComponent {
                   }
                   {this.props.cart.delivery == 1 ?
                     <span className = "remark"><br />
-                      * Окончательная стоимость уточняется по телефону
+                      * Окончательную стоимость уточняйте по телефону
                     </span> : null
                   }
                 </th>
