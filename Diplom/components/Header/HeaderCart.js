@@ -28,7 +28,6 @@ class HeaderCart extends React.PureComponent {
   };
 
   componentWillReceiveProps = (newProps) => {
-    console.log(newProps)
     if(newProps.selectedProducts.productsQTY == 0) {
       clearLocalStorage();}
   };

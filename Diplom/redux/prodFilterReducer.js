@@ -12,7 +12,6 @@ function prodFilterReducer(state = initState, action) {
             
       let newState = {...state,
         prodFilter: action.name};
-        //console.log(action.name)
       return newState;
       
     }    
