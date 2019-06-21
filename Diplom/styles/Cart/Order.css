@@ -51,6 +51,38 @@
     display: none;
 }
 
+.clear-cart-container{
+	position: relative;
+	width: 206px;
+	height: 56px;
+	background-color: #0d897f;
+	border-radius: 3px;
+	/*margin: auto;*/
+}
+
+.clear-cart {
+    width: 200px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    background-color: #0d897f;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: 3px solid white;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 3px;
+}
+
+.clear-cart:hover, .clear-cart:active {
+    background-color: white;
+    color: #0d897f;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 @media (max-width: 680px) {
 	.visible {
 		display: block;

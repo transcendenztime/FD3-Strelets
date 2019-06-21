@@ -81,6 +81,12 @@ class Order extends React.PureComponent {
     return check;
   };
 
+  clearCart = () => {
+    this.props.dispatch( cart_clear() );
+    this.props.dispatch( qty_to_null() );
+    clearLocalStorage();
+  }
+
   checkForm = (e) => {
     let checkN = this.checkName();
     let checkT = this.checkTel();
@@ -96,9 +102,7 @@ class Order extends React.PureComponent {
       e.preventDefault();
     }
     else{
-      this.props.dispatch( cart_clear() );
-      this.props.dispatch( qty_to_null() );
-      clearLocalStorage();
+      this.clearCart();
       alert("Заказ сформирован!");
     }
   }
@@ -117,6 +121,9 @@ class Order extends React.PureComponent {
     return (
         <div>
           <hr />
+          <div className="clear-cart-container">
+						<input type="button" value="Очистить корзину" className="clear-cart" onClick = {this.clearCart}></input>
+					</div>
           <h2 id="anchor">Оформление заказа:</h2>
 
           <div className = "order">
