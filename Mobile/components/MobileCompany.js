@@ -78,7 +78,7 @@ class MobileCompany extends React.PureComponent {
     )
     {
       newClients[editIndex] = cliendData;
-      changed = true;
+      // changed = true;
     }
     console.log(cliendData);
     
@@ -86,7 +86,7 @@ class MobileCompany extends React.PureComponent {
       mode: 0,
     });
 
-    if ( changed )
+    // if ( changed )
       this.setState({clients:newClients});
   }
 
